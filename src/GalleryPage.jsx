@@ -5,6 +5,8 @@ import Footer from './components/Footer'
 import card1 from './assets/Gallery/card.jpg'
 import card2 from './assets/Gallery/card2.jpg'
 import QuickContact from './components/QuickContact'
+import AboutContent from './components/AboutContent'
+import Service from './components/Service'
 export default function GalleryPage() {
   let data = [
     {
@@ -76,8 +78,8 @@ export default function GalleryPage() {
       </header>
       <main>
       <Gallery  data={data} cols={4} heading={`" Budget Me Best Servce "`}/>
-
     <QuickContact/>
+    <Service/>
       </main>
       <Footer/>
     </>

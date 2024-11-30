@@ -88,6 +88,15 @@ nav ul li a:hover::after{
 .loadComponent{
   animation: loadComponent 1s ease-in-out ;
 }
+.loadFromRight{
+  animation: loadFromRight 1s ease-in-out ;
+}
+.loadFromLeft{
+  animation: loadFromLeft 1s ease-in-out ;
+}
+.loadFromBottom{
+  animation: loadFromBottom 1s ease-in-out ;
+}
 @keyframes loadComponent{
   0%{
     transform: translateY(-100px);
@@ -96,5 +105,37 @@ nav ul li a:hover::after{
   100%{
     opacity: 1;
     transform: translateY(0px);
+  }
+}
+@keyframes loadFromRight {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes loadFromLeft {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes loadFromBottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
   }
 }

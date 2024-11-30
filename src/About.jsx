@@ -2,6 +2,8 @@ import React from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import aboutImg from './assets/images/about.png'
+import Service from './components/Service'
+import AboutContent from './components/AboutContent'
 export default function About() {
   return (
     <>
@@ -10,7 +12,7 @@ export default function About() {
     </header>
 
     <main>
-    <section className='my-8 bg-terniary flex flex-col items-center py-12 pb-0 px-8'>
+    {/* <section className='my-8 bg-terniary flex flex-col items-center py-12 pb-0 px-8'>
           <div className='flex justify-center items-center'>
             <div className='w-1/2 h-full flex justify-center'>
               <img src={aboutImg} alt="about us" className='w-[600px]' />
@@ -33,7 +35,9 @@ export default function About() {
             </div>
           </div>
 
-        </section>
+        </section> */}
+        <AboutContent/>
+        <Service/>
     </main>
     
     <Footer/>

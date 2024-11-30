@@ -374,8 +374,9 @@ export default function Vehicle() {
     //   ];
 
 let inventoryItem=[
-  
+
 ]
+
       let [customerList, setCustomerList] = useState([]);
       let [customerInventoryDisplay, setcustomerInventoryDisplay] = useState(false);
       return (

@@ -2,8 +2,11 @@ import React, { useEffect } from 'react'
 import card1 from '../assets/Gallery/card.jpg'
 import card2 from '../assets/Gallery/card2.jpg'
 import { useState } from 'react'
+
+
 import QuickContact from './QuickContact'
 export default function Gallery({data,cols,heading}) {
+
     let cards = [
         {
             src: card1,
@@ -44,10 +47,9 @@ export default function Gallery({data,cols,heading}) {
         console.log(e.target)
         console.log("afsan")
     }
-    // let imageFullscreen()
     return (
 
-        <section className='my-8 flex justify-center flex-col items-center gap-y-5'>
+        <section className='my-16 flex justify-center flex-col items-center gap-y-5'>
             <h1 className='grid-cols-4 grid-cols-5 grid-cols-6 grid-cols-7 ' hidden></h1>
             <div>
                 <h2 className='text-[3rem] font-bold text-primary'>{heading}</h2>
@@ -78,6 +80,7 @@ export default function Gallery({data,cols,heading}) {
                     </>
                 }
             </div>
+
         </section>
     )
 }

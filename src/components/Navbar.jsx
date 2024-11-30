@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../assets/images/logo.png'
+import logo from '../assets/images/logo2.png'
 import { Link } from 'react-router-dom'
 export default function Navbar() {
     return (
@@ -8,7 +8,8 @@ export default function Navbar() {
                 <div className='logoContainer h-[130%] w-full z-1 bg-secondary absolute left-0 top-0'>
                 </div>
                 <Link to="/" className='z-10'>   
-                    <img src={logo} alt="" className='w-16 h-12 z-10' />
+                    <img src={logo} alt="" className='w-16 h-13s z-10'   />
+                    {/* <img src={logo} alt="" className='w-16 h-12 z-10' /> */}
                 </Link>
                 <p className='font-bold text-white text-xl leading-6 z-10' >Sky Packers & Movers</p>
             </div>

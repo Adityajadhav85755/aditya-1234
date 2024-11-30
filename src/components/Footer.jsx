@@ -5,7 +5,7 @@ import logo from '../assets/images/logo.png'
 
 export default function Footer() {
   return (
-    <footer>
+    <footer className='bg-primary text-white'>
     <div className='fixed bottom-10 left-10'>
       <a href="tel:9004780981">
         <img src={whatsupLogo} alt="whatsup sky packers and movers" className='w-16 h-16' />
@@ -30,7 +30,7 @@ export default function Footer() {
       <div>
         <h3 className='px-1 tracking-wider font-semibold'>Quick Links</h3>
 
-        <ul className='flex text-black flex-col  justify-center items-start gap-0'>
+        <ul className='flex flex-col  justify-center items-start gap-0 text-white'>
           <li><a href="home" className=' px-1 py-1'>Home</a></li>
           <li><a href="services" className=' px-1 py-1'>Services</a></li>
           <li><a href="about" className=' px-1 py-1'>About</a></li>

@@ -3,7 +3,7 @@ import React from 'react'
 export default function QuickContact() {
   return (
       
-      <section className='my-8 flex flex-col items-center bg-primary text-white w-full px-4 py-12'>
+      <section className='my-16 flex flex-col items-center bg-primary text-white w-full px-4 py-12'>
           <div className='grid grid-cols-3 gap-8 px-8 w-full max-w-[1000px] '>
 
 
