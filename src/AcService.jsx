@@ -116,6 +116,8 @@ export default function AcService() {
 
   let [customerInventory, setCustomerInventory] = useState([]);
   let [serviceList, setServiceList] = useState(services);
+  let [repairAndService,setRepairAndService]=useState(false)
+  let [repairAndInspection,setRepairAndInspection]=useState(false)
   function addService(service) {
     // console.log(service);
     let exist = customerInventory.some((item) => {
@@ -127,6 +129,18 @@ export default function AcService() {
       console.log("exist not");
       setCustomerInventory([...customerInventory, service]);
       console.log([...customerInventory, service]);
+    }
+  }
+
+  function displayService(e){
+    let {value}=e.target
+    if(value=="repairAndService"){
+      setRepairAndService(true)
+      setRepairAndInspection(false)
+    }
+    else{
+      setRepairAndInspection(true)
+      setRepairAndService(false)
     }
   }
   return (
@@ -193,37 +207,37 @@ export default function AcService() {
 
         <div className='relative'>
           <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-          <select name="service" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' >
+          <select name="service" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' onChange={displayService} >
             <option value="">-- Select Service --</option>
-            <option value="housefold shifting">Repair & Service</option>
-            <option value="housefold shifting">Repair & Inspection</option>
+            <option value="repairAndService">Repair & Service</option>
+            <option value="repairAndInspection">Repair & Inspection</option>
 
           </select>
         </div>
 
-        
+        {repairAndService && 
         <div className='relative'>
           <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
           <select name="repairService" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' >
-            <option value="">-- Repair & Service --</option>
+            <option value="">-- Select Service --</option>
             <option value="housefold shifting">Household Shifting</option>
             <option value="office shifting">Office Shifting</option>
             <option value="shop shifting">Shop Shifting</option>
             <option value="vehicle shifting">Vehicle Shifting</option>
           </select>
-        </div>
+        </div>}
 
         
-        <div className='relative'>
+      {repairAndInspection &&   <div className='relative'>
           <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
           <select name="repairInspection" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' >
-            <option value="">-- Repair & Inspection --</option>
+            <option value="">-- Select Service --</option>
             <option value="housefold shifting">Household Shifting</option>
             <option value="office shifting">Office Shifting</option>
             <option value="shop shifting">Shop Shifting</option>
             <option value="vehicle shifting">Vehicle Shifting</option>
           </select>
-        </div>
+        </div>}
 
         <div className='relative'>
           <i className="fa-solid fa-calendar-days absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>

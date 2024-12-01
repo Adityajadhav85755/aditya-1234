@@ -153,7 +153,7 @@ export default function Login({ LoginContext }) {
             <form className="shadow-md" onSubmit={handleSubmit(onSubmit)}>
               <div className="flex flex-col px-8 py-4 w-full gap-5 shadow-md">
                 {/* Username Field */}
-                <div>
+                {/* <div>
                   <input
                     type="text"
                     {...register("username", {
@@ -171,7 +171,24 @@ export default function Login({ LoginContext }) {
                     placeholder="Username"
                   />
                   {errors.username && <p className="text-red-500 text-sm">{errors.username.message}</p>}
-                </div>
+                </div> */}
+
+<div>
+  <input
+    type="text"
+    {...register("phone", {
+      required: "Phone number is required",
+      pattern: {
+        value: /^[0-9]{10}$/,
+        message: "Phone number must be exactly 10 digits",
+      },
+    })}
+    className="px-4 py-2 outline-none rounded-full border-primary border focus:border-green-500 w-full"
+    placeholder="Phone Number"
+  />
+  {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
+</div>
+
 
                 {/* Password Field */}
                 <div className="relative">
