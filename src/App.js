@@ -21,7 +21,7 @@ import AboutContent from './components/AboutContent';
 
 
 let LoginContext = React.createContext();
-let FormContext = React.createContext()
+let FormContext = React.createContext();
 function App() {
   let [change, setChange] = useState(false)
   let settings = {
@@ -114,8 +114,6 @@ function App() {
 
   }
   function showBetweenForm() {
-    // console.log(formForBetween)
-    // console.log(formForWithin)
     formForWithin.current.style.display = "none";
     formForBetween.current.style.display = "flex";
     betweenButton.current.classList.remove("unActiveForm")
@@ -143,8 +141,6 @@ function App() {
       <header>
         <Navbar />
       </header>
-
-
       <main>
         <section>
           <div className='max-w-[500px] m-auto bg-terniary p-4 my-16 rounded-md'>

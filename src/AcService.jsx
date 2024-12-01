@@ -74,6 +74,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 // import { servicesVersion } from "typescript";
 export default function AcService() {
+
   let services = [
     {
       id: 1,
@@ -130,44 +131,125 @@ export default function AcService() {
   }
   return (
     <>
-    <Navbar/>
-    <div className="App grid grid-cols-3 place-items-center my-8 gap-10">
-      {serviceList.map((item, i) => {
-        return (
-          <div
-            key={i}
-            className="card w-full max-w-[500px] border-[#0a2c5a] border-2 rounded-2xl  overflow-hidden"
-          >
-            <div>
-              <img src={service1} alt="" className="w-full" />
-            </div>
-            <div className="p-4">
-              <h3 className="font-semibold text-left leading-10">
-                Filter Cleaning
-              </h3>
-              <p className="text-left">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet,
-                repellat doloremque debitis totam explicabo tempore rem
-                obcaecati a. Aut, impedit!
-              </p>
-              <div className="w-full text-left my-4">
-                <button
-                  onClick={() => {
-                    addService(item);
-                  }}
-                  className="text-white  font-semibold bg-[#0a2c5a] px-4 py-1 rounded-full text-left hover:bg-blue-800 transition-all"
-                >
-                  Add Service
-                </button>
+      <Navbar />
+      <div className="flex">
+      <div className=" grid grid-cols-1 place-items-center m-8 gap-10 h-[600px] overflow-y-auto w-1/3">
+        {serviceList.map((item, i) => {
+          return (
+            <div
+              key={i}
+              className="card w-full max-w-[500px] border-[#0a2c5a] border-2 rounded-2xl h-[350px] overflow-hidden "
+            >
+              <div>
+                <img src={service1} alt="" className="w-full h-[150px] object-cover" />
+              </div>
+              <div className="p-4">
+                <h3 className="font-semibold text-left leading-10">
+                  Filter Cleaning
+                </h3>
+                <p className="text-left">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet,
+                  repellat doloremque debitis totam explicabo tempore rem
+                  obcaecati a. Aut, impedit!
+                </p>
+                <div className="w-full text-left my-4">
+                  <button
+                    onClick={() => {
+                      addService(item);
+                    }}
+                    className="text-white  font-semibold bg-[#0a2c5a] px-4 py-1 rounded-full text-left hover:bg-blue-800 transition-all"
+                  >
+                    Add Service
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
-    </div>
+          );
+        })}
+
+      </div>
+
+<div className="flex justify-center items-center w-1/2">
+      <form action="" className='flex flex-col px-4 py-4 gap-y-4 text-primary max-w-[500px] w-full' >
+
+        <div className='relative '>
+          <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
+          <input type="number" name='phone' placeholder='Your Phone Number'  className='w-full py-2 px-4 pl-10 rounded-full border-primary border' />
+        </div>
+        <div className='relative'>
+          <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
+          <input type="text" name='location' placeholder='Your Location'  className='w-full py-2 px-4 pl-10  rounded-full border-primary border' />
+        </div>
+        <div className='relative'>
+          <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+          <select name="type" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' >
+            <option value="">-- Ac Type --</option>
+            <option value="split">Split AC</option>
+            <option value="window">Window Ac</option>
+            <option value="Floor Mounted Ac">Floor Mounted Ac</option>
+            <option value="Hybrid">Hybrid /Dual Ac</option>
+          </select>
+        </div>
+
+        <div className='relative'>
+          <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+          <select name="service" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' >
+            <option value="">-- Select Service --</option>
+            <option value="housefold shifting">Repair & Service</option>
+            <option value="housefold shifting">Repair & Inspection</option>
+
+          </select>
+        </div>
+
+        
+        <div className='relative'>
+          <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+          <select name="repairService" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' >
+            <option value="">-- Repair & Service --</option>
+            <option value="housefold shifting">Household Shifting</option>
+            <option value="office shifting">Office Shifting</option>
+            <option value="shop shifting">Shop Shifting</option>
+            <option value="vehicle shifting">Vehicle Shifting</option>
+          </select>
+        </div>
+
+        
+        <div className='relative'>
+          <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+          <select name="repairInspection" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' >
+            <option value="">-- Repair & Inspection --</option>
+            <option value="housefold shifting">Household Shifting</option>
+            <option value="office shifting">Office Shifting</option>
+            <option value="shop shifting">Shop Shifting</option>
+            <option value="vehicle shifting">Vehicle Shifting</option>
+          </select>
+        </div>
+
+        <div className='relative'>
+          <i className="fa-solid fa-calendar-days absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+          <input type="date" name='date' className='w-full py-2 px-4 rounded-full pl-10 border-primary border'  />
+        </div>
 
 
-    <Footer/>
+        <div className='relative'>
+          <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+          <select name="plan" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' >
+            <option value="">-- Select Plan --</option>
+            <option value="base">Base Plan</option>
+            <option value="premium">Premium Plan</option>
+          </select>
+        </div>
+
+        <div className=''>
+          <button className='bg-primary p-2 px-4 font-bold tracking-wide w-full rounded-md text-white '>Get Quote</button>
+        </div>
+      </form>
+</div>
+
+      </div>
+
+
+      <Footer />
     </>
   );
 }
