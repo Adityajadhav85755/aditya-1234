@@ -17,7 +17,7 @@ export default function Register({ LoginContext }) {
 
   const onSubmit = async (data) => {
     console.log(data);
-    let response = await fetch("http://192.168.1.6/json.php/form_signup.php", {
+    let response = await fetch("http://localhost/json.php/form_signup.php", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

@@ -109,7 +109,7 @@ export default function Login({ LoginContext }) {
 
   const onSubmit = async (data) => {
     console.log(data);
-    let response = await fetch("http://192.168.1.6/json.php/login.php", {
+    let response = await fetch("http://localhost/json.php/login.php", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -175,7 +175,7 @@ export default function Login({ LoginContext }) {
 
 <div>
   <input
-    type="text"
+    type="number"
     {...register("phone", {
       required: "Phone number is required",
       pattern: {

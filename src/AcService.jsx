@@ -78,46 +78,74 @@ export default function AcService() {
   let services = [
     {
       id: 1,
-      src: service1,
-      heading: "Filter Cleaning",
+      tagId: "Anti-RustDeepClean",
+      heading: "Anti-RustDeepClean",
       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet repellat doloremque debitis totam explicabo tempore rem obcaecati a Aut impedit!",
+      price: 1000
     },
     {
       id: 2,
-      src: service1,
-      heading: "Filter Cleaning",
+      tagId: "acGasLeakFillRefill",
+      heading: "Anti-RustDeepClean",
       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet repellat doloremque debitis totam explicabo tempore rem obcaecati a Aut impedit!",
+      price: 1000
     },
     {
       id: 3,
-      src: service1,
-      heading: "Filter Cleaning",
+      tagId: "installation",
+      heading: "Installation",
       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet repellat doloremque debitis totam explicabo tempore rem obcaecati a Aut impedit!",
+      price: 1000
     },
     {
       id: 4,
-      src: service1,
-      heading: "Filter Cleaning",
+      tagId: "uninstallation",
+      heading: "Uninstallation",
       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet repellat doloremque debitis totam explicabo tempore rem obcaecati a Aut impedit!",
+      price: 1000
     },
     {
       id: 5,
-      src: service1,
-      heading: "Filter Cleaning",
+      tagId: "lessNoCooling",
+      heading: "Less No Cooling",
       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet repellat doloremque debitis totam explicabo tempore rem obcaecati a Aut impedit!",
+      price: 1000
     },
     {
       id: 6,
-      src: service1,
-      heading: "Filter Cleaning",
+      tagId: "powerIssue",
+      heading: "Power Issue",
       desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet repellat doloremque debitis totam explicabo tempore rem obcaecati a Aut impedit!",
+      price: 1000
     },
+    {
+      id: 7,
+      tagId: "unWantedNoiseSmell",
+      heading: "Unwanted Noise/ Smell",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet repellat doloremque debitis totam explicabo tempore rem obcaecati a Aut impedit!",
+      price: 1000
+    },
+    {
+      id: 8,
+      tagId: "waterLeakage",
+      heading: "Water Leakage",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet repellat doloremque debitis totam explicabo tempore rem obcaecati a Aut impedit!",
+      price: 1000
+    },
+    {
+      id: 9,
+      tagId: "other",
+      heading: "Other",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet repellat doloremque debitis totam explicabo tempore rem obcaecati a Aut impedit!",
+      price: 1000
+    },
+
   ];
 
   let [customerInventory, setCustomerInventory] = useState([]);
   let [serviceList, setServiceList] = useState(services);
-  let [repairAndService,setRepairAndService]=useState(false)
-  let [repairAndInspection,setRepairAndInspection]=useState(false)
+  let [repairAndInspection, setRepairAndInspection] = useState(false)
+  let [form, setForm] = useState({ phone: "", location: "", type: "", service: "", date: "",time:"",repairInspection:"",brand:""  })
   function addService(service) {
     // console.log(service);
     let exist = customerInventory.some((item) => {
@@ -132,118 +160,182 @@ export default function AcService() {
     }
   }
 
-  function displayService(e){
-    let {value}=e.target
-    if(value=="repairAndService"){
-      setRepairAndService(true)
+  function displayService(e) {
+    let { value } = e.target
+    if (value == "AcRepairInspection") {
+      setRepairAndInspection(true)
+    }
+    else {
+
       setRepairAndInspection(false)
     }
-    else{
-      setRepairAndInspection(true)
-      setRepairAndService(false)
+  }
+
+  const scrollToHeader = (e) => {
+    // console.log(e.target.value)
+    if (e.target.value == "AcRepairInspection") {
+
+    } else {
+      document.getElementById(e.target.value).scrollIntoView({ behavior: "smooth" });
+
+    }
+  };
+
+
+  async function onsubmit(e){
+    e.preventDefault();
+    console.log(form);
+    let response = await fetch("http://localhost/json.php/form_ac.php", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
+    if (response.ok) {
+      let responseData = await response.text();
+      console.log(responseData);
+    } else {
+      console.log("Error");
     }
   }
+function handleChange(e){
+  let {name,value}=e.target;
+  setForm({...form,[name]:value})
+}
+
+
   return (
     <>
       <Navbar />
       <div className="flex">
-      <div className=" grid grid-cols-1 place-items-center m-8 gap-10 h-[600px] overflow-y-auto w-1/3">
-        {serviceList.map((item, i) => {
-          return (
-            <div
-              key={i}
-              className="card w-full max-w-[500px] border-[#0a2c5a] border-2 rounded-2xl h-[350px] overflow-hidden "
-            >
-              <div>
-                <img src={service1} alt="" className="w-full h-[150px] object-cover" />
-              </div>
-              <div className="p-4">
-                <h3 className="font-semibold text-left leading-10">
-                  Filter Cleaning
-                </h3>
-                <p className="text-left">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet,
-                  repellat doloremque debitis totam explicabo tempore rem
-                  obcaecati a. Aut, impedit!
-                </p>
-                <div className="w-full text-left my-4">
-                  <button
-                    onClick={() => {
-                      addService(item);
-                    }}
-                    className="text-white  font-semibold bg-[#0a2c5a] px-4 py-1 rounded-full text-left hover:bg-blue-800 transition-all"
-                  >
-                    Add Service
-                  </button>
+        <div className=" grid grid-cols-1 place-items-center m-8 gap-10 h-[600px] overflow-y-auto w-1/3">
+          {serviceList.map((item, i) => {
+            return (
+              <div
+                key={i}
+                id={item.tagId}
+                className="card w-full max-w-[500px] border-[#0a2c5a] border-2 rounded-2xl h-[350px] overflow-hidden "
+              >
+                <div>
+                  <img src={service1} alt="" className="w-full h-[150px] object-cover" />
+                </div>
+                <div className="p-4">
+                  <h3 className="font-semibold text-left leading-10">
+                    {item.heading}
+                  </h3>
+                  <p className="text-left">
+                    {item.desc}
+                  </p>
+                  <div className="w-full text-left my-4">
+                    <button
+                      onClick={() => {
+                        addService(item);
+                      }}
+                      className="text-white  font-semibold bg-[#0a2c5a] px-4 py-1 rounded-full text-left hover:bg-blue-800 transition-all"
+                    >
+                      Add Service
+                    </button>
+                  </div>
                 </div>
               </div>
+            );
+          })}
+
+        </div>
+
+        <div className="flex justify-center items-center w-1/2">
+          <form action="" className='flex flex-col px-4 py-4 gap-y-4 text-primary max-w-[500px] w-full' onSubmit={onsubmit}>
+
+            <div className='relative '>
+              <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
+              <input type="number" name='phone' placeholder='Your Phone Number' className='w-full py-2 px-4 pl-10 rounded-full border-primary border' onChange={handleChange} value={form.phone}   />
             </div>
-          );
-        })}
+            <div className='relative'>
+              <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
+              <input type="text" name='location' placeholder='Your Location' className='w-full py-2 px-4 pl-10  rounded-full border-primary border' onChange={handleChange} value={form.location}/>
+            </div>
+            <div className='relative'>
+              <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+              <select name="type" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' onChange={handleChange} value={form.type}>
+                <option value="">-- Ac Type --</option>
+                <option value="split">Split AC</option>
+                <option value="window">Window Ac</option>
+                <option value="Floor Mounted Ac">Floor Mounted Ac</option>
+                <option value="Hybrid">Hybrid /Dual Ac</option>
+              </select>
+            </div>
 
-      </div>
+            <div className='relative'>
+              <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+              <select name="service" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' onChange={(e) => {handleChange(e); displayService(e); scrollToHeader(e) }} value={form.service} >
+                <option value="">-- Select Service --</option>
+                <option value="AcRepairInspection">AC Repair & Inspection</option>
+                <option value="Anti-RustDeepClean">Anti-Rust Deep Clean</option>
+                <option value="acGasLeakFillRefill">AC Gas Leak Fill & Refill</option>
+                <option value="installation">Installation</option>
+                <option value="uninstallation">Uninstallation</option>
 
-<div className="flex justify-center items-center w-1/2">
-      <form action="" className='flex flex-col px-4 py-4 gap-y-4 text-primary max-w-[500px] w-full' >
+              </select>
+            </div>
 
-        <div className='relative '>
-          <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
-          <input type="number" name='phone' placeholder='Your Phone Number'  className='w-full py-2 px-4 pl-10 rounded-full border-primary border' />
-        </div>
-        <div className='relative'>
-          <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
-          <input type="text" name='location' placeholder='Your Location'  className='w-full py-2 px-4 pl-10  rounded-full border-primary border' />
-        </div>
-        <div className='relative'>
-          <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-          <select name="type" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' >
-            <option value="">-- Ac Type --</option>
-            <option value="split">Split AC</option>
-            <option value="window">Window Ac</option>
-            <option value="Floor Mounted Ac">Floor Mounted Ac</option>
-            <option value="Hybrid">Hybrid /Dual Ac</option>
-          </select>
-        </div>
 
-        <div className='relative'>
-          <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-          <select name="service" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' onChange={displayService} >
-            <option value="">-- Select Service --</option>
-            <option value="repairAndService">Repair & Service</option>
-            <option value="repairAndInspection">Repair & Inspection</option>
 
-          </select>
-        </div>
+            {repairAndInspection && <div className='relative'>
+              <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+              <select name="repairInspection" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' onChange={(e) => { handleChange(e); scrollToHeader(e) }} value={form.repairInspection}>
+                <option value="">-- Select Service --</option>
+                <option value="lessNoCooling">Less / No Cooling</option>
+                <option value="powerIssue">Power Issue</option>
+                <option value="unWantedNoiseSmell">Unwanted Noise/ Smell</option>
+                <option value="waterLeakage">Water Leakage</option>
+                <option value="other">Other</option>
+              </select>
+            </div>}
 
-        {repairAndService && 
-        <div className='relative'>
-          <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-          <select name="repairService" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' >
-            <option value="">-- Select Service --</option>
-            <option value="housefold shifting">Household Shifting</option>
-            <option value="office shifting">Office Shifting</option>
-            <option value="shop shifting">Shop Shifting</option>
-            <option value="vehicle shifting">Vehicle Shifting</option>
-          </select>
-        </div>}
+            <div className='relative'>
+              <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+              <select name="brand" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' onChange={handleChange} value={form.brand}>
+                <option value="">-- Select Brand --</option>
+                <option value="Voltas">Voltas</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Haie">Haie</option>
+                <option value="Lloyd">Lloyd</option>
+                <option value="Whirlpool">Whirlpool</option>
+                <option value="Bluestar">Bluestar</option>
+                <option value="Panasonic">Panasonic</option>
+                <option value="Daikin">Daikin</option>
+              </select>
+            </div>
 
-        
-      {repairAndInspection &&   <div className='relative'>
-          <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-          <select name="repairInspection" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' >
-            <option value="">-- Select Service --</option>
-            <option value="housefold shifting">Household Shifting</option>
-            <option value="office shifting">Office Shifting</option>
-            <option value="shop shifting">Shop Shifting</option>
-            <option value="vehicle shifting">Vehicle Shifting</option>
-          </select>
-        </div>}
+            <div className="relative">
+              <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+              <select
+                name="time"
+                id="time"
+                className="w-full py-2 px-4 rounded-full pl-10 border-primary border"
+                onChange={handleChange}
+                value={form.time}
+              >
+                <option value="">-- Select Time --</option>
+                <option value="9 AM to 10 AM">9 AM to 10 AM</option>
+                <option value="10 AM to 11 AM">10 AM to 11 AM</option>
+                <option value="11 AM to 12 PM">11 AM to 12 PM</option>
+                <option value="12 PM to 1 PM">12 PM to 1 PM</option>
+                <option value="1 PM to 2 PM">1 PM to 2 PM</option>
+                <option value="2 PM to 3 PM">2 PM to 3 PM</option>
+                <option value="3 PM to 4 PM">3 PM to 4 PM</option>
+                <option value="4 PM to 5 PM">4 PM to 5 PM</option>
+                <option value="5 PM to 6 PM">5 PM to 6 PM</option>
+                <option value="6 PM to 7 PM">6 PM to 7 PM</option>
+              </select>
+            </div>
 
-        <div className='relative'>
-          <i className="fa-solid fa-calendar-days absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-          <input type="date" name='date' className='w-full py-2 px-4 rounded-full pl-10 border-primary border'  />
-        </div>
-
+            <div className='relative'>
+              <i className="fa-solid fa-calendar-days absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+              <input type="date" name='date' className='w-full py-2 px-4 rounded-full pl-10 border-primary border' onChange={handleChange} value={form.date} />
+            </div>
+            {/* 
 
         <div className='relative'>
           <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
@@ -252,13 +344,13 @@ export default function AcService() {
             <option value="base">Base Plan</option>
             <option value="premium">Premium Plan</option>
           </select>
-        </div>
+        </div> */}
 
-        <div className=''>
-          <button className='bg-primary p-2 px-4 font-bold tracking-wide w-full rounded-md text-white '>Get Quote</button>
+            <div className=''>
+              <button className='bg-primary p-2 px-4 font-bold tracking-wide w-full rounded-md text-white '>Get Quote</button>
+            </div>
+          </form>
         </div>
-      </form>
-</div>
 
       </div>
 
