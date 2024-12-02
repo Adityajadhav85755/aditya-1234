@@ -52,41 +52,41 @@
 // }
 
 
-// import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import profile from '../assets/images/profile.png';
-// import logo from '../assets/images/logo2.png';
-// import { useContext } from 'react';
-// import { LoginStatusContext } from '..';
-// export default function Sidebar({ LoginStatusContext, setShowLoginForm }) {
-//     let [loginStatus,setLoginStatus,userData,setUserData]=useContext(LoginStatusContext)
-//     return (
-//         <div className="sidebar bg-primary w-72 min-h-screen flex flex-col p-4 text-white">
-//             {/* Profile Section */}
-//             <div className="flex items-center gap-3 bg-secondary p-4 rounded-md mb-6">
-//                 <img src={profile} alt="Profile" className="w-12 h-12 rounded-full" />
-//                 <div>
-//                     <p className="font-semibold text-lg">{userData.name}</p>
-//                 </div>
-//             </div>
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import profile from '../assets/images/profile.png';
+import logo from '../assets/images/logo2.png';
+import { useContext } from 'react';
+import { LoginStatusContext } from '..';
+export default function Sidebar({ LoginStatusContext, setShowLoginForm }) {
+    let [loginStatus,setLoginStatus,userData,setUserData]=useContext(LoginStatusContext)
+    return (
+        <div className="sidebar bg-primary w-72 min-h-screen flex flex-col p-4 text-white">
+            {/* Profile Section */}
+            <div className="flex items-center gap-3 bg-secondary p-4 rounded-md mb-6">
+                <img src={profile} alt="Profile" className="w-12 h-12 rounded-full" />
+                <div>
+                    <p className="font-semibold text-lg">{userData.name}</p>
+                </div>
+            </div>
 
 
 
-//             <div className="mt-6">
-//                 <ul>
+            <div className="mt-6">
+                <ul>
 
-//             <li className="group relative">
-//                     <Link to="#" className="hover:text-secondary">Services</Link>
-//                     <ul className="hidden group-hover:flex flex-col pl-4 mt-2 text-sm">
-//                         <li><Link to="/household" className="hover:text-secondary">Household</Link></li>
-//                         <li><Link to="/office" className="hover:text-secondary">Office</Link></li>
-//                         <li><Link to="/vehicle" className="hover:text-secondary">Vehicle</Link></li>
-//                        <li><Link to="/shop" className="hover:text-secondary">Shop</Link></li>
-//                         <li><Link to="/AcService" className="hover:text-secondary">Ac Service</Link></li>
-//                     </ul>
-//                 </li>
-//                 </ul>
-//             </div>
-//         </div>
-//     );
-// }
+            <li className="group relative">
+                    <Link to="#" className="hover:text-secondary">Services</Link>
+                    <ul className="hidden group-hover:flex flex-col pl-4 mt-2 text-sm">
+                        <li><Link to="/household" className="hover:text-secondary">Household</Link></li>
+                        <li><Link to="/office" className="hover:text-secondary">Office</Link></li>
+                        <li><Link to="/vehicle" className="hover:text-secondary">Vehicle</Link></li>
+                       <li><Link to="/shop" className="hover:text-secondary">Shop</Link></li>
+                        <li><Link to="/AcService" className="hover:text-secondary">Ac Service</Link></li>
+                    </ul>
+                </li>
+                </ul>
+            </div>
+        </div>
+    );
+}

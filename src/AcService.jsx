@@ -72,8 +72,16 @@ import service1 from "./assets/images/shifting.jpg";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { useContext } from 'react'
+import Login from './components/Login'
+import Register from './components/Register'
+import React from "react";
+import { LoginStatusContext } from "./index";
+let LoginContext = React.createContext();
+
 // import { servicesVersion } from "typescript";
 export default function AcService() {
+  let [loginStatus,setLoginStatus,showLoginForm,setShowLoginForm,showRegisterForm,setShowRegisterForm,userData,setUserData]=useContext(LoginStatusContext)
 
   let services = [
     {
@@ -207,7 +215,13 @@ function handleChange(e){
 
   return (
     <>
-      <Navbar />
+    
+    <header>
+    <LoginStatusContext.Provider value={[loginStatus,setLoginStatus,userData,setUserData]}>
+        <Navbar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm}/>
+
+        </LoginStatusContext.Provider>
+    </header>
       <div className="flex">
         <div className=" grid grid-cols-1 place-items-center m-8 gap-10 h-[600px] overflow-y-auto w-1/3">
           {serviceList.map((item, i) => {
@@ -352,6 +366,12 @@ function handleChange(e){
           </form>
         </div>
 
+
+
+        <LoginContext.Provider value={[showLoginForm, setShowLoginForm, showRegisterForm, setShowRegisterForm]}>
+          {showLoginForm && <Login LoginContext={LoginContext} />}
+          {showRegisterForm && <Register LoginContext={LoginContext} />}
+        </LoginContext.Provider>
       </div>
 
 
