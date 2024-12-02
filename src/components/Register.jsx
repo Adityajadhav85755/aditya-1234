@@ -19,7 +19,7 @@ export default function Register({ LoginContext }) {
 
   const onSubmit = async (data) => {
     console.log(data);
-    let response = await fetch("http://192.168.1.5/SNS/sns_backend/form_signup.php", {
+    let response = await fetch("http://localhost/SNS/sns_backend/form_signup.php", {
 
       method: "POST",
       headers: {
