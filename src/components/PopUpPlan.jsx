@@ -36,27 +36,27 @@ export default function PopUpPlan({FormContext}) {
             <div className='p-4'>
                 <ul className='list-inside'>
                     <li className='flex items-center font-semibold text-lg'>
-                    <i class="fas fa-check text-green-500 mr-4 text-2xl"/>
+                    <i className="fas fa-check text-green-500 mr-4 text-2xl"/>
                         Benefit1
                     </li>
                     
                     <li className='flex items-center font-semibold text-lg'>
-                    <i class="fas fa-check text-green-500 mr-4 text-2xl"/>
+                    <i className="fas fa-check text-green-500 mr-4 text-2xl"/>
                         Benefit1
                     </li>
                     
                     <li className='flex items-center font-semibold text-lg'>
-                    <i class="fas fa-check text-green-500 mr-4 text-2xl"/>
+                    <i className="fas fa-check text-green-500 mr-4 text-2xl"/>
                         Benefit1
                     </li>
                     
                     <li className='flex items-center font-semibold text-lg'>
-                    <i class="fas fa-check text-green-500 mr-4 text-2xl"/>
+                    <i className="fas fa-check text-green-500 mr-4 text-2xl"/>
                         Benefit1
                     </li>
                     
                     <li className='flex items-center font-semibold text-lg'>
-                    <i class="fas fa-check text-green-500 mr-4 text-2xl"/>
+                    <i className="fas fa-check text-green-500 mr-4 text-2xl"/>
                         Benefit1
                     </li>
                     
@@ -74,30 +74,30 @@ export default function PopUpPlan({FormContext}) {
             <div className='p-4'>
                 <ul className='list-inside'>
                     <li className='flex items-center font-semibold text-lg'>
-                    <i class="fas fa-check text-green-500 mr-4 text-2xl"/>
+                    <i className="fas fa-check text-green-500 mr-4 text-2xl"/>
                     High-Quality Packing
                     </li>
                     
                     <li className='flex items-center font-semibold text-lg'>
-                    <i class="fas fa-check text-green-500 mr-4 text-2xl"/>
+                    <i className="fas fa-check text-green-500 mr-4 text-2xl"/>
                     Flexible Scheduling
 
                     </li>
                     
                     <li className='flex items-center font-semibold text-lg'>
-                    <i class="fas fa-check text-green-500 mr-4 text-2xl"/>
+                    <i className="fas fa-check text-green-500 mr-4 text-2xl"/>
                     Professional Assistance
 
                     </li>
                     
                     <li className='flex items-center font-semibold text-lg'>
-                    <i class="fas fa-check text-green-500 mr-4 text-2xl"/>
+                    <i className="fas fa-check text-green-500 mr-4 text-2xl"/>
                     Intercity and Local Shifting
 
                     </li>
                     
                     <li className='flex items-center font-semibold text-lg'>
-                    <i class="fas fa-check text-green-500 mr-4 text-2xl"/>
+                    <i className="fas fa-check text-green-500 mr-4 text-2xl"/>
                     Specialized Services
                     </li>
                     

@@ -4,11 +4,31 @@ import Footer from './components/Footer'
 import aboutImg from './assets/images/about.png'
 import Service from './components/Service'
 import AboutContent from './components/AboutContent'
+import { LoginStatusContext } from './index';
+import { useContext } from 'react'
+import Login from './components/Login';
+import Register from './components/Register'
+import { useState } from 'react'
+import { useEffect } from 'react'
+
+
+let LoginContext = React.createContext();
+
 export default function About() {
+  // let [loginStatus,setLoginStatus]=useContext(LoginStatusContext)
+  let [loginStatus,setLoginStatus,showLoginForm,setShowLoginForm,showRegisterForm,setShowRegisterForm,userData,setUserData]=useContext(LoginStatusContext)
+
+  // let [showLoginForm, setShowLoginForm] = useState(false)
+  // let [showRegisterForm, setShowRegisterForm] = useState(false)
+
+
   return (
     <>
     <header>
-        <Navbar/>
+        {/* <Navbar/> */}
+        <LoginStatusContext.Provider value={[loginStatus,setLoginStatus,userData,setUserData]}>
+        <Navbar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm}/>
+        </LoginStatusContext.Provider>
     </header>
 
     <main>
@@ -38,6 +58,11 @@ export default function About() {
         </section> */}
         <AboutContent/>
         <Service/>
+
+        <LoginContext.Provider value={[showLoginForm, setShowLoginForm, showRegisterForm, setShowRegisterForm]}>
+          {showLoginForm && <Login LoginContext={LoginContext} />}
+          {showRegisterForm && <Register LoginContext={LoginContext} />}
+        </LoginContext.Provider>
     </main>
     
     <Footer/>

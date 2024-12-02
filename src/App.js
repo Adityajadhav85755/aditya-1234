@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from './components/Navbar';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import Gallery from './components/Gallery';
 import worker from './assets/images/worker.png'
@@ -18,12 +18,18 @@ import PopUpPlan from './components/PopUpPlan';
 import Register from './components/Register';
 import Service from './components/Service';
 import AboutContent from './components/AboutContent';
+import { LoginStatusContext } from './index';
+import Sidebar from './components/Sidebar';
 
 
 let LoginContext = React.createContext();
 let FormContext = React.createContext();
+// let LoginStatusContext = React.createContext();
 function App() {
+  let [loginStatus,setLoginStatus,showLoginForm,setShowLoginForm,showRegisterForm,setShowRegisterForm,userData,setUserData]=useContext(LoginStatusContext)
+  // console.log(loginStatus)
   let [change, setChange] = useState(false)
+
   let settings = {
     dots: true,
     infinite: true,
@@ -32,8 +38,8 @@ function App() {
     slidesToScroll: 1,
   };
   let [form, setForm] = useState({ location: "", phone: "", type: "", service: "", detail: "" })
-  let [showLoginForm, setShowLoginForm] = useState(false)
-  let [showRegisterForm, setShowRegisterForm] = useState(false)
+  // let [showLoginForm, setShowLoginForm] = useState(false)
+  // let [showRegisterForm, setShowRegisterForm] = useState(false)
   let [showPlan, setShowPlan] = useState(false)
   function handleFormInput(e) {
     let { name, value } = e.target;
@@ -46,7 +52,7 @@ function App() {
 
   let corousel = useRef(null)
   // let [withinForm, setWithingForm] = useState({ city: "", sourceLocality: "", destinationLocality: "", choice: "movers", date: "",service:"" })
-  let [withinForm, setWithingForm] = useState({ sourceLocality: "", destinationLocality: "", choice: "movers", date: "", service: "", plan: "" })
+  let [withinForm, setWithingForm] = useState({ sourceLocality: "", destinationLocality: "", choice: "movers", date: "", service: "", plan: "",time:"" })
   let [betweenForm, setBetweenForm] = useState({ city: "", destinationCity: "", choice: "movers", date: "" })
   // let [ctaForm, setCtaForm] = useState({ name: "", email: "", phone: "", moveFrom: "", moveTo: "" })
 
@@ -105,7 +111,7 @@ function App() {
 
   function handleBetweenForm(e) {
     e.preventDefault();
-    console.log(betweenForm)
+    console.log(withinForm)
   }
 
   function displayPlan() {
@@ -139,7 +145,10 @@ function App() {
 
     <>
       <header>
-        <Navbar />
+        <LoginStatusContext.Provider value={[loginStatus,setLoginStatus,userData,setUserData,setShowLoginForm]}>
+        <Navbar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm}/>
+        {/* <Sidebar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm}/> */}
+        </LoginStatusContext.Provider>
       </header>
       <main>
         <section>
@@ -159,16 +168,16 @@ function App() {
 
               <div className='relative '>
                 <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
-                <input type="text" name='sourceLocality' placeholder='Enter Your Locality' value={withinForm.sourceLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10 rounded-full border-primary border' />
+                <input required type="text" name='sourceLocality' placeholder='Enter Your Locality' value={withinForm.sourceLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10 rounded-full border-primary border' />
               </div>
               <div className='relative'>
                 <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
 
-                <input type="text" name='destinationLocality' placeholder='Enter Your Destination Locality' value={withinForm.destinationLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10  rounded-full border-primary border' />
+                <input required type="text" name='destinationLocality' placeholder='Enter Your Destination Locality' value={withinForm.destinationLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10  rounded-full border-primary border' />
               </div>
               <div className='relative'>
                 <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select name="choice" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.choice} onChange={handleInput}>
+                <select required name="choice"  className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.choice} onChange={handleInput}>
                   <option value="movers">Only Movers</option>
                   <option value="Movers & Tempo">Movers & Tempo</option>
                   <option value="Movers & Truck">Movers & Truck</option>
@@ -177,14 +186,11 @@ function App() {
               </div>
 
 
-              <div className='relative'>
-                <i className="fa-solid fa-calendar-days absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <input type="date" name='date' className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.date} onChange={handleInput} />
-              </div>
 
               <div className='relative'>
-                <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select name="service" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.service} onChange={(e) => { displayPlan(); handleInput(e); }}>
+              {/* <i class="fa-solid fa-suitcase"></i> */}
+                <i className="fa-solid fa-suitcase absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+                <select required name="service"  className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.service} onChange={(e) => { displayPlan(); handleInput(e); }}>
                   <option value="">-- Select Sercvice --</option>
                   <option value="housefold shifting">Household Shifting</option>
                   <option value="office shifting">Office Shifting</option>
@@ -194,12 +200,41 @@ function App() {
               </div>
 
               <div className='relative'>
-                <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select name="plan" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.plan} onChange={handleInput}>
+                <i className="fa-solid fa-box-open absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+                <select required name="plan"  className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.plan} onChange={handleInput}>
                   <option value="">-- Select Plan --</option>
                   <option value="base">Base Plan</option>
                   <option value="premium">Premium Plan</option>
                 </select>
+              </div>
+              
+            <div className="relative">
+              <i className="fa-solid fa-clock absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+              <select
+                name="time"
+                
+                className="w-full py-2 px-4 rounded-full pl-10 border-primary border"
+                onChange={handleInput}
+                value={withinForm.time}
+              >
+                <option value="">-- Select Time --</option>
+                <option value="9 AM to 10 AM">9 AM to 10 AM</option>
+                <option value="10 AM to 11 AM">10 AM to 11 AM</option>
+                <option value="11 AM to 12 PM">11 AM to 12 PM</option>
+                <option value="12 PM to 1 PM">12 PM to 1 PM</option>
+                <option value="1 PM to 2 PM">1 PM to 2 PM</option>
+                <option value="2 PM to 3 PM">2 PM to 3 PM</option>
+                <option value="3 PM to 4 PM">3 PM to 4 PM</option>
+                <option value="4 PM to 5 PM">4 PM to 5 PM</option>
+                <option value="5 PM to 6 PM">5 PM to 6 PM</option>
+                <option value="6 PM to 7 PM">6 PM to 7 PM</option>
+              </select>
+            </div>
+
+            
+            <div className='relative'>
+                <i className="fa-solid fa-calendar-days absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+                <input required type="date" name='date' className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.date} onChange={handleInput} />
               </div>
 
               <div className=''>
@@ -214,16 +249,16 @@ function App() {
 
               <div className='relative '>
                 <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
-                <input type="text" name='sourceLocality' placeholder='Enter Your Locality' value={withinForm.sourceLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10 rounded-full border-primary border' />
+                <input required type="text" name='sourceLocality' placeholder='Enter Your Locality' value={withinForm.sourceLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10 rounded-full border-primary border' />
               </div>
               <div className='relative'>
                 <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
 
-                <input type="text" name='destinationLocality' placeholder='Enter Your Destination Locality' value={withinForm.destinationLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10  rounded-full border-primary border' />
+                <input required type="text" name='destinationLocality' placeholder='Enter Your Destination Locality' value={withinForm.destinationLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10  rounded-full border-primary border' />
               </div>
               <div className='relative'>
                 <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select name="choice" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.choice} onChange={handleInput}>
+                <select required name="choice"  className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.choice} onChange={handleInput}>
                   <option value="movers">Only Movers</option>
                   <option value="Movers & Tempo">Movers & Tempo</option>
                   <option value="Movers & Truck">Movers & Truck</option>
@@ -232,14 +267,10 @@ function App() {
               </div>
 
 
-              <div className='relative'>
-                <i className="fa-solid fa-calendar-days absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <input type="date" name='date' className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.date} onChange={handleInput} />
-              </div>
 
               <div className='relative'>
                 <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select name="service" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.service} onChange={(e) => { displayPlan(); handleInput(e); }}>
+                <select required name="service"  className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.service} onChange={(e) => { displayPlan(); handleInput(e); }}>
                   <option value="">-- Select Sercvice --</option>
                   <option value="housefold shifting">Household Shifting</option>
                   <option value="office shifting">Office Shifting</option>
@@ -250,11 +281,41 @@ function App() {
 
               <div className='relative'>
                 <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select name="plan" id="" className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.plan} onChange={handleInput}>
+                <select required name="plan"  className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.plan} onChange={handleInput}>
                   <option value="">-- Select Plan --</option>
                   <option value="base">Base Plan</option>
                   <option value="premium">Premium Plan</option>
                 </select>
+              </div>
+
+
+              <div className="relative">
+              <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+              <select
+                name="time"
+                
+                className="w-full py-2 px-4 rounded-full pl-10 border-primary border"
+                onChange={handleInput}
+                value={withinForm.time}
+                required
+              >
+                <option value="">-- Select Time --</option>
+                <option value="9 AM to 10 AM">9 AM to 10 AM</option>
+                <option value="10 AM to 11 AM">10 AM to 11 AM</option>
+                <option value="11 AM to 12 PM">11 AM to 12 PM</option>
+                <option value="12 PM to 1 PM">12 PM to 1 PM</option>
+                <option value="1 PM to 2 PM">1 PM to 2 PM</option>
+                <option value="2 PM to 3 PM">2 PM to 3 PM</option>
+                <option value="3 PM to 4 PM">3 PM to 4 PM</option>
+                <option value="4 PM to 5 PM">4 PM to 5 PM</option>
+                <option value="5 PM to 6 PM">5 PM to 6 PM</option>
+                <option value="6 PM to 7 PM">6 PM to 7 PM</option>
+              </select>
+            </div>
+
+            <div className='relative'>
+                <i className="fa-solid fa-calendar-days absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+                <input required type="date" name='date' className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.date} onChange={handleInput} />
               </div>
 
               <div className=''>
@@ -290,7 +351,7 @@ function App() {
 
               <div className='relative'>
                 <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select name="choice" id="" className='w-full py-2 px-4 rounded-full pl-10' value={betweenForm.choice} onChange={handleBetweenFormInput}>
+                <select name="choice"  className='w-full py-2 px-4 rounded-full pl-10' value={betweenForm.choice} onChange={handleBetweenFormInput}>
                   <option value="movers">Only Movers</option>
                   <option value="Movers & Tempo">Movers & Tempo</option>
                   <option value="Movers & Truck">Movers & Truck</option>

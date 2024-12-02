@@ -55,7 +55,7 @@ export default function Register({ LoginContext }) {
                 >
                   <i className="fa-solid fa-arrow-left"></i>
                 </Link>
-                <h4 className="text-xl flex-1">Sign Up</h4>
+                <h4 className="text-xl flex-1 ">Sign Up</h4>
               </div>
             </div>
 
@@ -127,7 +127,7 @@ export default function Register({ LoginContext }) {
                   {errors.cpassword && <p className="text-red-500 text-sm">{errors.cpassword.message}</p>}
 
                   <div>
-                    Don't have An Account ? <span className="text-primary text-base font-semibold" onClick={signIn}>Sign UP</span>
+                    Already Have An Account ? <span className="text-primary text-base font-semibold cursor-pointer hover:underline" onClick={signIn}>Login</span>
                 </div>
                 <div className="flex justify-center w-full bg-primary rounded-full py-2">
                   <input

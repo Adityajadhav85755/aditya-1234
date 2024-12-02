@@ -218,7 +218,7 @@ export default function Login({ LoginContext }) {
                 </div>
 
                 <div>
-                    Don't have An Account ? <span className="text-primary text-base font-semibold" onClick={signUp}>Sign UP</span>
+                    Don't have An Account ? <span className="text-primary text-base font-semibold cursor-pointer hover:underline" onClick={signUp}>Sign UP</span>
                 </div>
 
                 {/* Submit Button */}

@@ -7,7 +7,18 @@ import card2 from './assets/Gallery/card2.jpg'
 import QuickContact from './components/QuickContact'
 import AboutContent from './components/AboutContent'
 import Service from './components/Service'
+import { LoginStatusContext } from './index'
+import { useContext } from 'react'
+import Login from './components/Login'
+import Register from './components/Register'
+
+
+let LoginContext = React.createContext();
+
 export default function GalleryPage() {
+//   let [loginStatus,setLoginStatus]=useContext(LoginStatusContext)
+  let [loginStatus,setLoginStatus,showLoginForm,setShowLoginForm,showRegisterForm,setShowRegisterForm,userData,setUserData]=useContext(LoginStatusContext)
+
   let data = [
     {
         src: card1,
@@ -74,12 +85,20 @@ export default function GalleryPage() {
   return (
     <>
       <header>
-        <Navbar />
+      <LoginStatusContext.Provider value={[loginStatus,setLoginStatus,userData,setUserData]}>
+        <Navbar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm}/>
+        </LoginStatusContext.Provider>
       </header>
       <main>
       <Gallery  data={data} cols={4} heading={`" Budget Me Best Servce "`}/>
     <QuickContact/>
     <Service/>
+
+
+    <LoginContext.Provider value={[showLoginForm, setShowLoginForm, showRegisterForm, setShowRegisterForm]}>
+          {showLoginForm && <Login LoginContext={LoginContext} />}
+          {showRegisterForm && <Register LoginContext={LoginContext} />}
+        </LoginContext.Provider>
       </main>
       <Footer/>
     </>

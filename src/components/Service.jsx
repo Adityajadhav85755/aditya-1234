@@ -36,8 +36,8 @@ export default function Service() {
       {services.map((serv, i) => {
         return <Link to={`/${serv.redirect}`} key={i}>
 
-          <div style={{ backgroundImage: `url(${shipping})` }} className={`bg-center bg-cover cursor-pointer rounded-tl-[4rem] rounded-br-[4rem] `}>
-            <div className={`service border border-primary rounded-sm p-8 px-4 ${(i % 2 == 0) ? "bg-gradient-to-r text-left" : "bg-gradient-to-l text-right"} from-white to-transparent   overflow-hidden rounded-tl-[4rem] rounded-br-[4rem]
+          <div style={{ backgroundImage: `url(${shipping})` }} className={`bg-center bg-cover cursor-pointer rounded-tl-[2rem] rounded-br-[2rem] `}>
+            <div className={`service border border-primary rounded-sm p-8 px-4 ${(i % 2 == 0) ? "bg-gradient-to-r text-left" : "bg-gradient-to-l text-right"} from-white to-transparent   overflow-hidden rounded-tl-[2rem] rounded-br-[2rem] 
 `}>
               <h3 className='text-primary text-xl font-semibold'>{serv.name}</h3>
             </div>
