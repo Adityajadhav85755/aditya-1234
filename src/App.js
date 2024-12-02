@@ -374,10 +374,13 @@ function App() {
         <AboutContent />
         <QuickContact />
         <Gallery heading={"Our Work"} />
+        <LoginStatusContext.Provider value={[userData,setUserData]}>
         <LoginContext.Provider value={[showLoginForm, setShowLoginForm, showRegisterForm, setShowRegisterForm]}>
           {showLoginForm && <Login LoginContext={LoginContext} />}
           {showRegisterForm && <Register LoginContext={LoginContext} />}
         </LoginContext.Provider>
+
+        </LoginStatusContext.Provider>
       </main>
       <Footer />
 

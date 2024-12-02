@@ -68,10 +68,7 @@ const RootApp = () => {
   const [loginStatus, setLoginStatus] = useState(false); // Global state for login
   let [showLoginForm, setShowLoginForm] = useState(false)
   let [showRegisterForm, setShowRegisterForm] = useState(false)
-  let [userData,setUserData]=useState({
-    id:1,
-    name:"Afsan",
-  })
+  let [userData,setUserData]=useState({})
   return (
     <React.StrictMode>
       <LoginStatusContext.Provider value={[loginStatus, setLoginStatus,showLoginForm,setShowLoginForm,showRegisterForm,setShowRegisterForm,userData,setUserData]}>
