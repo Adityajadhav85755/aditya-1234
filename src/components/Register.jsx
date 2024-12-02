@@ -2,9 +2,11 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-
+import { LoginStatusContext } from "..";
 export default function Register({ LoginContext }) {
   let [showLoginForm, setShowLoginForm,showRegisterForm,setShowRegisterForm] = useContext(LoginContext);
+  let [userData,setUserData,loginStatus,setLoginStatus]=useContext(LoginStatusContext)
+
   let [showPass, setShowPass] = useState(false);
   let [showCPass, setShowCPass] = useState(false);
 
@@ -17,7 +19,7 @@ export default function Register({ LoginContext }) {
 
   const onSubmit = async (data) => {
     console.log(data);
-    let response = await fetch("http://localhost/SNS/sns_backend/form_signup.php", {
+    let response = await fetch("http://192.168.1.5/SNS/sns_backend/form_signup.php", {
 
       method: "POST",
       headers: {
@@ -25,9 +27,14 @@ export default function Register({ LoginContext }) {
       },
       body: JSON.stringify(data),
     });
+    setShowLoginForm(false)
     if (response.ok) {
-      let responseData = await response.text();
+      let responseData = await response.json();
+      // console.log(responseData);
       console.log(responseData);
+      setLoginStatus(true);
+      setUserData(responseData)
+      setShowRegisterForm(false)
     } else {
       console.log("Error");
     }

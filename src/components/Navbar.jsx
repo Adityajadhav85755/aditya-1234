@@ -8,7 +8,7 @@ export default function Navbar({LoginStatusContext,setShowLoginForm}) {
     // console.log(LoginStatusContext)
     // let [loginStatus,setLoginStatus,userData,setUserData,setShowLoginForm]=useContext(LoginStatusContext)
     let [loginStatus,setLoginStatus,userData,setUserData]=useContext(LoginStatusContext)
-
+    
 
     // console.log(loginStatus)
     return (
@@ -46,7 +46,7 @@ export default function Navbar({LoginStatusContext,setShowLoginForm}) {
                     <li><Link to="tel:9004780981" className='tracking-wider flex gap-x-2 justify-center items-center px-2 py-1'><i className="fa-solid fa-headphones text-red-600 text-xl"></i>9004780981</Link></li>
                     {loginStatus ? <li className=' px-6 py-2 duration-300 '>
                         <Link to="/AcService" className='after:hidden flex items-center gap-y-5'><img src={profile} className='w-12 h-12' alt="" />
-                            <p className='ml-3'>{(userData.name==undefined)?"":userData.name}</p>
+                            <p className='ml-3'>{(userData.fullname==undefined)?"":userData.fullname}</p>
                         </Link>
                         </li>
                          :<button className='bg-green-500 text-white px-4 py-1 rounded-full' onClick={()=>{setShowLoginForm(true)}} >Login</button>}
