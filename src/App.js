@@ -300,16 +300,11 @@ function App() {
                 required
               >
                 <option value="">-- Select Time --</option>
-                <option value="9 AM to 10 AM">9 AM to 10 AM</option>
-                <option value="10 AM to 11 AM">10 AM to 11 AM</option>
-                <option value="11 AM to 12 PM">11 AM to 12 PM</option>
-                <option value="12 PM to 1 PM">12 PM to 1 PM</option>
-                <option value="1 PM to 2 PM">1 PM to 2 PM</option>
-                <option value="2 PM to 3 PM">2 PM to 3 PM</option>
-                <option value="3 PM to 4 PM">3 PM to 4 PM</option>
-                <option value="4 PM to 5 PM">4 PM to 5 PM</option>
-                <option value="5 PM to 6 PM">5 PM to 6 PM</option>
-                <option value="6 PM to 7 PM">6 PM to 7 PM</option>
+                <option value="07:30 AM to 08:30 AM">07:30 AM to 08:30 AM</option>
+                <option value="09:30 AM to 10:30 AM">09:30 AM to 10:30 AM</option>
+                <option value="12:30 AM to 01:30 PM">12:30 AM to 01:30 PM</option>
+                <option value="03:30 PM to 04:30 PM">03:30 PM to 04:30 PM</option>
+                <option value="05:30 PM to 07:30 PM">05:30 PM to 07:30 PM</option>
               </select>
             </div>
 

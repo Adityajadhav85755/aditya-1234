@@ -19,7 +19,7 @@ export default function Navbar({LoginStatusContext,setShowLoginForm}) {
                 </div>
                 <Link to="/" className='z-10'>   
                     <img src={logo} alt="" className='w-16 h-13 z-10'   />
-                    {/* <img src={logo} alt="" className='w-16 h-12 z-10' /> */}
+                    {/* <img src={logo} alt="" classNa me='w-16 h-12 z-10' /> */}
                 </Link>
                 {/* <p className='font-bold text-white text-xl leading-6 z-10' >Sky Packers & Movers</p> */}
             </div>
