@@ -109,11 +109,11 @@ export default function Login({ LoginContext }) {
 
   const onSubmit = async (data) => {
     console.log(data);
-<<<<<<< HEAD
+// <<<<<<< HEAD
     let response = await fetch("http://localhost/SNS/sns_backend/form_signin.php ", {
-=======
-    let response = await fetch("http://localhost/SNS/sns_backend/form_signin.php", {
->>>>>>> 6adf3ac22858a08498d0669c8ec895af9ac346a0
+// =======
+    // let response = await fetch("http://localhost/SNS/sns_backend/form_signin.php", {
+// >>>>>>> 6adf3ac22858a08498d0669c8ec895af9ac346a0
       method: "POST",
       headers: {
         "Content-type": "application/json",
