@@ -32,12 +32,12 @@ export default function Service() {
   ]
   return (
     <section className='my-16  bg-terniary py-16'>
-    <div className=' bg-terniary grid grid-cols-2 gap-16 max-w-[800px] w-full m-auto'>
+    <div className=' bg-terniary grid grid-cols-2 gap-16 max-w-[800px] w-full m-auto px-8 max-[708px]:grid-cols-1 max-[673px]:gap-4'>
       {services.map((serv, i) => {
         return <Link to={`/${serv.redirect}`} key={i}>
 
-          <div style={{ backgroundImage: `url(${shipping})` }} className={`bg-center bg-cover cursor-pointer rounded-tl-[2rem] rounded-br-[2rem] `}>
-            <div className={`service border border-primary rounded-sm p-8 px-4 ${(i % 2 == 0) ? "bg-gradient-to-r text-left" : "bg-gradient-to-l text-right"} from-white to-transparent   overflow-hidden rounded-tl-[2rem] rounded-br-[2rem] 
+          <div style={{ backgroundImage: `url(${shipping})` }} className={`bg-center bg-cover cursor-pointer rounded-tl-[2rem] rounded-br-[2rem] max-[673px]:w-[100%]`}>
+            <div className={`service border border-primary rounded-sm p-8 px-4 ${(i % 2 == 0) ? "bg-gradient-to-r text-left" : "bg-gradient-to-l text-right"} from-white to-transparent   overflow-hidden rounded-tl-[2rem] rounded-br-[2rem] max-[673px]:h-28 
 `}>
               <h3 className='text-primary text-xl font-semibold'>{serv.name}</h3>
             </div>

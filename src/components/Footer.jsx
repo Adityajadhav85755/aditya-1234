@@ -5,7 +5,7 @@ import logo from '../assets/images/logo.png'
 
 export default function Footer() {
   return (
-    <footer className='bg-primary text-white'>
+    <footer className='bg-primary text-white '>
     <div className='fixed bottom-10 left-10'>
       <a href="tel:9004780981">
         <img src={whatsupLogo} alt="whatsup sky packers and movers" className='w-16 h-16' />
@@ -19,7 +19,7 @@ export default function Footer() {
 
 
 
-    <div className='grid grid-cols-3 gap-20 p-8'>
+    <div className='grid grid-cols-3 gap-20 p-8 max-[772px]:grid-cols-2 max-[709px]:grid-cols-1'>
       <div className='flex flex-col gap-5'>
         <a href="/" className='z-10'>
           <img src={logo} alt="" className='w-20 h-20 z-10' />

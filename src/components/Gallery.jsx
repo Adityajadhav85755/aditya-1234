@@ -49,12 +49,12 @@ export default function Gallery({data,cols,heading}) {
     }
     return (
 
-        <section className='my-16 flex justify-center flex-col items-center gap-y-5'>
+        <section className='my-16 flex justify-center flex-col items-center gap-y-5 '>
             <h1 className='grid-cols-4 grid-cols-5 grid-cols-6 grid-cols-7 ' hidden></h1>
             <div>
                 <h2 className='text-[3rem] font-bold text-primary'>{heading}</h2>
             </div>
-            <div className={`grid ${(cols!=undefined)?"grid-cols-"+cols:"grid-cols-3"} max-w-[1400px] w-full gap-10 bg-terniary p-4`}>
+            <div className={`grid ${(cols!=undefined)?"grid-cols-"+cols:"grid-cols-3"} max-w-[1400px] w-full gap-10 bg-terniary p-8 py-12 max-[892px]:grid-cols-2 max-[892px]:place-items-center max-[686px]:grid-cols-1`}>
                 {cards.map((card, i) => {
                     return <div key={i} className=' overflow-hidden   relative hover:-translate-y-2 transition-all duration-300'>
                         <img src={card.src} alt="our work" className=' rounded-lg' onClick={() => openLightbox(i)} />

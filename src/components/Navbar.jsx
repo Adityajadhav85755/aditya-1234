@@ -12,7 +12,7 @@ export default function Navbar({LoginStatusContext,setShowLoginForm}) {
 
     // console.log(loginStatus)
     return (
-        <nav id='navbar' className='flex relative' >
+        <nav id='navbar' className='flex relative max-[885px]:hidden'>
             <div className=' flex justify-center items-center p-4 pb-0   gap-5 relative bg-primary '>
                 <div className='logoContainer h-[130%] w-[130%] z-1 bg-secondary absolute left-0 top-0'>
                 {/* <div className='logoContainer h-[130%] w-full z-1 bg-secondary absolute left-0 top-0'> */}

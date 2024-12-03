@@ -50,7 +50,7 @@ export default function Register({ LoginContext }) {
     <>
       <div className="fixed top-0 left-0 bg-gray-500 h-screen w-screen opacity-50 z-30"></div>
       <div className="flex justify-center items-center transition-all bg-center bg-cover bg-no-repeat z-40 fixed top-0 left-0 w-full h-screen">
-        <div className="w-full loadComponent">
+        <div className="w-full loadComponent mx-8">
           <div className="w-full flex flex-col max-w-[500px] h-full bg-white rounded-lg overflow-hidden relative border border-primary m-auto shadow-lg shadow-gray">
             <div className="flex-2 shrink-0">
               <div className="text-center font-semibold text-white bg-primary py-4 flex gap-x-5 items-center relative">

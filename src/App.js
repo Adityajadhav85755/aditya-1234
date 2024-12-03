@@ -3,16 +3,11 @@ import Navbar from './components/Navbar';
 import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import Gallery from './components/Gallery';
-import worker from './assets/images/worker.png'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from 'react-slick';
 import { useRef } from 'react';
-import aboutImg from './assets/images/about.png'
 import QuickContact from './components/QuickContact';
-import shipping from './assets/images/shifting.jpg';
 import Footer from './components/Footer';
-import { Link } from 'react-router-dom';
 import Login from './components/Login';
 import PopUpPlan from './components/PopUpPlan';
 import Register from './components/Register';
@@ -147,24 +142,24 @@ function App() {
       <header>
         <LoginStatusContext.Provider value={[loginStatus,setLoginStatus,userData,setUserData,setShowLoginForm]}>
         <Navbar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm}/>
-        {/* <Sidebar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm}/> */}
+        <Sidebar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm}/>
         </LoginStatusContext.Provider>
       </header>
       <main>
-        <section>
-          <div className='max-w-[500px] m-auto bg-terniary p-4 my-16 rounded-md'>
-            <div className='flex justify-evenly bg-white text-white py-2 rounded-md gap-x-10 mb-4'>
-              <div className='text-center m-4 my-0'>
-                <button className='bg-primary p-2 px-8 font-semibold tracking-wide w-full rounded-md' ref={withinButton} onClick={showWithinForm}>Within City</button>
+        <section className='flex justify-center'>
+          <div className='max-w-[500px] m-auto bg-terniary p-4 my-16 rounded-md mx-8 max-[472px]:mx-0 w-full'>
+            <div className='flex justify-evenly bg-white text-white py-2 rounded-md gap-x-10 mb-4 max-[472px]:grid grid-cols-2 w-full max-[472px]:px-4 '>
+              <div className='text-center m-4 my-0 w-full max-[472px]:m-0'>
+                <button className='bg-primary p-2 px-8 font-semibold tracking-wide w-full rounded-md max-[472px]:px-0 max-[472px]:m-0'  ref={withinButton} onClick={showWithinForm}>Within City</button>
               </div>
-              <div className='text-center m-4 my-0 '>
-                <button className=' text-primary  p-2 px-8 font-semibold tracking-tight  w-full rounded-md ' ref={betweenButton} onClick={showBetweenForm}>Between Cities</button>
+              <div className='text-center m-4 my-0 w-full max-[472px]:m-0'>
+                <button className=' text-primary  p-2 px-8 font-semibold tracking-tight  w-full rounded-md max-[472px]:px-0 max-[472px]:tracking-tighter ' ref={betweenButton} onClick={showBetweenForm}>Between Cities</button>
               </div>
             </div>
 
 
 
-            <form action="" className='flex flex-col px-4 py-4 gap-y-4 text-primary ' onSubmit={handleWithinForm} ref={formForWithin}>
+            <form action="" className='flex flex-col px-4 py-4 gap-y-2 text-primary ' onSubmit={handleWithinForm} ref={formForWithin}>
 
               <div className='relative '>
                 <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
@@ -175,7 +170,8 @@ function App() {
 
                 <input required type="text" name='destinationLocality' placeholder='Enter Your Destination Locality' value={withinForm.destinationLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10  rounded-full border-primary border' />
               </div>
-              <div className='relative'>
+              
+              {/* <div className='relative'>
                 <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
                 <select required name="choice"  className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.choice} onChange={handleInput}>
                   <option value="movers">Only Movers</option>
@@ -183,7 +179,7 @@ function App() {
                   <option value="Movers & Truck">Movers & Truck</option>
                   <option value="Movers & Vehicle">Movers & Vehicle</option>
                 </select>
-              </div>
+              </div> */}
 
 
 
@@ -256,7 +252,7 @@ function App() {
 
                 <input required type="text" name='destinationLocality' placeholder='Enter Your Destination Locality' value={withinForm.destinationLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10  rounded-full border-primary border' />
               </div>
-              <div className='relative'>
+              {/* <div className='relative'>
                 <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
                 <select required name="choice"  className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.choice} onChange={handleInput}>
                   <option value="movers">Only Movers</option>
@@ -264,7 +260,7 @@ function App() {
                   <option value="Movers & Truck">Movers & Truck</option>
                   <option value="Movers & Vehicle">Movers & Vehicle</option>
                 </select>
-              </div>
+              </div> */}
 
 
 

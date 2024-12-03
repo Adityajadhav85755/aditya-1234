@@ -3,11 +3,11 @@ import aboutImg from '../assets/images/about.png'
 export default function AboutContent() {
   return (
     <section className='my-16 bg-terniary flex flex-col items-center py-12  px-8'>
-    <div className='flex justify-center items-center'>
-      <div className='w-1/2 h-full flex justify-center'>
+    <div className='flex justify-center items-center max-[1155px]:flex-col'>
+      <div className='w-1/2 h-full flex justify-center max-[1155px]:w-[70%] max-[736px]:w-[90%]'>
         <img src={aboutImg} alt="about us" className='w-[600px]' />
       </div>
-      <div className='w-1/2 flex flex-col p-4 px-0'>
+      <div className='w-1/2 flex flex-col p-4 px-0 max-[1155px]:w-[70%] max-[736px]:w-[90%]'>
         <h2 className='font-bold text-primary text-2xl'>About Us</h2>
         <p className='my-2'>We, Max Packers And Movers, located in Mumbai area, Kandivali EAST. Packers And Movers Is Great Service Provider In Mumbai For Shifting. We started our business in 2009, Initialy We provide shifting services within city. We deals with great customers and have great experiance.</p>
         <p className='my-2'>
