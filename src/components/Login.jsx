@@ -140,17 +140,17 @@ export default function Login({ LoginContext }) {
         <div className="w-full loadComponent mx-8">
           <div className="w-full flex flex-col max-w-[500px] h-full bg-white rounded-lg overflow-hidden relative border border-primary m-auto shadow-lg shadow-gray">
             <div className="flex-2 shrink-0">
-              <div className="text-center font-semibold text-white bg-primary py-4 flex gap-x-5 items-center relative">
+              <div className="text-center font-semibold text-white bg-primary py-4  max-[400px]:py-2 flex gap-x-5 items-center relative">
                 <Link
                   to={""}
                   onClick={() => {
                     setShowLoginForm(false);
                   }}
-                  className="absolute left-5 top-1/2 -translate-y-1/2 px-4 py-1 bg-green-500 text-white rounded-full"
+                  className="absolute left-5 top-1/2 -translate-y-1/2 px-4 py-1 max-[400px]:py-0 max-[400px]:px-4 bg-green-500 text-white rounded-full"
                 >
-                  <i className="fa-solid fa-arrow-left"></i>
+                  <i className="fa-solid fa-arrow-left max-[400px]:text-sm"></i>
                 </Link>
-                <h4 className="text-xl flex-1">Login</h4>
+                <h4 className="text-xl flex-1 max-[400px]:text-base">Login</h4>
               </div>
             </div>
 
@@ -187,7 +187,7 @@ export default function Login({ LoginContext }) {
         message: "Phone number must be exactly 10 digits",
       },
     })}
-    className="px-4 py-2 outline-none rounded-full border-primary border focus:border-green-500 w-full"
+    className="px-4 py-2 outline-none rounded-full border-primary border focus:border-green-500  w-full"
     placeholder="Phone Number"
   />
   {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
@@ -229,7 +229,7 @@ export default function Login({ LoginContext }) {
                 <div className="flex justify-center w-full bg-primary rounded-full py-2">
                   <input
                     type="submit"
-                    className="text-white font-bold bg-green-500 px-4 py-2 rounded-full"
+                    className="text-white font-bold bg-green-500 px-4 py-2 rounded-full max-[400px]:py-0"
                     value={"Login"}
                   />
                 </div>

@@ -37,15 +37,15 @@ export default function Inventory({ inventoryItem,context }) {
     },[customerList])
     return (
 
-        <div className='w-full flex flex-col max-w-[600px] h-full max-h-[700px] bg-white rounded-lg overflow-hidden relative loadComponent'>
+        <div className='w-full flex flex-col max-w-[600px] h-full max-h-[700px] bg-white rounded-lg overflow-hidden relative loadComponent mx-4'>
             <div className='flex-2 shrink-0'>
                 <div className='text-center font-semibold text-white bg-primary py-4 px-0 relative'>
                 <Link to={"/"} className='absolute left-5 top-1/2 -translate-y-1/2 bg-green-500 text-white px-4 py-1 rounded-full '>
         <i class="fa-solid fa-arrow-left "></i>
             </Link>
-                    <h4 className='text-xl '>Customize Inventory</h4>
+                    <h4 className='text-xl max-[498px]:text-lg '>Customize Inventory</h4>
                 </div>
-                <div className='flex p-2 px-4 gap-x-5 overflow-x-auto font-semibold'>
+                <div className='flex p-2 px-4 gap-x-5 overflow-x-auto font-semibold max-[490px]:gap-x-2'>
                     {inventory.map((item, i) => {
                         return <p key={i} className={`text-primary border-primary border px-4 py-1 rounded-full cursor-pointer ${item.active ? "activeDropdown" : ""} shrink-0`} onClick={(e) => { activeItem(i, e) }}>{item.mainItem}</p>
                     })}
@@ -55,7 +55,7 @@ export default function Inventory({ inventoryItem,context }) {
 
             <InvetoryContext.Provider value={[inventory, setInvetory,setTotalItem,totalItem ]}>
 
-                <div className='m-4 flex flex-col gap-y-4 overflow-y-scroll flex-1 shrink-0 mb-20'>
+                <div className='m-4 flex flex-col gap-y-4 overflow-y-scroll flex-1 shrink-0 mb-20 '>
                     {/* {console.log(inventory)} */}
                     {inventory.map((item, i) => {
                         if (item.active) {

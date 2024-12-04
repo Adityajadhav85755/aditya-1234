@@ -5,7 +5,7 @@ import logo from '../assets/images/logo.png'
 
 export default function Footer() {
   return (
-    <footer className='bg-primary text-white '>
+    <footer className='bg-primary text-white'>
     <div className='fixed bottom-10 left-10'>
       <a href="tel:9004780981">
         <img src={whatsupLogo} alt="whatsup sky packers and movers" className='w-16 h-16' />

@@ -147,7 +147,7 @@ function App() {
       </header>
       <main>
         <section className='flex justify-center'>
-          <div className='max-w-[500px] m-auto bg-terniary p-4 my-16 rounded-md mx-8 max-[472px]:mx-0 w-full'>
+          <div className='max-w-[500px] m-auto bg-terniary p-4 my-8 rounded-md mx-8 max-[472px]:mx-0 w-full'>
             <div className='flex justify-evenly bg-white text-white py-2 rounded-md gap-x-10 mb-4 max-[472px]:grid grid-cols-2 w-full max-[472px]:px-4 '>
               <div className='text-center m-4 my-0 w-full max-[472px]:m-0'>
                 <button className='bg-primary p-2 px-8 font-semibold tracking-wide w-full rounded-md max-[472px]:px-0 max-[472px]:m-0'  ref={withinButton} onClick={showWithinForm}>Within City</button>
@@ -199,7 +199,7 @@ function App() {
                 <i className="fa-solid fa-box-open absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
                 <select required name="plan"  className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.plan} onChange={handleInput}>
                   <option value="">-- Select Plan --</option>
-                  <option value="base">Base Plan</option>
+                  <option value="basic">Base Plan</option>
                   <option value="premium">Premium Plan</option>
                 </select>
               </div>

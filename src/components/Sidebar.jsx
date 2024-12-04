@@ -106,7 +106,8 @@ export default function Sidebar({ LoginStatusContext, setShowLoginForm }) {
                 </ul>
             </div>
         </nav>
-        <div className={`sidebar bg-primary w-1/2 min-h-screen flex-col  text-white fixed top-0 left-0 z-50 hidden max-[885px]:${(showSideber)?"translate-x-[0]":"translate-x-[-500px]"} transition-all ease max-[885px]:flex max-[616px]:w-[75%]` }>
+        {console.log(showSideber)}
+        <div className={`sidebar bg-primary w-1/2 min-h-screen flex-col  text-white fixed top-0 left-0 z-50 flex ${(showSideber)?"max-[885px]:translate-x-[0]":"max-[885px]:translate-x-[-500px]"} transition-all ease max-[885px]:flex max-[616px]:w-[75%] hidden` }>
             {/* Profile Section */}
             <i class="fa-solid fa-xmark text-3xl self-end px-8 py-4" onClick={()=>{setShowSidebar(false)}}></i>
             {/* <div className="flex items-center gap-3 bg-secondary p-4 rounded-md mb-6 m-4">
