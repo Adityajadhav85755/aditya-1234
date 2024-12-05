@@ -15,8 +15,9 @@ import Service from './components/Service';
 import AboutContent from './components/AboutContent';
 import { LoginStatusContext } from './index';
 import Sidebar from './components/Sidebar';
-
-
+import Location from './components/Location';
+import offer from './assets/images/offer.jpg'
+import WhatOffer from './components/WhatOffer';
 let LoginContext = React.createContext();
 let FormContext = React.createContext();
 // let LoginStatusContext = React.createContext();
@@ -139,14 +140,29 @@ function App() {
   return (
 
     <>
-      <header>
+      <header id="header" className='scroll-smooth'>
         <LoginStatusContext.Provider value={[loginStatus,setLoginStatus,userData,setUserData,setShowLoginForm]}>
         <Navbar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm}/>
         <Sidebar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm}/>
         </LoginStatusContext.Provider>
       </header>
       <main>
-        <section className='flex justify-center'>
+        <section className='flex justify-around bg-other'>
+          <div className='text-white  font-bold p-4 max-w-[600px] w-full'>
+            <h2 className='text-3xl leading-[4rem]'>
+            Best Packers And Movers In Mumbai
+            </h2>
+            <h2 className='text-2xl text-other2 font-bold tracking-wider leading-10'>
+            "Budget Me Best Service"
+            </h2>
+
+            <div className='flex gap-5 max-w-[600px] overflow-x-scroll my-8'>
+            <img src={offer} alt="" className='w-80 h-28 rounded-md' />
+            <img src={offer} alt="" className='w-80 h-28 rounded-md' />
+            <img src={offer} alt="" className='w-80 h-28 rounded-md' />
+            <img src={offer} alt="" className='w-80 h-28 rounded-md' />
+            </div>
+          </div>
           <div className='max-w-[500px] m-auto bg-terniary p-4 my-8 rounded-md mx-8 max-[472px]:mx-0 w-full'>
             <div className='flex justify-evenly bg-white text-white py-2 rounded-md gap-x-10 mb-4 max-[472px]:grid grid-cols-2 w-full max-[472px]:px-4 '>
               <div className='text-center m-4 my-0 w-full max-[472px]:m-0'>
@@ -367,9 +383,10 @@ function App() {
           </div>
         </section>
         <Service />
-        <AboutContent />
-        <QuickContact />
-        <Gallery heading={"Our Work"} />
+        <WhatOffer/>
+        
+        {/* <AboutContent /> */}
+        {/* <Gallery heading={"Our Work"} /> */}
         <LoginStatusContext.Provider value={[userData,setUserData,loginStatus,setLoginStatus]}>
         <LoginContext.Provider value={[showLoginForm, setShowLoginForm, showRegisterForm, setShowRegisterForm]}>
           {showLoginForm && <Login LoginContext={LoginContext} />}
@@ -377,8 +394,11 @@ function App() {
         </LoginContext.Provider>
 
         </LoginStatusContext.Provider>
+      <Location/>
       </main>
-      <Footer />
+      {/* <Footer /> */}
+      <QuickContact />
+
 
 
     </>

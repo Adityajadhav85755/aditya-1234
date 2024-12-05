@@ -9,6 +9,10 @@ module.exports = {
         primary:"#0a2c5a",
         secondary:"#fcb21d",
         terniary:"#eff2f9",
+        // terniary:"#eff2f9",
+        other:"#36517c",
+        other2:"rgb(163 230 53 / var(--tw-text-opacity, 1))"
+        
         
       },
       clipPath: {

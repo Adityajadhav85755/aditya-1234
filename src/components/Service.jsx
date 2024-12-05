@@ -31,7 +31,7 @@ export default function Service() {
 
   ]
   return (
-    <section className='my-4  bg-terniary py-4'>
+    <section className='  bg-terniary py-8'>
     <div className=' bg-terniary grid grid-cols-2 gap-16 max-w-[800px] w-full m-auto px-8 max-[708px]:grid-cols-2 max-[673px]:gap-4 max-[437px]:grid max-[437px]:grid-cols-2 max-[437px]:place-items-center'>
       {services.map((serv, i) => {
         return <Link to={`/${serv.redirect}`} key={i} className='max-[437px]:flex max-[437px]:justify-center'>
