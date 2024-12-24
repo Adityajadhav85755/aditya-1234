@@ -7,6 +7,55 @@ import bg from "./assets/images/shifting.jpg"
 export let ListContext = React.createContext()
 
 export default function Office() {
+  const [selectedImage, setSelectedImage] = useState(null); // New state for selected image
+  const [withinForm, setWithinForm] = useState({});
+  const [showPlan, setShowPlan] = useState(false);
+   // Function to set the selected image
+   const handleImageClick = (imageSrc) => {
+    setSelectedImage(imageSrc);
+    setShowPlan(true); // Show the popup when an image is clicked
+  };
+  const importImages = (requireContext) => {
+    const images = {};
+    requireContext.keys().forEach((key) => {
+        const imageName = key.replace('./', '').split('.')[0];
+        let keyName=imageName.replace("GeneralAppliance/","" );
+        keyName=keyName.replace("kitchenAppliencess/","" );
+        // console.log(imageName.split('/')[1])
+        images[imageName.split('/')[1]] = requireContext(key); // Associate image with the name
+        // images[keyName] = requireContext(key); // Associate image with the name
+      });
+    return images;
+  };
+
+
+//   Office Section 
+
+let OfficeFuniture = importImages(
+  require.context('./assets/Inventory/Office/OfficeFurniture', true, /\.(png|jpe?g|svg)$/) // Adjust path as needed
+);
+
+let OfficeTechImage = importImages(
+  require.context('./assets/Inventory/Office/OfficeFurniture/Officetechnologyelectronics', true, /\.(png|jpe?g|svg)$/) // Adjust path as needed
+);
+
+let OffAplicationImage = importImages(
+  require.context('./assets/Inventory/Household/Office Appliances & Small Electronics', true, /\.(png|jpe?g|svg)$/) // Adjust path as needed
+);
+
+let offstationeryImage = importImages(
+  require.context('./assets/Inventory/Household/Office Appliances & Small Electronics/Office Supplies', true, /\.(png|jpe?g|svg)$/) // Adjust path as needed
+);
+
+let offdecorationImage = importImages(
+  require.context('./assets/Inventory/Household/officedecoration/Office Decoration' , true, /\.(png|jpe?g|svg)$/) // Adjust path as needed
+);
+
+
+// console.log(OfficeTechImage)
+
+
+
   let inventoryItem = [
     {
       "mainItem": "Furniture",
@@ -14,12 +63,12 @@ export default function Office() {
         {
           "Item": "Tables",
           "options": [
-            { "name": "Office Desk", "quantity": 0 },
-            { "name": "Conference Table", "quantity": 0 },
-            { "name": "Executive Desk", "quantity": 0 },
-            { "name": "Adjustable Standing Desk", "quantity": 0 },
-            { "name": "Reception Desk", "quantity": 0 },
-            { "name": "Meeting Table", "quantity": 0 }
+            { "name": "Office Desk", "quantity": 0, src:OfficeFuniture["Office Desk"] },
+            { "name": "Conference Table", "quantity": 0, src:OfficeFuniture["Conference Table"] },
+            { "name": "Executive Desk", "quantity": 0, src:OfficeFuniture["Executive Desk"] },
+            { "name": "Adjustable Standing Desk", "quantity": 0, src:OfficeFuniture[""] },
+            { "name": "Reception Desk", "quantity": 0,src:OfficeFuniture["Reception Desk"] },
+            { "name": "Meeting Table", "quantity": 0, src:OfficeFuniture["Meeting Table"] }
           ],
           "open": false,
           "id": 1
@@ -27,12 +76,12 @@ export default function Office() {
         {
           "Item": "Chairs",
           "options": [
-            { "name": "Office Chair", "quantity": 0 },
-            { "name": "Executive Chair", "quantity": 0 },
-            { "name": "Conference Chair", "quantity": 0 },
-            { "name": "Task Chair", "quantity": 0 },
-            { "name": "Ergonomic Chair", "quantity": 0 },
-            { "name": "Visitor Chair", "quantity": 0 }
+            { "name": "Office Chair", "quantity": 0 ,src:OfficeFuniture["Office_Chair"]},
+            { "name": "Executive Chair", "quantity": 0, src:OfficeFuniture["Executive_Chair"] },
+            { "name": "Conference Chair", "quantity": 0,src:OfficeFuniture["Conference Chair"] },
+            { "name": "Task Chair", "quantity": 0, src:OfficeFuniture["Task Chair"] },
+            { "name": "Ergonomic Chair", "quantity": 0, src:OfficeFuniture["Ergonomic_Chair"] },
+            { "name": "Visitor Chair", "quantity": 0, src:OfficeFuniture["Visitor Chair"] }
           ],
           "open": false,
           "id": 2
@@ -40,12 +89,12 @@ export default function Office() {
         {
           "Item": "Storage & Cabinets",
           "options": [
-            { "name": "Filing Cabinet", "quantity": 0 },
-            { "name": "Book Shelf", "quantity": 0 },
-            { "name": "Storage Cabinet", "quantity": 0 },
-            { "name": "Drawer Organizer", "quantity": 0 },
-            { "name": "Computer Cabinet", "quantity": 0 },
-            { "name": "Mobile Pedestal", "quantity": 0 }
+            { "name": "Filing Cabinet", "quantity": 0,src:OfficeFuniture["Conference Chair"]  },
+            { "name": "Book Shelf", "quantity": 0,src:OfficeFuniture["Book Shelf"] },
+            { "name": "Storage Cabinet", "quantity": 0 ,src:OfficeFuniture["Storage Cabinet"] },
+            { "name": "Drawer Organizer", "quantity": 0, src:OfficeFuniture["Drawer Organizer"] },
+            { "name": "Computer Cabinet", "quantity": 0, src:OfficeFuniture["Computer Cabinet"] },
+            { "name": "Mobile Pedestal", "quantity": 0, src:OfficeFuniture["Mobile Pedestal"] }
           ],
           "open": false,
           "id": 3
@@ -53,11 +102,11 @@ export default function Office() {
         {
           "Item": "Workstations",
           "options": [
-            { "name": "Cubicle", "quantity": 0 },
-            { "name": "Modular Office Workstation", "quantity": 0 },
-            { "name": "Reception Counter", "quantity": 0 },
-            { "name": "Work Desk with Storage", "quantity": 0 },
-            { "name": "L-Shaped Desk", "quantity": 0 }
+            { "name": "Cubicle", "quantity": 0, src:OfficeFuniture["Cubicle"] },
+            { "name": "Modular Office Workstation", "quantity": 0, src:OfficeFuniture["Modular Office Workstation"] },
+            { "name": "Reception Counter", "quantity": 0, src:OfficeFuniture["Reception Counter"] },
+            { "name": "Work Desk with Storage", "quantity": 0,src:OfficeFuniture["Work Desk with Storage"] },
+            { "name": "L-Shaped Desk", "quantity": 0,src:OfficeFuniture["L-Shaped Desk"] }
           ],
           "open": false,
           "id": 4
@@ -65,12 +114,12 @@ export default function Office() {
         {
           "Item": "Office Accessories",
           "options": [
-            { "name": "Paper Tray", "quantity": 0 },
-            { "name": "Pen Holder", "quantity": 0 },
-            { "name": "Monitor Stand", "quantity": 0 },
-            { "name": "Cable Management Tray", "quantity": 0 },
-            { "name": "Desk Organizer", "quantity": 0 },
-            { "name": "Whiteboard/Blackboard", "quantity": 0 }
+            { "name": "Paper Tray", "quantity": 0,src:OfficeFuniture["Paper Tray"] },
+            { "name": "Pen Holder", "quantity": 0,src:OfficeFuniture["Pen Holder"] },
+            { "name": "Monitor Stand", "quantity": 0,src:OfficeFuniture["Monitor Stand"] },
+            { "name": "Cable Management Tray", "quantity": 0,src:OfficeFuniture["Cable Management Tray"] },
+            { "name": "Desk Organizer", "quantity": 0,src:OfficeFuniture["Desk Organizer"] },
+            { "name": "Whiteboard/Blackboard", "quantity": 0,src:OfficeFuniture["Blackboard"] }
           ],
           "open": false,
           "id": 5
@@ -79,15 +128,15 @@ export default function Office() {
       "active": true
     },
     {
-      "mainItem": "Office Technology & Electronics",
+      "mainItem": "Office Technology Electronics",
       "subItem": [
         {
           "Item": "Computers & Laptops",
           "options": [
-            { "name": "Desktop Computer", "quantity": 0 },
-            { "name": "Laptop", "quantity": 0 },
-            { "name": "All-in-One Desktop", "quantity": 0 },
-            { "name": "Workstation Computer", "quantity": 0 }
+            { "name": "Desktop Computer", "quantity": 0, src: OfficeTechImage["Desktop Computer"] },
+            { "name": "Laptop", "quantity": 0 ,src: OfficeTechImage["Laptop"] },
+            { "name": "All-in-One Desktop", "quantity": 0, src: OfficeTechImage["All-in-One Desktop"] },
+            { "name": "Workstation Computer", "quantity": 0, src: OfficeTechImage["Workstation Computer"] }
           ],
           "open": false,
           "id": 1
@@ -95,7 +144,7 @@ export default function Office() {
         {
           "Item": "Printers & Scanners",
           "options": [
-            { "name": "Inkjet Printer", "quantity": 0 },
+            { "name": "Inkjet Printer", "quantity": 0, },
             { "name": "Laser Printer", "quantity": 0 },
             { "name": "All-in-One Printer", "quantity": 0 },
             { "name": "Scanner", "quantity": 0 },
@@ -157,10 +206,10 @@ export default function Office() {
         {
           "Item": "Climate Control",
           "options": [
-            { "name": "Air Conditioner (Window/ Split)", "quantity": 0 },
-            { "name": "Electric Fan (Pedestal/ Ceiling)", "quantity": 0 },
-            { "name": "Heater", "quantity": 0 },
-            { "name": "Air Purifier", "quantity": 0 }
+            { "name": "Air Conditioner (Window/ Split)", "quantity": 0,src : OffAplicationImage["Air Conditioner  Split"] },
+            { "name": "Electric Fan (Pedestal/ Ceiling)", "quantity": 0,src : OffAplicationImage["Electric Fan  (Ceiling)"] },
+            { "name": "Heater", "quantity": 0,src : OffAplicationImage["Heater"] },
+            { "name": "Air Purifier", "quantity": 0,src : OffAplicationImage["Air Purifier"] }
           ],
           "open": false,
           "id": 1
@@ -168,12 +217,12 @@ export default function Office() {
         {
           "Item": "Kitchen & Breakroom Appliances",
           "options": [
-            { "name": "Coffee Machine", "quantity": 0 },
-            { "name": "Microwave Oven", "quantity": 0 },
-            { "name": "Water Cooler", "quantity": 0 },
-            { "name": "Fridge", "quantity": 0 },
-            { "name": "Electric Kettle", "quantity": 0 },
-            { "name": "Toaster", "quantity": 0 }
+            { "name": "Coffee Machine", "quantity": 0,src : OffAplicationImage["Coffee Machine"] },
+            { "name": "Microwave Oven", "quantity": 0,src : OffAplicationImage["Coffee Machine"] },
+            { "name": "Water Cooler", "quantity": 0,src : OffAplicationImage["Water Cooler"] },
+            { "name": "Fridge", "quantity": 0,src : OffAplicationImage["Fridge"] },
+            { "name": "Electric Kettle", "quantity": 0,src : OffAplicationImage["Electric Kettle"] },
+            { "name": "Toaster", "quantity": 0,src : OffAplicationImage["Toaster"] }
           ],
           "open": false,
           "id": 2
@@ -181,11 +230,11 @@ export default function Office() {
         {
           "Item": "Other Appliances",
           "options": [
-            { "name": "Vacuum Cleaner", "quantity": 0 },
-            { "name": "Shredder", "quantity": 0 },
-            { "name": "Humidifier", "quantity": 0 },
-            { "name": "Electric Stapler", "quantity": 0 },
-            { "name": "Lamination Machine", "quantity": 0 }
+            { "name": "Vacuum Cleaner", "quantity": 0,src : OffAplicationImage["Vacuum Cleaner"] },
+            { "name": "Shredder", "quantity": 0,src : OffAplicationImage["Shredder"] },
+            { "name": "Humidifier", "quantity": 0,src : OffAplicationImage["Humidifier"] },
+            { "name": "Electric Stapler", "quantity": 0,src :  OffAplicationImage["Electric Stapler"] },
+            { "name": "Lamination Machine", "quantity": 0,src : OffAplicationImage["Lamination Machine"] }
           ],
           "open": false,
           "id": 3
@@ -199,14 +248,14 @@ export default function Office() {
         {
           "Item": "Stationery",
           "options": [
-            { "name": "Notebooks", "quantity": 0 },
-            { "name": "Paper", "quantity": 0 },
-            { "name": "Pens", "quantity": 0 },
-            { "name": "Pencils", "quantity": 0 },
-            { "name": "Paper Clips", "quantity": 0 },
-            { "name": "Staplers", "quantity": 0 },
-            { "name": "Folders", "quantity": 0 },
-            { "name": "Post-It Notes", "quantity": 0 }
+            { "name": "Notebooks", "quantity": 0,src :offstationeryImage["Notebooks"] },
+            { "name": "Paper", "quantity": 0,src :offstationeryImage["Paper"] },
+            { "name": "Pens", "quantity": 0,src : offstationeryImage["Pens"] },
+            { "name": "Pencils", "quantity": 0,src : offstationeryImage["Pencils"] },
+            { "name": "Paper Clips", "quantity": 0,src : offstationeryImage["Paper Clips"] },
+            { "name": "Staplers", "quantity": 0,src : offstationeryImage["Staplers"] },
+            { "name": "Folders", "quantity": 0,src : offstationeryImage["Folders"]},
+            { "name": "Post-It Notes", "quantity": 0,src : offstationeryImage["Post-It Notes"] }
           ],
           "open": false,
           "id": 1
@@ -214,13 +263,13 @@ export default function Office() {
         {
           "Item": "Office Tools",
           "options": [
-            { "name": "Scissors", "quantity": 0 },
-            { "name": "Tape Dispenser", "quantity": 0 },
-            { "name": "Rulers", "quantity": 0 },
-            { "name": "Highlighters", "quantity": 0 },
-            { "name": "Whiteboard Markers", "quantity": 0 },
-            { "name": "Puncher", "quantity": 0 },
-            { "name": "Binding Machine", "quantity": 0 }
+            { "name": "Scissors", "quantity": 0,src :offstationeryImage["Scissors"] },
+            { "name": "Tape Dispenser", "quantity": 0,src :offstationeryImage["Tape Dispenser"] },
+            { "name": "Rulers", "quantity": 0 ,src :offstationeryImage["Rulers"]},
+            { "name": "Highlighters", "quantity": 0 ,src :offstationeryImage["Highlighters"]},
+            { "name": "Whiteboard Markers", "quantity": 0 ,src :offstationeryImage[""]},
+            { "name": "Puncher", "quantity": 0 ,src :offstationeryImage["Puncher"]},
+            { "name": "Binding Machine", "quantity": 0 ,src :offstationeryImage["Binding Machine"]}
           ],
           "open": false,
           "id": 2
@@ -235,12 +284,12 @@ export default function Office() {
         {
           "Item": "Wall Decorations",
           "options": [
-            { "name": "Wall Clocks", "quantity": 0 },
-            { "name": "Paintings", "quantity": 0 },
-            { "name": "Photos", "quantity": 0 },
-            { "name": "Mirrors", "quantity": 0 },
-            { "name": "Wall Frames", "quantity": 0 },
-            { "name": "Bulletin Boards", "quantity": 0 }
+            { "name": "Wall Clocks", "quantity": 0, src :offdecorationImage["Wall Clocks"] },
+            { "name": "Paintings", "quantity": 0, src :offdecorationImage["Painting"]  },
+            { "name": "Photos", "quantity": 0 , src :offdecorationImage[""] },
+            { "name": "Mirrors", "quantity": 0 , src :offdecorationImage["Mirrors"] },
+            { "name": "Wall Frames", "quantity": 0, src :offdecorationImage["Wall Frames"]  },
+            { "name": "Bulletin Boards", "quantity": 0 , src :offdecorationImage["Bulletin Boards"] }
           ],
           "open": false,
           "id": 1
@@ -248,8 +297,8 @@ export default function Office() {
         {
           "Item": "Indoor Plants & Pots",
           "options": [
-            { "name": "Office Flower Pots", "quantity": 0 },
-            { "name": "Indoor Plant Stand", "quantity": 0 }
+            { "name": "Office Flower Pots", "quantity": 0, src :offdecorationImage["Office Flower Pots"]},
+            { "name": "Indoor Plant Stand", "quantity": 0, src :offdecorationImage["Indoor Plant Stand"] }
           ],
           "open": false,
           "id": 2
@@ -257,10 +306,10 @@ export default function Office() {
         {
           "Item": "Lighting",
           "options": [
-            { "name": "Desk Lamp", "quantity": 0 },
-            { "name": "Floor Lamp", "quantity": 0 },
-            { "name": "Ceiling Light", "quantity": 0 },
-            { "name": "LED Panel Light", "quantity": 0 }
+            { "name": "Desk Lamp", "quantity": 0, src :offdecorationImage["Desk Lamp"] },
+            { "name": "Floor Lamp", "quantity": 0,src :offdecorationImage["Floor Lamp"] },
+            { "name": "Ceiling Light", "quantity": 0,src :offdecorationImage["Ceiling Light"] },
+            { "name": "LED Panel Light", "quantity": 0,src :offdecorationImage["LED Panel Light"] }
           ],
           "open": false,
           "id": 3
@@ -268,11 +317,11 @@ export default function Office() {
         {
           "Item": "Miscellaneous",
           "options": [
-            { "name": "Clocks", "quantity": 0 },
-            { "name": "Carpet/Rugs", "quantity": 0 },
-            { "name": "Office Curtains", "quantity": 0 },
-            { "name": "Office Air Fresheners", "quantity": 0 },
-            { "name": "Umbrella Stand", "quantity": 0 }
+            { "name": "Clocks", "quantity": 0, src :offdecorationImage["Clocks"] },
+            { "name": "Carpet/Rugs", "quantity": 0, src :offdecorationImage["Carpet Rugs"] },
+            { "name": "Office Curtains", "quantity": 0, src :offdecorationImage["Office Curtains"] },
+            { "name": "Office Air Fresheners", "quantity": 0, src :offdecorationImage["Office Air Fresheners"] },
+            { "name": "Umbrella Stand", "quantity": 0, src :offdecorationImage["Umbrella Stand"] }
           ],
           "open": false,
           "id": 4
@@ -280,19 +329,18 @@ export default function Office() {
       ],
       "active": false
     },
-
-
+    
     {
       "mainItem": "Office Organization",
       "subItem": [
         {
           "Item": "File Storage",
           "options": [
-            { "name": "File Rack", "quantity": 0 },
-            { "name": "Document Box", "quantity": 0 },
-            { "name": "Archive Box", "quantity": 0 },
-            { "name": "File Folders", "quantity": 0 },
-            { "name": "Letter Tray", "quantity": 0 }
+            { "name": "File Rack", "quantity": 0, src :offdecorationImage["File Rack"] },
+            { "name": "Document Box", "quantity": 0, src :offdecorationImage["Document Box"] },
+            { "name": "Archive Box", "quantity": 0, src :offdecorationImage["Archive Box"] },
+            { "name": "File Folders", "quantity": 0 , src :offdecorationImage["File Folders"]},
+            { "name": "Letter Tray", "quantity": 0, src :offdecorationImage["Letter Tray"]}
           ],
           "open": false,
           "id": 1
@@ -300,11 +348,11 @@ export default function Office() {
         {
           "Item": "Cable Management",
           "options": [
-            { "name": "Cable Ties", "quantity": 0 },
-            { "name": "Cable Organizer", "quantity": 0 },
-            { "name": "Power Strips", "quantity": 0 },
-            { "name": "Cable Sleeves", "quantity": 0 },
-            { "name": "Desk Cable Tray", "quantity": 0 }
+            { "name": "Cable Ties", "quantity": 0, src: offdecorationImage["CableTies"]},
+            { "name": "Cable Organizer", "quantity": 0, src: offdecorationImage["CableOrganizer"] },
+            { "name": "Power Strips", "quantity": 0, src: offdecorationImage["PowerStrips"] },
+            { "name": "Cable Sleeves", "quantity": 0 , src: offdecorationImage["Cable Sleeves"]},
+            { "name": "Desk Cable Tray", "quantity": 0, src: offdecorationImage["DeskCableTray"] }
           ],
           "open": false,
           "id": 2
@@ -319,7 +367,7 @@ export default function Office() {
         {
           "Item": "Fire Extinguishers",
           "options": [
-            { "name": "Fire Extinguishers", "quantity": 0 }
+            { "name": "Fire Extinguishers", "quantity": 0,src:offdecorationImage["Fire Extinguisher Small"] }
           ],
           "open": false,
           "id": 1
@@ -327,7 +375,7 @@ export default function Office() {
         {
           "Item": "First Aid Kit",
           "options": [
-            { "name": "First Aid Kit", "quantity": 0 }
+            { "name": "First Aid Kit", "quantity": 0,src:offdecorationImage["First Aid Kit"] }
           ],
           "open": false,
           "id": 2
@@ -335,7 +383,7 @@ export default function Office() {
         {
           "Item": "Lockers",
           "options": [
-            { "name": "Lockers", "quantity": 0 }
+            { "name": "Lockers", "quantity": 0,src:offdecorationImage["Lockers"] }
           ],
           "open": false,
           "id": 3
@@ -343,7 +391,7 @@ export default function Office() {
         {
           "Item": "Safe",
           "options": [
-            { "name": "Safe", "quantity": 0 }
+            { "name": "Safe", "quantity": 0,src: offdecorationImage["Safe"] }
           ],
           "open": false,
           "id": 4
@@ -351,7 +399,7 @@ export default function Office() {
         {
           "Item": "Smoke Detectors",
           "options": [
-            { "name": "Smoke Detectors", "quantity": 0 }
+            { "name": "Smoke Detectors", "quantity": 0,src: offdecorationImage["Smoke Detectors"]}
           ],
           "open": false,
           "id": 5
@@ -359,7 +407,7 @@ export default function Office() {
         {
           "Item": "Emergency Light",
           "options": [
-            { "name": "Emergency Light", "quantity": 0 }
+            { "name": "Emergency Light", "quantity": 0, src: offdecorationImage["Emergency Light"] }
           ],
           "open": false,
           "id": 6

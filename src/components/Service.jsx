@@ -28,6 +28,10 @@ export default function Service() {
       name: "AC Service",
       redirect: "acservice"
     },
+    {
+      name: "WareHouse",
+      redirect: "WareHouse"
+    },
 
   ]
   return (
@@ -58,15 +62,7 @@ export default function Service() {
           </div>
           </>
         </Link>
-        //               return <Link to={`/${serv.redirect}`} key={i}>
 
-        //               <div style={{ backgroundImage: `url(${shipping})` }} className={`bg-center bg-cover ${(i%2==0)?"rounded-br-[4rem] rounded-tr-[4rem]":" rounded-tr-[4rem] rounded-bl-[4rem]"} cursor-pointer rounded-tl-[4rem] `}>
-        //                 <div className={`service border border-primary rounded-sm ${(i%2==0)?"rounded-br-[4rem] bg-gradient-to-r text-left rounded-tl-[4rem]":"rounded-bl-[4rem] bg-gradient-to-l text-right rounded-tr-[4rem] "} p-8 px-4  from-white to-transparent   overflow-hidden
-        //  `}>
-        //                   <h3 className='text-primary text-xl font-semibold'>{serv.name}</h3>
-        //                 </div>
-        //               </div>
-        //             </Link>
       })}
 
     </div>

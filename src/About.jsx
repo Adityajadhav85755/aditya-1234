@@ -10,10 +10,15 @@ import Login from './components/Login';
 import Register from './components/Register'
 import { useState } from 'react'
 import { useEffect } from 'react'
-
+import Why_Choose_us from './components/Why_Choose_us'
+import Statics from './components/Statics'
+import { Swiper } from 'swiper/react'
+import AboutSwiper from './components/AboutSwiper'
+import AboutServiceDetails from './components/AboutServiceDetails'
+// import AllServices from './components/AllServices'
+// import Service from './components/Service'
 
 let LoginContext = React.createContext();
-
 export default function About() {
   // let [loginStatus,setLoginStatus]=useContext(LoginStatusContext)
   let [loginStatus,setLoginStatus,showLoginForm,setShowLoginForm,showRegisterForm,setShowRegisterForm,userData,setUserData]=useContext(LoginStatusContext)
@@ -43,7 +48,7 @@ export default function About() {
               <p className='my-2'>
                 Max Packers And Movers in Mumbai, India is a trustworthy relocation and storage services company, serving inside and outside of India. We provide affordable and best packers and movers services in Mumbai i.e home shifting, office relocation, vehicle transportation, warehousing, and logistics services to the companies and families all over the world.
               </p>
-
+​
               <p className='my-2'>Initially we face some dificulties but we never stop. As part of expansion we now provide warehouse services also, We have our own wan for relocation and now relocating.</p>
               <ul className='list-disc'>
                 <li>Residential Moving</li>
@@ -54,10 +59,19 @@ export default function About() {
               </ul>
             </div>
           </div>
-
+          ​
         </section> */}
+        {/* <ServiceDetails/> */}
         <AboutContent/>
-        <Service/>
+        {/* <Services/> */}
+        <AboutServiceDetails/>
+        {/* <Service/> */}
+        {/* <AllServices/> */}
+        {/* <AboutServiceDetailNewPage/> */}
+        
+        <Statics/>
+        <AboutSwiper/>
+        <Why_Choose_us/>
 
         <LoginContext.Provider value={[showLoginForm, setShowLoginForm, showRegisterForm, setShowRegisterForm]}>
           {showLoginForm && <Login LoginContext={LoginContext} />}

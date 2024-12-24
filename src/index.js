@@ -40,10 +40,6 @@
 // // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
 
-
-
-
-
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -58,6 +54,8 @@ import Office from './Office';
 import Vehicle from './Vehicle';
 import Shop from './Shop';
 import AcService from './AcService';
+import AboutServiceDetails from './components/AboutServiceDetails';
+import Gallerydata from './components/AboutServiceDetailNewPage';
 
 // Create context
 export const LoginStatusContext = React.createContext();
@@ -82,6 +80,9 @@ const RootApp = () => {
             <Route path='/office' element={<Office />} />
             <Route path='/vehicle' element={<Vehicle />} />
             <Route path='/shop' element={<Shop />} />
+            {/* <Route path='/a' element={<AboutServiceDetails />} /> */}
+            <Route path='/data' element={<Gallerydata/>} />
+
             <Route path='/acservice' element={<AcService />} />
           </Routes>
         </BrowserRouter>

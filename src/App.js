@@ -18,10 +18,21 @@ import Sidebar from './components/Sidebar';
 import Location from './components/Location';
 import offer from './assets/images/offer.jpg'
 import WhatOffer from './components/WhatOffer';
+import WareHouse from './components/WareHouse';
+import OtherServices from './components/OtherServices';
+import Steps from './components/Steps';
+// import Contact from "./components/Contact";
+
 let LoginContext = React.createContext();
 let FormContext = React.createContext();
 // let LoginStatusContext = React.createContext();
 function App() {
+  const [selectedLocation, setSelectedLocation] = useState("Mumbai");
+
+  const handleLocationClick = (location) => {
+    setSelectedLocation(location); // Update the location
+  };
+  
   let [loginStatus,setLoginStatus,showLoginForm,setShowLoginForm,showRegisterForm,setShowRegisterForm,userData,setUserData]=useContext(LoginStatusContext)
   // console.log(loginStatus)
   let [change, setChange] = useState(false)
@@ -86,10 +97,13 @@ function App() {
   // ]
 
 
-
-
-
-
+  // function App() {
+  //   return (
+  //     <div>
+  //       <ContactForm />
+  //     </div>
+  //   );
+  // }
   function handleInput(e) {
     let { name, value } = e.target;
     setWithingForm({ ...withinForm, [name]: value })
@@ -147,23 +161,23 @@ function App() {
         </LoginStatusContext.Provider>
       </header>
       <main>
-        <section className='flex justify-around bg-other'>
+        <section className='flex flex-col md:flex-row justify-around bg-other'>
           <div className='text-white  font-bold p-4 max-w-[600px] w-full'>
-            <h2 className='text-3xl leading-[4rem]'>
-            Best Packers And Movers In Mumbai
-            </h2>
-            <h2 className='text-2xl text-other2 font-bold tracking-wider leading-10'>
-            "Budget Me Best Service"
-            </h2>
+          <h2 className="location text-4xl leading-[4rem]">
+          Best Packers And Movers In {selectedLocation}
+          </h2>
+          <h2 className="text-2xl text-other2 font-bold tracking-wider leading-10">
+          "Budget Me Best Service"
+          </h2>
 
-            <div className='flex gap-5 max-w-[600px] overflow-x-scroll my-8'>
+            <div className='flex gap-5 max-w  -[600px] overflow-x-scroll my-8'>
             <img src={offer} alt="" className='w-80 h-28 rounded-md' />
             <img src={offer} alt="" className='w-80 h-28 rounded-md' />
             <img src={offer} alt="" className='w-80 h-28 rounded-md' />
             <img src={offer} alt="" className='w-80 h-28 rounded-md' />
             </div>
           </div>
-          <div className='max-w-[500px] m-auto bg-terniary p-4 my-8 rounded-md mx-8 max-[472px]:mx-0 w-full'>
+          <div className='max-w-[500px] m-auto bg-terniary p-4 my-8 rounded-md mx-8 max-[472px]:mx-0'>
             <div className='flex justify-evenly bg-white text-white py-2 rounded-md gap-x-10 mb-4 max-[472px]:grid grid-cols-2 w-full max-[472px]:px-4 '>
               <div className='text-center m-4 my-0 w-full max-[472px]:m-0'>
                 <button className='bg-primary p-2 px-8 font-semibold tracking-wide w-full rounded-md max-[472px]:px-0 max-[472px]:m-0'  ref={withinButton} onClick={showWithinForm}>Within City</button>
@@ -172,9 +186,6 @@ function App() {
                 <button className=' text-primary  p-2 px-8 font-semibold tracking-tight  w-full rounded-md max-[472px]:px-0 max-[472px]:tracking-tighter ' ref={betweenButton} onClick={showBetweenForm}>Between Cities</button>
               </div>
             </div>
-
-
-
             <form action="" className='flex flex-col px-4 py-4 gap-y-2 text-primary ' onSubmit={handleWithinForm} ref={formForWithin}>
 
               <div className='relative '>
@@ -208,6 +219,7 @@ function App() {
                   <option value="office shifting">Office Shifting</option>
                   <option value="shop shifting">Shop Shifting</option>
                   <option value="vehicle shifting">Vehicle Shifting</option>
+                  <option value="warehouse storage">Warehouse Storage</option>
                 </select>
               </div>
 
@@ -288,6 +300,7 @@ function App() {
                   <option value="office shifting">Office Shifting</option>
                   <option value="shop shifting">Shop Shifting</option>
                   <option value="vehicle shifting">Vehicle Shifting</option>
+                  <option value="WareHouse">Where House</option>
                 </select>
               </div>
 
@@ -383,6 +396,7 @@ function App() {
           </div>
         </section>
         <Service />
+        <Steps/>
         <WhatOffer/>
         
         {/* <AboutContent /> */}
@@ -394,7 +408,9 @@ function App() {
         </LoginContext.Provider>
 
         </LoginStatusContext.Provider>
-      <Location/>
+      {/* Location Section */}
+      <Location onLocationClick={handleLocationClick} />
+      <OtherServices/>
       </main>
       {/* <Footer /> */}
       <QuickContact />

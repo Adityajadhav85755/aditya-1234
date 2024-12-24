@@ -37,11 +37,14 @@ export default function Navbar({LoginStatusContext,setShowLoginForm}) {
                             <li className='hover:bg-white hover:text-primary px-6 py-2 duration-300'><Link to="/vehicle" className=' after:hidden'>Vehicle</Link></li>
                             <li className='hover:bg-white hover:text-primary px-6 py-2 duration-300'><Link to="/shop" className='after:hidden'>Shop</Link></li>
                             <li className='hover:bg-white hover:text-primary px-6 py-2 duration-300'><Link to="/AcService" className='after:hidden'>Ac Service</Link></li>
+                            <li className='hover:bg-white hover:text-primary px-6 py-2 duration-300'><Link to="/WareHouse" className='after:hidden'>Warehouse</Link></li>
+                            
+                            
                         </ul>
                     </li>
 
                     <li><Link to="/about" className='tracking-wider px-2 py-1'>About</Link></li>
-                    <li><Link to="/gallery" className='tracking-wider px-2 py-1'>Gallery</Link></li>
+                    {/* <li><Link to="/gallery" className='tracking-wider px-2 py-1'>Gallery</Link></li> */}
                     <li><Link to="/contact" className='tracking-wider px-2 py-1'>Contact</Link></li>
                     <li><Link to="tel:9004780981" className='tracking-wider flex gap-x-2 justify-center items-center px-2 py-1'><i className="fa-solid fa-headphones text-red-600 text-xl"></i>9004780981</Link></li>
                     {loginStatus ? <li className=' px-6 py-2 duration-300 '>

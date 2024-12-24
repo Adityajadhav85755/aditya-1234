@@ -23,6 +23,13 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.image-container img {
+  transition: transform 0.3s ease;
+}
+
+.image-container img:hover {
+  transform: scale(1.1);
+}
 
 .App-link {
   color: #61dafb;
@@ -36,3 +43,5 @@
     transform: rotate(360deg);
   }
 }
+
+

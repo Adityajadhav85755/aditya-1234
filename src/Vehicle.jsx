@@ -374,7 +374,57 @@ export default function Vehicle() {
     //   ];
 
 let inventoryItem=[
-
+  {
+    "mainItem": "Vehicle",
+    "subItem": [
+      {
+        "Item": "2 Wheel",
+        "options": [
+          { "name": "Bike/Motorcycle", "quantity": 0 },
+          { "name": "Bike - upto 150 cc", "quantity": 0 },
+          { "name": "Bike 150 - to 200 cc", "quantity": 0 },
+          { "name": "Bike 200 - to 350 cc", "quantity": 0 },
+          { "name": "Scooty/Scooter", "quantity": 0 },
+          { "name": "Electric Scooter", "quantity": 0 },
+          { "name": "Electric Bike/Motorcycle", "quantity": 0 }
+        ],
+        "open": false,
+        "id": 1
+      },
+      {
+        "Item": "3 Wheel",
+        "options": [
+          { "name": "Rickshaw", "quantity": 0 },
+          { "name": "Tuk Tuk", "quantity": 0 },
+          { "name": "Cargo 3 Wheel", "quantity": 0 },
+          { "name": "3 Wheel Tempo", "quantity": 0 },
+          { "name": "E Rickshaw", "quantity": 0 }
+        ],
+        "open": false,
+        "id": 2
+      },
+      {
+        "Item": "4 Wheels",
+        "options": [
+                    { "name": "Premium Hatchback Car", "quantity": 0},
+                    { "name": "Premium Sedan Car", "quantity": 0},
+                    { "name": "SUV Car", "quantity": 0},
+                    { "name": "Hatchback Car", "quantity": 0},
+                    { "name": "Sedan Car", "quantity": 0 },
+                    { "name": "Luxury Car", "quantity": 0 },
+                    { "name": "Personal Car", "quantity": 0 },
+                    { "name": "Pickup Truck", "quantity": 0 },
+                    { "name": "Cargo Van", "quantity": 0 },
+                    { "name": "Tempo 4 Wheels", "quantity": 0 },
+                    { "name": "Light Commercial Vehicle", "quantity": 0 }
+        ],
+        "open": false,
+        "id": 3
+      }
+    ],
+    "active": true
+  }
+  
 ]
 
       let [customerList, setCustomerList] = useState([]);

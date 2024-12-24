@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { ListContext } from "../Household";
 import { InvetoryContext } from "./Inventory";
-import table from '../assets/images/table.png'
-const Dropdown = ({ item, topLevel,context,context2 }) => {
+import table from '../assets/images/table.png';
+
+
+const Dropdown = ({ item, topLevel,context,context2,onImageClick }) => {
     // const Dropdown = ({ subItem }) => {
+    let [imageModalOpen, setImageModalOpen] = useState(false);
+    let [selectedImage, setSelectedImage] = useState(null);
+        
     const [isOpen, setIsOpen] = useState(false);
     const [items, setItems] = useState(item.subItem);
     let [customerList, setCustomerList] = useContext(context2);
@@ -14,6 +19,7 @@ const Dropdown = ({ item, topLevel,context,context2 }) => {
     };
 
     function openDropdown(index) {
+        
         // console.log(inventory)
         let updatedItems = items.map((item, i) => {
             if (i == index) {
@@ -75,6 +81,11 @@ const Dropdown = ({ item, topLevel,context,context2 }) => {
         setInvetory(updatedInventory)
 
     }
+    function handleImageClick(imageUrl) {
+        setSelectedImage(imageUrl);
+        setImageModalOpen(true); // Open the modal
+      }
+     
 
 
     function incrementQuantity(quantity, mainItemIndex, index) {
@@ -109,8 +120,6 @@ const Dropdown = ({ item, topLevel,context,context2 }) => {
                 return inv
             }
         })
-
-
 
         let updatedInventory = structuredClone(inventory);
         updatedInventory[topLevel].subItem = updatedSubItem;
@@ -237,7 +246,7 @@ const Dropdown = ({ item, topLevel,context,context2 }) => {
         <div className="w-full flex flex-col gap-y-2">
             {/* {console.log(item.subItem[0].options[0].quantity)} */}
             {items.map((item, i) => {
-                return <div key={i}>
+                return <div key={i} className="">
                     <button
                         className="w-full bg-gray-300 text-primary font-semibold py-3 text-left px-4 relative rounded-lg rounded-bl-none rounded-br-none"
                         onClick={() => { openDropdown(i) }}
@@ -246,7 +255,7 @@ const Dropdown = ({ item, topLevel,context,context2 }) => {
                         <i className="fa-solid fa-angle-down absolute right-5 top-1/2 -translate-y-1/2"></i>
                     </button>
                     <div
-                        className={`transition-all ease-out duration-300 overflow-hidden bg-gray-300 ${item.open ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+                        className={`transition-all ease-out duration-300 overflow-y-scroll bg-gray-300 ${item.open ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
                             } rounded-md rounded-tl-none rounded-tr-none`}
                     >
                         {/* {console.log(item.options)} */}
@@ -255,10 +264,16 @@ const Dropdown = ({ item, topLevel,context,context2 }) => {
                             return <div key={j}
                                 className=" py-2 px-4   text-primary flex justify-between items-center"
                             >
-                                <div className="w-10 h-10 rounded-md overflow-hidden border-2 border-primary p-1">
-                                    <img src={table} alt="" className="w-full h-full" />
-                                </div>
+                                <div className="  overflow-hidden flex items-center p-1 gap-4">
+                                    <div>
+
+                                    {/* {console.log(item.src)} */}
+                                    <img src={item.src} alt="" className="w-12 h-12 border-primary border-2 p-1 rounded-md"
+                                    onClick={() => onImageClick(item.src)}
+                                    />
+                                    </div>
                                 {item.name}
+                                </div>
                                 <span className="text-primary border-primary border px-2 py-1 rounded-md cursor-pointer" onClick={item.quantity === 0 ? () => addItem(j, i) : undefined}> {item.quantity >= 1 ? <div className="flex gap-x-2 items-center">
                                     <div className="flex gap-x-2 items-center">
                                         <i className="fa-solid fa-minus" onClick={() => { decrementQuantity(item.quantity, i, j) }}></i>

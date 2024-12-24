@@ -14,8 +14,8 @@ export default function QuickContact() {
               </div>
 
               <div className='flex flex-col items-center font-semibold tracking-wider'>
-                <p>9004780981</p>
-                <p>9004780981</p>
+                <p>9004424598</p>
+                <p>9136553632</p>
               </div>
             </div>
             <div className='border-2 py-8 border-t-0 border-b-0 border-[#1d3366] max-[866px]:border-primary'>

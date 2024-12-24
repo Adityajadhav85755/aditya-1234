@@ -1,4 +1,45 @@
 <!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Set display to none for image*/
+        #image {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>GeeksforGeeks</h1>
+        <h3>Click on the button to see image</h3>
+        <!-- Add id to image -->
+        <img id="image" src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20210915115837/gfg3.png"
+            alt="GFG image" />
+    </div>
+    <button type="button" onclick="show()" id="btnID">
+        Show Image
+    </button>
+
+    <script>
+        function show() {
+            /* Access image by id and change 
+            the display property to block*/
+            document.getElementById('image')
+                .style.display = "block";
+            document.getElementById('btnID')
+                .style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -39,6 +80,10 @@
                     <li><a href="https://bootstrapmade.com/bootstrap-template-builder/">About</a></li>
                     <li><a href="https://bootstrapmade.com/license/" class="active">Gallery</a></li>
                     <li><a href="https://bootstrapmade.com/contact/">Contact</a></li>
+                    <li><a href="https://wa.me/15555555555?text=Hello%20I%20would%20like%20to%20inquire%20about%20your%20services!" target="_blank" rel="noopener noreferrer">
+                        <button>Contact us on WhatsApp</button>
+                      </a>
+                       </li>
 
                 </ul>
             </nav> <svg class="icon icon-search search-bar-toggle" fill="currentColor">
@@ -57,7 +102,7 @@
 
     <script src="https://bootstrapmade.com/assets/js/main.js?v=42"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7JSYB1CSP"></script>
-    <!-- <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-P7JSYB1CSP');</script> -->
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-P7JSYB1CSP');</script>
     <script defer
         src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
         integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
@@ -67,4 +112,4 @@
 
 </html>
 
-
+ -->

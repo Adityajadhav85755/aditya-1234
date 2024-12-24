@@ -5,8 +5,6 @@ import Dropdown from './Dropdown'
 import Inventory from './Inventory'
 // import { ListContext } from '../Household'
 export default function CustomerInventory({context2}) {
-
-
     
     // let [customerInventoryDisplay,setcustomerInventoryDisplay]=useContext(ListContext)   
     let [customerList,setCustomerList,customerInventoryDisplay,setcustomerInventoryDisplay]=useContext(context2)   
