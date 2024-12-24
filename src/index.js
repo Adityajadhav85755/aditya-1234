@@ -56,6 +56,10 @@ import Shop from './Shop';
 import AcService from './AcService';
 import AboutServiceDetails from './components/AboutServiceDetails';
 import Gallerydata from './components/AboutServiceDetailNewPage';
+<<<<<<< HEAD
+=======
+import WareHouse from './components/WareHouse';
+>>>>>>> d5cb291 (Your commit message here)
 
 // Create context
 export const LoginStatusContext = React.createContext();
@@ -82,6 +86,11 @@ const RootApp = () => {
             <Route path='/shop' element={<Shop />} />
             {/* <Route path='/a' element={<AboutServiceDetails />} /> */}
             <Route path='/data' element={<Gallerydata/>} />
+<<<<<<< HEAD
+=======
+            <Route path='/warehouse' element={<WareHouse/>} />
+            
+>>>>>>> d5cb291 (Your commit message here)
 
             <Route path='/acservice' element={<AcService />} />
           </Routes>

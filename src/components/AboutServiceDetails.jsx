@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom'; // React Router hook for navigat
 const services = [
   {
     id: 'rental-ac',
+<<<<<<< HEAD
     title: 'ental Air Conditioner (AC)',
+=======
+    title: 'Rental Air Conditioner (AC)',
+>>>>>>> d5cb291 (Your commit message here)
     description: 'RENT AC Efficient vehicle transportation services. Click below to learn more.',
     descriptionpoint:'This is the description for Rent AC Based on pointwise',
     details: 'This is Detail Description for RENT AC Detailed information about vehicle shifting services. Fusce quis augue ac lorem scelerisque egestas at vel metus. Suspendisse potenti. Fusce ac tortor enim. Suspendisse sed feugiat purus, sed viverra ipsum.',
@@ -60,8 +64,13 @@ const services = [
     {
       id: 'warehouse',
       title: 'Warehouse Service ',
+<<<<<<< HEAD
       description:'Warehousing services provide secure storage for your goods, keeping them safe and accessible.',
       descriptionpoint:'Store your goods with confidence—safe, secure, and ready when you need them.',
+=======
+      description: 'Warehousing Services required to store your goods, To learn more ',
+      descriptionpoint:'This is the description for point',
+>>>>>>> d5cb291 (Your commit message here)
       details:
         '      we at Sky Need Solution provide a safe place to store all types of goods. Whether you need to store things for a short time or a long time, our warehouse is the perfect place. Our storage space is clean, safe, and easy to access whenever you need it. We take care of your items by keeping them organized and labeled. This makes it easy to find them when you need them. Our warehouse has the latest security systems to protect your goods, and we also have fire protection to keep everything safe. Plus, your items are fully insured while in storage. We also take care of the loading and unloading of your items. Our team makes sure everything is carefully moved in and out of the warehouse. We keep track of your goods with a computerized inventory system, so you never have to worry about losing anything. Our storage services are affordable, so you can store your items without breaking the bank. We offer both short-term and long-term storage solutions, depending on what you need. At our warehouse, you can be sure your goods will be kept safe and well-organized. Trust us to provide a stress-free storage experience. Whether for your home, business, or special items, we’re here to help you store things with ease. Your goods are always safe with us!',
     },

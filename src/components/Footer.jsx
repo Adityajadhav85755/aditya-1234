@@ -5,7 +5,11 @@ import logo2 from '../assets/images/logo2.png';
 
 export default function Footer() {
   return (
+<<<<<<< HEAD
     <footer className='bg-primary text-white'>
+=======
+    <footer className='bg-PeriwinklePurpleLight text-black'>
+>>>>>>> d5cb291 (Your commit message here)
       {/* Fixed icons */}
       <div className='fixed bottom-10 left-10'>
         <a href="tel:9004780981">

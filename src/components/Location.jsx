@@ -1,6 +1,10 @@
 import React from 'react';
 
+<<<<<<< HEAD
 export default function Location({ onLocationClick }) {
+=======
+export default function Location() {
+>>>>>>> d5cb291 (Your commit message here)
   let locations = [
     { city: "Mumbai", area: "Bandra", category: "Western" },
     { city: "Mumbai", area: "Kandivali", category: "Western" },
@@ -31,15 +35,26 @@ export default function Location({ onLocationClick }) {
     { city: "Navi Mumbai", area: "Panvel", category: "Herbal" },
     { city: "Mumbai", area: "Virar", category: "Herbal" },
     { city: "Mumbai", area: "Vasai", category: "Herbal" },
+<<<<<<< HEAD
+=======
+    { city: "Mumbai", area: "Kalyan", category: "Central" },
+>>>>>>> d5cb291 (Your commit message here)
     { city: "Mumbai", area: "Bandra", category: "Western" },
     { city: "Mumbai", area: "Dombivli", category: "Central" },
     { city: "Mumbai", area: "Chembur", category: "Central" }
   ];
 
   const categories = ["Western", "Central", "Herbal"];
+<<<<<<< HEAD
 
   return (
     <div className="bg-gray-200 pb-12">
+=======
+  
+  return (
+    <div className="bg-gray-200 pb-12 shadow-md rounded-md border border-gray-200 md:py-8 md:w-[50%] md:mx-auto md:ml-[8%]">
+      {/* Title Section */}
+>>>>>>> d5cb291 (Your commit message here)
       <div className="px-4 py-8 max-w-[1400px] w-full m-auto">
         <h3 className="text-2xl font-bold text-primary text-center">
           Sky Need Solutions Locality
@@ -48,6 +63,7 @@ export default function Location({ onLocationClick }) {
 
       {/* Categories Grid */}
       {categories.map((category) => {
+<<<<<<< HEAD
         const filteredLocations = locations.filter(
           (location) => location.category === category
         );
@@ -67,6 +83,21 @@ export default function Location({ onLocationClick }) {
                     >
                       Shifting in {city.area}
                     </button>
+=======
+        const filteredLocations = locations.filter(location => location.category === category);
+        
+        return (
+          <div key={category} className="px-4 py-4">
+            <h4 className="text-xl font-semibold text-primary mb-4">{category} Locations</h4>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 place-items-center max-w-[1400px] w-full m-auto gap-x-5 gap-y-4">
+              {filteredLocations.map((city, i) => (
+                <p key={i} className="w-full flex items-start">
+                  <a
+                    href="#header"
+                    className="text-gray-700 scroll-smooth hover:underline"
+                  >
+                    Shifting in {city.area}
+>>>>>>> d5cb291 (Your commit message here)
                   </a>
                 </p>
               ))}

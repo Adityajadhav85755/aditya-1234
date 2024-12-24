@@ -68,7 +68,11 @@ export default function Sidebar({ LoginStatusContext, setShowLoginForm, }) {
         
         <>
         <nav id='navbar' className='hidden relative max-[885px]:flex '>
+<<<<<<< HEAD
             <div className=' flex justify-center items-center p-4 pb-0 gap-5 relative bg-primary '>
+=======
+            <div className=' flex justify-center items-center p-4 pb-0 gap-5 relative bg-PeriwinklePurpleDark '>
+>>>>>>> d5cb291 (Your commit message here)
                 <div className='logoContainer h-[130%] w-[130%] z-1 bg-secondary absolute left-0 top-0'>
                 {/* <div className='logoContainer h-[130%] w-full z-1 bg-secondary absolute left-0 top-0'> */}
                 </div>
@@ -80,12 +84,12 @@ export default function Sidebar({ LoginStatusContext, setShowLoginForm, }) {
             </div>
 
 
-            <div className='bg-primary w-full flex items-center justify-end pr-5'>
+            <div className='bg-PeriwinklePurpleDark w-full flex items-center justify-end pr-5'>
                 <ul className='flex text-white font-semibold justify-center items-center gap-10 '>
                     <li><Link to="/" className='tracking-wider px-2 py-1'>Home</Link></li>
                     <li className='group relative py-1'>
                         <Link className='tracking-wider px-2 py-1'>Services</Link>
-                        <ul className='hidden group-hover:flex absolute bg-primary text-white py-2  rounded-sm top-full  flex-col   gap-y-5 z-50'>
+                        <ul className='hidden group-hover:flex absolute bg-PeriwinklePurpleDark text-white py-2  rounded-sm top-full  flex-col   gap-y-5 z-50'>
                             <li className='hover:bg-white hover:text-primary px-6 py-2 relative group duration-300'><Link to="/household" className=' after:hidden '>Household</Link>
                             </li>
                             <li className='hover:bg-white hover:text-primary px-6 py-2 duration-300' ><Link to="/office" className=' after:hidden'>Office</Link></li>
@@ -111,7 +115,11 @@ export default function Sidebar({ LoginStatusContext, setShowLoginForm, }) {
         </nav>
         {console.log(showSideber)}
         <div
+<<<<<<< HEAD
     className={`sidebar bg-primary min-h-screen flex-col text-white fixed top-0 left-0 z-50 flex
+=======
+    className={`sidebar bg-PeriwinklePurpleDark min-h-screen flex-col text-white fixed top-0 left-0 z-50 flex
+>>>>>>> d5cb291 (Your commit message here)
     ${(showSideber ? "translate-x-0" : "-translate-x-full")}
     transition-all ease-in-out
     w-1/2 max-[885px]:w-[75%] max-[616px]:w-[100%] px-4`}>
@@ -127,7 +135,11 @@ export default function Sidebar({ LoginStatusContext, setShowLoginForm, }) {
 
 
 
+<<<<<<< HEAD
             <div className="sidebar bg-primary min-h-screen flex-col text-white fixed top-0 left-0 z-50 flex w-1/2 max-[885px]:w-[75%] max-[616px]:w-[100%] px-4">
+=======
+            <div className="sidebar bg-PeriwinklePurpleDark min-h-screen flex-col text-white fixed top-0 left-0 z-50 flex w-1/2 max-[885px]:w-[75%] max-[616px]:w-[100%] px-4">
+>>>>>>> d5cb291 (Your commit message here)
 
     {/* Close Button */}
     <i className="fa-solid fa-xmark text-3xl self-end px-8 py-4" onClick={() => { setShowSidebar(false); }}></i>

@@ -14,7 +14,7 @@ export default function CustomerInventory({context2}) {
     // console.log(customerList)
   return (
       <div className='w-full flex flex-col max-w-[400px] h-full max-h-[500px] bg-white rounded-lg overflow-hidden fixed top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] '>
-      <div className='text-center font-semibold text-white bg-primary py-2 px-0 '>
+      <div className='text-center font-semibold text-white bg-PeriwinklePurpleDark py-2 px-0 '>
             <h4 className='text-base'>Your Inventory</h4>
 
         </div>
@@ -34,7 +34,7 @@ export default function CustomerInventory({context2}) {
                         </div>
                 })}
                 
-                <div className='flex justify-center px-8 py-2 bg-primary items-center absolute w-full bottom-0 left-0 '>
+                <div className='flex justify-center px-8 py-2 bg-PeriwinklePurpleDark items-center absolute w-full bottom-0 left-0 '>
                     <button className='text-white font-bold bg-green-500 px-4 py-1 rounded-full' onClick={()=>{setcustomerInventoryDisplay(false)}}>Close</button>
                 </div>
             </div>

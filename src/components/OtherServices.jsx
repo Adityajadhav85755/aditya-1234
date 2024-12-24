@@ -33,7 +33,11 @@ const OtherServices = () => {
   };
 
   return (
+<<<<<<< HEAD
     <div className="p-4 ">
+=======
+    <div className="p-4 shadow-md rounded-md border border-gray-200 md:py-8 md:w-[50%] md:mx-auto md:ml-[8%] ">
+>>>>>>> d5cb291 (Your commit message here)
       <h2 className="text-2xl font-bold mb-4 text-primary text-center">Other Services Sky Need Solutions</h2>
       <div className="space-y-3">
         {services.map((service) => (

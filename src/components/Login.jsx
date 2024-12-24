@@ -289,9 +289,13 @@ export default function Login({ LoginContext }) {
       <div className="fixed top-0 left-0 bg-gray-500 h-screen w-screen opacity-50 z-30"></div>
       <div className="flex justify-center items-center transition-all bg-center bg-cover bg-no-repeat z-40 fixed top-0 left-0 w-full h-screen">
         <div className="w-full loadComponent mx-8">
-          <div className="w-full flex flex-col max-w-[500px] h-full bg-white rounded-lg overflow-hidden relative border border-primary m-auto shadow-lg shadow-gray">
+          <div className="w-full flex flex-col max-w-[500px] h-full bg-white rounded-lg overflow-hidden relative border border-PeriwinklePurpleDark m-auto shadow-lg shadow-gray">
             <div className="flex-2 shrink-0">
+<<<<<<< HEAD
               <div className="text-center font-semibold text-white bg-primary py-4 max-[400px]:py-2 flex gap-x-5 items-center relative">
+=======
+              <div className="text-center font-semibold text-white bg-PeriwinklePurpleDark py-4 max-[400px]:py-2 flex gap-x-5 items-center relative">
+>>>>>>> d5cb291 (Your commit message here)
                 <Link
                   to={""}
                   onClick={() => {
@@ -338,7 +342,7 @@ export default function Login({ LoginContext }) {
                           "Password must contain at least 1 uppercase letter, 1 number, and 1 special character",
                       },
                     })}
-                    className="px-4 py-2 outline-none rounded-full border-primary border focus:border-green-500 w-full"
+                    className="px-4 py-2 outline-none rounded-full border-PeriwinklePurpleDark border focus:border-green-500 w-full"
                     placeholder="Password"
                   />
                   <i
@@ -378,7 +382,11 @@ export default function Login({ LoginContext }) {
                   </span>
                 </div>
 
+<<<<<<< HEAD
                 <div className="flex justify-center w-full bg-primary rounded-full py-2">
+=======
+                <div className="flex justify-center w-full bg-PeriwinklePurpleDark rounded-full py-2">
+>>>>>>> d5cb291 (Your commit message here)
                   <input
                     type="submit"
                     className="text-white font-bold bg-green-500 px-4 py-2 rounded-full max-[400px]:py-0"
@@ -401,7 +409,11 @@ export default function Login({ LoginContext }) {
               to.
             </p>
             <button
+<<<<<<< HEAD
               className="bg-primary text-white px-4 py-2 rounded-full"
+=======
+              className="bg-PeriwinklePurpleDark text-white px-4 py-2 rounded-full"
+>>>>>>> d5cb291 (Your commit message here)
               onClick={() => setShowTermsModal(false)}
             >
               Close

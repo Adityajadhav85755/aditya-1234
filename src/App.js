@@ -13,6 +13,7 @@ import PopUpPlan from './components/PopUpPlan';
 import Register from './components/Register';
 import Service from './components/Service';
 import AboutContent from './components/AboutContent';
+import Client1 from "../src/assets/images/Client/Client-1.png"
 import { LoginStatusContext } from './index';
 import Sidebar from './components/Sidebar';
 import Location from './components/Location';
@@ -21,6 +22,13 @@ import WhatOffer from './components/WhatOffer';
 import WareHouse from './components/WareHouse';
 import OtherServices from './components/OtherServices';
 import Steps from './components/Steps';
+<<<<<<< HEAD
+=======
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from 'react-router-dom';
+// import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules"; // Removed Pagination module import
+>>>>>>> d5cb291 (Your commit message here)
 // import Contact from "./components/Contact";
 
 let LoginContext = React.createContext();
@@ -145,6 +153,26 @@ function App() {
     betweenButton.current.classList.add("unActiveForm")
   }
 
+  const scrollerRef = useRef(null);
+
+  useEffect(() => {
+    const scroller = scrollerRef.current;
+
+    // Auto-scroll the scroller continuously
+    const autoScroll = () => {
+      if (scroller) {
+        scroller.scrollLeft += 1; // Increase to scroll faster
+        if (scroller.scrollLeft >= scroller.scrollWidth - scroller.clientWidth) {
+          scroller.scrollLeft = 0; // Reset when it reaches the end
+        }
+      }
+    };
+
+    const interval = setInterval(autoScroll, 20); // Adjust speed with interval
+
+    // Clear interval on unmount
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -161,6 +189,7 @@ function App() {
         </LoginStatusContext.Provider>
       </header>
       <main>
+<<<<<<< HEAD
         <section className='flex flex-col md:flex-row justify-around bg-other'>
           <div className='text-white  font-bold p-4 max-w-[600px] w-full'>
           <h2 className="location text-4xl leading-[4rem]">
@@ -178,24 +207,131 @@ function App() {
             </div>
           </div>
           <div className='max-w-[500px] m-auto bg-terniary p-4 my-8 rounded-md mx-8 max-[472px]:mx-0'>
+=======
+        <section className='flex flex-col md:flex-row justify-start bg-gradient-to-b from-PeriwinklePurpleLight to-PeriwinklePurpleDark w-full mx-auto'>
+          <div className='text-white font-bold p-4 max-w-[600px] w-full md:w-[50%] md:ml-[15%] md:mt-8'>
+            <h2 className='location text-4xl leading-[4rem]'>
+            Best Packers And Movers In Mumbai
+            </h2>
+            <h2 className='text-2xl text-white font-bold tracking-wider leading-10'>
+            "Budget Me Best Service"
+            </h2>
+
+
+            
+ 
+            <div className="relative overflow-hidden my-8">
+      <div
+        ref={scrollerRef}
+        className="flex gap-5 max-w-[600px] overflow-x-scroll"
+      >
+        <img src={offer} alt="Service 1" className="w-12 h-20 rounded-md rounded-full object-cover" />
+        <img src={offer} alt="Service 2" className="w-80 h-20 rounded-md rounded-full object-cover" />
+        <img src={offer} alt="Service 3" className="w-80 h-20 rounded-md rounded-full object-cover" />
+        <img src={offer} alt="Service 4" className="w-80 h-20 rounded-md rounded-full object-cover" />
+        <img src={offer} alt="Service 5" className="w-80 h-20 rounded-md rounded-full object-cover" />
+        {/* Duplicate images for seamless scroll effect */}
+        <img src={offer} alt="Service 6" className="w-80 h-20 rounded-md " />
+        <img src={offer} alt="Service 7" className="w-80 h-20 rounded-md" />
+      </div>
+    </div>
+
+    <div className="flex gap-5 max-w-[600px] overflow-x-scroll my-8 hidden lg:flex">
+  {/* Icon 1 with Link */}
+  <div className="flex flex-col items-center">
+    <Link to="/household">  {/* Update the path as needed */}
+      <img src={offer} alt="Service 1" className="w-20 h-20 rounded-full object-cover" />
+      <span className="text-sm mt-2 text-center">Household</span>
+    </Link>
+  </div>
+
+  {/* Icon 2 with Link */}
+  <div className="flex flex-col items-center">
+    <Link to="/office">  {/* Update the path as needed */}
+      <img src={offer} alt="Service 2" className="w-20 h-20 rounded-full object-cover" />
+      <span className="text-sm mt-2 text-center">Office</span>
+    </Link>
+  </div>
+
+  {/* Icon 3 with Link */}
+  <div className="flex flex-col items-center">
+    <Link to="/vechile">  {/* Update the path as needed */}
+      <img src={offer} alt="Service 3" className="w-20 h-20 rounded-full object-cover" />
+      <span className="text-sm mt-2 text-center">Vechile</span>
+    </Link>
+  </div>
+
+  {/* Icon 4 with Link */}
+  <div className="flex flex-col items-center">
+    <Link to="/shop">  {/* Update the path as needed */}
+      <img src={offer} alt="Service 4" className="w-20 h-20 rounded-full object-cover" />
+      <span className="text-sm mt-2 text-center">Shop</span>
+    </Link>
+  </div>
+
+  {/* Icon 5 with Link */}
+  <div className="flex flex-col items-center">
+    <Link to="/acservices">  {/* Update the path as needed */}
+      <img src={offer} alt="Service 4" className="w-20 h-20 rounded-full object-cover" />
+      <span className="text-sm mt-2 text-center">Ac Service</span>
+    </Link>
+  </div>
+
+  {/* Icon 6 with Link */}
+  <div className="flex flex-col items-center">
+    <Link to="/warehouse">  {/* Update the path as needed */}
+      <img src={offer} alt="Service 4" className="w-20 h-20 rounded-full object-cover" />
+      <span className="text-sm mt-2 text-center">Warehouse</span>
+    </Link>
+  </div>
+</div>
+{/* Video Section */}
+<div className="bg-PeriwinklePurpleDark py-8 flex flex-col md:flex-row justify-around w-full md:w-[110%] h-[80px] md:h-[300px] mx-auto md:ml-[4%] ml-[80px] hidden md:block">
+        <video 
+            className="w-full rounded-md h-full"
+            controls
+            // poster="path/to/thumbnail.jpg" /* Add a video poster image */
+        >
+            <source src="/4277721-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+
+         
+          </div>
+
+
+          {/*   Form start */}
+          <div className='max-w-[500px] m-auto bg-terniary p-4 my-8 rounded-md mx-8 max-[472px]:mx-0 lg:fixed lg:top-28 lg:right-[4cm] border border-gray-600 shadow-lg md:relative lg:w-[600px] lg:h-[525px]'>
+>>>>>>> d5cb291 (Your commit message here)
             <div className='flex justify-evenly bg-white text-white py-2 rounded-md gap-x-10 mb-4 max-[472px]:grid grid-cols-2 w-full max-[472px]:px-4 '>
               <div className='text-center m-4 my-0 w-full max-[472px]:m-0'>
-                <button className='bg-primary p-2 px-8 font-semibold tracking-wide w-full rounded-md max-[472px]:px-0 max-[472px]:m-0'  ref={withinButton} onClick={showWithinForm}>Within City</button>
+                <button className='bg-PeriwinklePurpleDark p-2 px-8 font-semibold tracking-wide w-full rounded-md max-[472px]:px-0 max-[472px]:m-0'  ref={withinButton} onClick={showWithinForm}>Within City</button>
               </div>
               <div className='text-center m-4 my-0 w-full max-[472px]:m-0'>
-                <button className=' text-primary  p-2 px-8 font-semibold tracking-tight  w-full rounded-md max-[472px]:px-0 max-[472px]:tracking-tighter ' ref={betweenButton} onClick={showBetweenForm}>Between Cities</button>
+                <button className=' text-PeriwinklePurpleDark  p-2 px-8 font-semibold tracking-tight  w-full rounded-md max-[472px]:px-0 max-[472px]:tracking-tighter ' ref={betweenButton} onClick={showBetweenForm}>Between Cities</button>
               </div>
+              {/* scrool image**/ }
             </div>
+<<<<<<< HEAD
             <form action="" className='flex flex-col px-4 py-4 gap-y-2 text-primary ' onSubmit={handleWithinForm} ref={formForWithin}>
+=======
+            
+
+
+
+            <form action="" className='flex flex-col px-4 py-4 gap-y-2 text-PeriwinklePurpleDark ' onSubmit={handleWithinForm} ref={formForWithin}>
+>>>>>>> d5cb291 (Your commit message here)
 
               <div className='relative '>
                 <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
-                <input required type="text" name='sourceLocality' placeholder='Enter Your Locality' value={withinForm.sourceLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10 rounded-full border-primary border' />
+                <input required type="text" name='sourceLocality' placeholder='Enter Your Locality' value={withinForm.sourceLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10 rounded-full border-PeriwinklePurpleDark border' />
               </div>
               <div className='relative'>
                 <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
 
-                <input required type="text" name='destinationLocality' placeholder='Enter Your Destination Locality' value={withinForm.destinationLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10  rounded-full border-primary border' />
+                <input required type="text" name='destinationLocality' placeholder='Enter Your Destination Locality' value={withinForm.destinationLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10  rounded-full border-PeriwinklePurpleDark border' />
               </div>
               
               {/* <div className='relative'>
@@ -213,7 +349,7 @@ function App() {
               <div className='relative'>
               {/* <i class="fa-solid fa-suitcase"></i> */}
                 <i className="fa-solid fa-suitcase absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select required name="service"  className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.service} onChange={(e) => { displayPlan(); handleInput(e); }}>
+                <select required name="service"  className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border' value={withinForm.service} onChange={(e) => { displayPlan(); handleInput(e); }}>
                   <option value="">-- Select Sercvice --</option>
                   <option value="housefold shifting">Household Shifting</option>
                   <option value="office shifting">Office Shifting</option>
@@ -225,7 +361,7 @@ function App() {
 
               <div className='relative'>
                 <i className="fa-solid fa-box-open absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select required name="plan"  className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.plan} onChange={handleInput}>
+                <select required name="plan"  className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border' value={withinForm.plan} onChange={handleInput}>
                   <option value="">-- Select Plan --</option>
                   <option value="basic">Base Plan</option>
                   <option value="premium">Premium Plan</option>
@@ -237,7 +373,7 @@ function App() {
               <select
                 name="time"
                 
-                className="w-full py-2 px-4 rounded-full pl-10 border-primary border"
+                className="w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border"
                 onChange={handleInput}
                 value={withinForm.time}
               >
@@ -258,27 +394,27 @@ function App() {
             
             <div className='relative'>
                 <i className="fa-solid fa-calendar-days absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <input required type="date" name='date' className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.date} onChange={handleInput} />
+                <input required type="date" name='date' className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border' value={withinForm.date} onChange={handleInput} />
               </div>
 
               <div className=''>
-                <button className='bg-primary p-2 px-4 font-bold tracking-wide w-full rounded-md text-white '>Get Quote</button>
+                <button className='bg-PeriwinklePurpleDark p-2 px-4 font-bold tracking-wide w-full rounded-md text-white '>Get Quote</button>
               </div>
             </form>
 
 
 
 
-            <form action="" className='flex-col px-4 py-4 gap-y-4 text-primary hidden ' onSubmit={handleBetweenForm} ref={formForBetween}>
+            <form action="" className='flex-col px-4 py-4 gap-y-4 text-PeriwinklePurpleDark hidden ' onSubmit={handleBetweenForm} ref={formForBetween}>
 
               <div className='relative '>
                 <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
-                <input required type="text" name='sourceLocality' placeholder='Enter Your Locality' value={withinForm.sourceLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10 rounded-full border-primary border' />
+                <input required type="text" name='sourceLocality' placeholder='Enter Your Locality' value={withinForm.sourceLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10 rounded-full border-PeriwinklePurpleDark border' />
               </div>
               <div className='relative'>
                 <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
 
-                <input required type="text" name='destinationLocality' placeholder='Enter Your Destination Locality' value={withinForm.destinationLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10  rounded-full border-primary border' />
+                <input required type="text" name='destinationLocality' placeholder='Enter Your Destination Locality' value={withinForm.destinationLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10  rounded-full border-PeriwinklePurpleDark border' />
               </div>
               {/* <div className='relative'>
                 <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
@@ -294,7 +430,7 @@ function App() {
 
               <div className='relative'>
                 <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select required name="service"  className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.service} onChange={(e) => { displayPlan(); handleInput(e); }}>
+                <select required name="service"  className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border' value={withinForm.service} onChange={(e) => { displayPlan(); handleInput(e); }}>
                   <option value="">-- Select Sercvice --</option>
                   <option value="housefold shifting">Household Shifting</option>
                   <option value="office shifting">Office Shifting</option>
@@ -306,7 +442,7 @@ function App() {
 
               <div className='relative'>
                 <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select required name="plan"  className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.plan} onChange={handleInput}>
+                <select required name="plan"  className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border' value={withinForm.plan} onChange={handleInput}>
                   <option value="">-- Select Plan --</option>
                   <option value="base">Base Plan</option>
                   <option value="premium">Premium Plan</option>
@@ -319,7 +455,7 @@ function App() {
               <select
                 name="time"
                 
-                className="w-full py-2 px-4 rounded-full pl-10 border-primary border"
+                className="w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border"
                 onChange={handleInput}
                 value={withinForm.time}
                 required
@@ -335,11 +471,11 @@ function App() {
 
             <div className='relative'>
                 <i className="fa-solid fa-calendar-days absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <input required type="date" name='date' className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.date} onChange={handleInput} />
+                <input required type="date" name='date' className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border' value={withinForm.date} onChange={handleInput} />
               </div>
 
               <div className=''>
-                <button className='bg-primary p-2 px-4 font-bold tracking-wide w-full rounded-md text-white '>Get Quote</button>
+                <button className='bg-PeriwinklePurpleDark p-2 px-4 font-bold tracking-wide w-full rounded-md text-white '>Get Quote</button>
               </div>
             </form>
 
@@ -408,8 +544,12 @@ function App() {
         </LoginContext.Provider>
 
         </LoginStatusContext.Provider>
+<<<<<<< HEAD
       {/* Location Section */}
       <Location onLocationClick={handleLocationClick} />
+=======
+      <Location/>
+>>>>>>> d5cb291 (Your commit message here)
       <OtherServices/>
       </main>
       {/* <Footer /> */}

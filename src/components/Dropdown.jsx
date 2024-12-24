@@ -3,9 +3,13 @@ import { useContext } from "react";
 import { ListContext } from "../Household";
 import { InvetoryContext } from "./Inventory";
 import table from '../assets/images/table.png';
+<<<<<<< HEAD
 
 
 const Dropdown = ({ item, topLevel,context,context2,onImageClick }) => {
+=======
+const Dropdown = ({ item, topLevel,context,context2 }) => {
+>>>>>>> d5cb291 (Your commit message here)
     // const Dropdown = ({ subItem }) => {
     let [imageModalOpen, setImageModalOpen] = useState(false);
     let [selectedImage, setSelectedImage] = useState(null);
@@ -248,7 +252,7 @@ const Dropdown = ({ item, topLevel,context,context2,onImageClick }) => {
             {items.map((item, i) => {
                 return <div key={i} className="">
                     <button
-                        className="w-full bg-gray-300 text-primary font-semibold py-3 text-left px-4 relative rounded-lg rounded-bl-none rounded-br-none"
+                        className="w-full bg-gray-300 text-PeriwinklePurpleDark font-semibold py-3 text-left px-4 relative rounded-lg rounded-bl-none rounded-br-none"
                         onClick={() => { openDropdown(i) }}
                     >
                         {item.Item}
@@ -262,12 +266,13 @@ const Dropdown = ({ item, topLevel,context,context2,onImageClick }) => {
                         {item.options.map((item, j) => {
                             // {console.log(item)}
                             return <div key={j}
-                                className=" py-2 px-4   text-primary flex justify-between items-center"
+                                className=" py-2 px-4   text-PeriwinklePurpleDark  flex justify-between items-center"
                             >
                                 <div className="  overflow-hidden flex items-center p-1 gap-4">
                                     <div>
 
                                     {/* {console.log(item.src)} */}
+<<<<<<< HEAD
                                     <img src={item.src} alt="" className="w-12 h-12 border-primary border-2 p-1 rounded-md"
                                     onClick={() => onImageClick(item.src)}
                                     />
@@ -275,6 +280,13 @@ const Dropdown = ({ item, topLevel,context,context2,onImageClick }) => {
                                 {item.name}
                                 </div>
                                 <span className="text-primary border-primary border px-2 py-1 rounded-md cursor-pointer" onClick={item.quantity === 0 ? () => addItem(j, i) : undefined}> {item.quantity >= 1 ? <div className="flex gap-x-2 items-center">
+=======
+                                    <img src={item.src} alt="" className="w-12 h-12 border-PeriwinklePurpleDark border-2 p-1 rounded-md" />
+                                    </div>
+                                {item.name}
+                                </div>
+                                <span className="text-PeriwinklePurpleDark border-PeriwinklePurpleDark border px-2 py-1 rounded-md cursor-pointer" onClick={item.quantity === 0 ? () => addItem(j, i) : undefined}> {item.quantity >= 1 ? <div className="flex gap-x-2 items-center">
+>>>>>>> d5cb291 (Your commit message here)
                                     <div className="flex gap-x-2 items-center">
                                         <i className="fa-solid fa-minus" onClick={() => { decrementQuantity(item.quantity, i, j) }}></i>
                                         {item.quantity}

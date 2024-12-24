@@ -3,14 +3,14 @@ import React from 'react'
 export default function QuickContact() {
   return (
       
-      <section className=' flex flex-col items-center bg-primary text-white w-full px-4 py-12'>
+      <section className=' flex flex-col items-center bg-PeriwinklePurpleLight text-white w-full px-4 py-12 md:py-8 md:w-[50%] md:mx-auto md:ml-[8%]'>
           <div className='grid grid-cols-3 gap-8 px-8 w-full max-w-[1000px] max-[866px]:grid-cols-1'>
 
 
             <div className='py-8'>
               <div className='flex flex-col items-center gap-y-4'>
                 <i className="fa-solid fa-mobile-screen-button text-[3rem] max-[866px]:text-[4rem]"></i>
-                <h4 className='text-xl font-semibold mb-4 text-[red]  '>Assistance Is Free !!</h4>
+                <h4 className='text-xl font-semibold mb-4 text-[black]  '>Assistance Is Free !!</h4>
               </div>
 
               <div className='flex flex-col items-center font-semibold tracking-wider'>
@@ -22,7 +22,7 @@ export default function QuickContact() {
               <div className='flex flex-col items-center gap-y-4'>
                 <i className="fa-regular fa-envelope text-[3rem] max-[866px]:text-[4rem]"></i>
                 {/* <i className="fa-solid fa-mobile-screen-button "></i> */}
-                <h4 className='text-xl font-semibold mb-4 text-[red]'>We Are Just Here !!</h4>
+                <h4 className='text-xl font-semibold mb-4 text-[black]'>We Are Just Here !!</h4>
               </div>
 
               <div className='flex flex-col items-center font-semibold tracking-wider'>
@@ -33,7 +33,7 @@ export default function QuickContact() {
             <div className='py-8'>
               <div className='flex flex-col items-center gap-y-4'>
                 <i className="fa-regular fa-clock text-[3rem] max-[866px]:text-[4rem]"></i>
-                <h4 className='text-xl font-semibold mb-4 text-[red] '>Always Available !!</h4>
+                <h4 className='text-xl font-semibold mb-4 text-[black] '>Always Available !!</h4>
               </div>
 
               <div className='flex flex-col items-center font-semibold tracking-wider'>

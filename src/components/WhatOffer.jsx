@@ -47,9 +47,15 @@ export default function WhatOffer() {
 //     </section>
 //   )
 // }
+<<<<<<< HEAD
   <section className="flex flex-col items-center bg-primary text-white w-full px-4 py-4 pb-8">
     <div className="w-full max-w-[1000px] m-auto">
       <h2 className="text-center font-bold text-other2 text-2xl mb-4">What We Offer</h2>
+=======
+  <section className="flex flex-col items-center bg-PeriwinklePurpleLight text-black w-full px-4 py-4 pb-8 shadow-md rounded-md border border-gray-200 md:py-8 md:flex md:flex-row md:justify-around md:w-[50%] md:mx-auto md:ml-[8%]">
+    <div className="w-full max-w-[1000px] m-auto">
+      <h2 className="text-center font-bold text-black text-2xl mb-4">What We Offer</h2>
+>>>>>>> d5cb291 (Your commit message here)
       <ul className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 list-disc gap-4 list-inside">
         {lis.map((li, i) => {
           return (
