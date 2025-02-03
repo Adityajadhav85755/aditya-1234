@@ -5,7 +5,91 @@ import bg from './assets/images/shifting.jpg'
 export let ListContext = React.createContext()
 
 export default function Vehicle() {
-    // let inventoryItem = [
+  const importImages = (requireContext) => {
+    const images = {};
+    requireContext.keys().forEach((key) => {
+        const imageName = key.replace('./', '').split('.')[0];
+        let keyName=imageName.replace("GeneralAppliance/","" );
+        keyName=keyName.replace("kitchenAppliencess/","" );
+        // console.log(imageName.split('/')[1])
+        images[imageName.split('/')[1]] = requireContext(key); // Associate image with the name
+        // images[keyName] = requireContext(key); // Associate image with the name
+      });
+    return images;
+  };
+  const vehicleimg = importImages(
+    require.context('./assets/Inventory//Vehicle', true, /\.(png|jpe?g|svg)$/) // Adjust path as needed
+  );
+  
+  let inventoryItem=[
+  {
+  "mainItem": "Vehicle",
+  "subItem": [
+    {
+      "Item": "2 Wheel",
+      "options": [
+        { "name": "Bike/Motorcycle", "quantity": 0, src:vehicleimg["bike moter cycle"] },
+        { "name": "Bike - upto 150 cc", "quantity": 0, src:vehicleimg["Bike - upto 150 cc"] },
+        { "name": "Bike 150 - to 200 cc", "quantity": 0, src:vehicleimg["Bike-upto200cc"] },
+        { "name": "Bike 200 - to 350 cc", "quantity": 0, src:vehicleimg["Bikeupto350cc"] },
+        { "name": "Scooty/Scooter", "quantity": 0, src:vehicleimg["scootyscooter"] },
+        { "name": "Electric Scooter", "quantity": 0, src:vehicleimg["electicscooter"] },
+        { "name": "Electric Bike/Motorcycle", "quantity": 0, src:vehicleimg["electric bike"]}
+      ],
+      "open": false,
+      "id": 1
+    },
+    {
+      "Item": "3 Wheel",
+      "options": [
+        { "name": "Rickshaw", "quantity": 0 ,src:vehicleimg["rikshaw"]},
+        { "name": "Tuk Tuk", "quantity": 0,src:vehicleimg["tuk tuk"] },
+        { "name": "Cargo 3 Wheel", "quantity": 0 ,src:vehicleimg["cargo three wheeler"]},
+        { "name": "3 Wheel Tempo", "quantity": 0,src:vehicleimg["3 wheeler tempo 222"] },
+        { "name": "E Rickshaw", "quantity": 0,src:vehicleimg["Electric3wheelERickshaw"] }
+      ],
+      "open": false,
+      "id": 2
+    },
+    {
+      "Item": "4 Wheels",
+      "options": [
+                  { "name": "Premium Hatchback Car", "quantity": 0,src:vehicleimg["Premium Hatchback Car"]},
+                  { "name": "Premium Sedan Car", "quantity": 0,src:vehicleimg["Premium Sedan Car"]},
+                  { "name": "SUV Car", "quantity": 0,src:vehicleimg["SUV Car"]},
+                  { "name": "Hatchback Car", "quantity": 0,src:vehicleimg["Hatchback Car"]},
+                  { "name": "Sedan Car", "quantity": 0,src:vehicleimg["Sedan Car"] },
+                  { "name": "Luxury Car", "quantity": 0 ,src:vehicleimg["Luxury Car"]},
+                  { "name": "Personal Car", "quantity": 0,src:vehicleimg["personal car"] },
+                  { "name": "Pickup Truck", "quantity": 0 ,src:vehicleimg["pickup truck"]},
+                  { "name": "Cargo Van", "quantity": 0,src:vehicleimg["eicher cargo van"] },
+                  { "name": "Tempo 4 Wheels", "quantity": 0 ,src:vehicleimg["Tempo"]},
+                  { "name": "Light Commercial Vehicle", "quantity": 0 ,src:vehicleimg["lightcommercialvehicle"]}
+      ],
+      "open": false,
+      "id": 3
+    }
+  ],
+  "active": true
+  }
+  
+  ]
+  
+    let [customerList, setCustomerList] = useState([]);
+    let [customerInventoryDisplay, setcustomerInventoryDisplay] = useState(false);
+    return (
+  
+      <div className='h-screen w-full bg-gradient-to-b from-blue-100 to-primary flex justify-center items-center bg-center bg-cover bg-no-repeat ' style={{backgroundImage:`url(${bg})`}}>
+        <ListContext.Provider value={[customerList, setCustomerList, customerInventoryDisplay, setcustomerInventoryDisplay]}>
+          <Inventory inventoryItem={inventoryItem} context={ListContext} />
+          {/* <Inventory inventoryItem={inventoryItem}/> */}
+          {/* {customerInventoryDisplay && <CustomerInventory />} */}
+        </ListContext.Provider>
+      </div>
+    )
+  }
+
+  // let inventoryItem = [
     //     {
     //       "mainItem": "Furniture",
     //       "subItem": [
@@ -372,71 +456,3 @@ export default function Vehicle() {
     
     
     //   ];
-
-let inventoryItem=[
-  {
-    "mainItem": "Vehicle",
-    "subItem": [
-      {
-        "Item": "2 Wheel",
-        "options": [
-          { "name": "Bike/Motorcycle", "quantity": 0 },
-          { "name": "Bike - upto 150 cc", "quantity": 0 },
-          { "name": "Bike 150 - to 200 cc", "quantity": 0 },
-          { "name": "Bike 200 - to 350 cc", "quantity": 0 },
-          { "name": "Scooty/Scooter", "quantity": 0 },
-          { "name": "Electric Scooter", "quantity": 0 },
-          { "name": "Electric Bike/Motorcycle", "quantity": 0 }
-        ],
-        "open": false,
-        "id": 1
-      },
-      {
-        "Item": "3 Wheel",
-        "options": [
-          { "name": "Rickshaw", "quantity": 0 },
-          { "name": "Tuk Tuk", "quantity": 0 },
-          { "name": "Cargo 3 Wheel", "quantity": 0 },
-          { "name": "3 Wheel Tempo", "quantity": 0 },
-          { "name": "E Rickshaw", "quantity": 0 }
-        ],
-        "open": false,
-        "id": 2
-      },
-      {
-        "Item": "4 Wheels",
-        "options": [
-                    { "name": "Premium Hatchback Car", "quantity": 0},
-                    { "name": "Premium Sedan Car", "quantity": 0},
-                    { "name": "SUV Car", "quantity": 0},
-                    { "name": "Hatchback Car", "quantity": 0},
-                    { "name": "Sedan Car", "quantity": 0 },
-                    { "name": "Luxury Car", "quantity": 0 },
-                    { "name": "Personal Car", "quantity": 0 },
-                    { "name": "Pickup Truck", "quantity": 0 },
-                    { "name": "Cargo Van", "quantity": 0 },
-                    { "name": "Tempo 4 Wheels", "quantity": 0 },
-                    { "name": "Light Commercial Vehicle", "quantity": 0 }
-        ],
-        "open": false,
-        "id": 3
-      }
-    ],
-    "active": true
-  }
-  
-]
-
-      let [customerList, setCustomerList] = useState([]);
-      let [customerInventoryDisplay, setcustomerInventoryDisplay] = useState(false);
-      return (
-    
-        <div className='h-screen w-full bg-gradient-to-b from-blue-100 to-primary flex justify-center items-center bg-center bg-cover bg-no-repeat ' style={{backgroundImage:`url(${bg})`}}>
-          <ListContext.Provider value={[customerList, setCustomerList, customerInventoryDisplay, setcustomerInventoryDisplay]}>
-            <Inventory inventoryItem={inventoryItem} context={ListContext} />
-            {/* <Inventory inventoryItem={inventoryItem}/> */}
-            {/* {customerInventoryDisplay && <CustomerInventory />} */}
-          </ListContext.Provider>
-        </div>
-      )
-}

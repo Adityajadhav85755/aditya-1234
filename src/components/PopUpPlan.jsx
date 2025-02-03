@@ -76,7 +76,7 @@ export default function PopUpPlan({FormContext}) {
                 </ul>
             </div>
             <div>
-                <button className='bg-primary p-2 px-4 font-bold tracking-wide w-full rounded-md text-white hover:bg-blue-700 transition-all mb-4' onClick={handlePremium}>Choose Premium Plan</button>
+                <button className='bg-PeriwinklePurpleDark p-2 px-4 font-bold tracking-wide w-full rounded-md text-white hover:bg-blue-700 transition-all mb-4' onClick={handlePremium}>Choose Premium Plan</button>
             </div>
         </div>
        
@@ -119,7 +119,7 @@ export default function PopUpPlan({FormContext}) {
                 </ul>
             </div>
             <div>
-                <button className='bg-primary p-2 px-4 font-bold tracking-wide w-full rounded-md text-white hover:bg-blue-700 transition-all mb-4' onClick={handleBasic}>Choose Basic Plan</button>
+                <button className='bg-PeriwinklePurpleDark p-2 px-4 font-bold tracking-wide w-full rounded-md text-white hover:bg-blue-700 transition-all mb-4' onClick={handleBasic}>Choose Basic Plan</button>
             </div>
         </div>
        

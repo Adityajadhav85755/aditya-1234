@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, createContext } from 'react';
 import Inventory from './components/Inventory';
 import shifting from './assets/images/shifting.jpg';
@@ -6,50 +5,6 @@ import PopupImage from './components/PopupImage';
 export let ListContext = createContext();
 
 export default function Household() {
-=======
-import React, { useState } from 'react'
-import Inventory from './components/Inventory'
-// import Dropdown from './components/Dropdown'
-import shifting from './assets/images/shifting.jpg'
-// import CustomerInventory from './components/CustomerInventory'
-import table from './assets/images/table.png'
-export let ListContext=React.createContext()
-
-export default function Household() {
-// src/utils/imageLoader.js
-const importImages = (requireContext) => {
-    const images = {};
-    requireContext.keys().forEach((key) => {
-        const imageName = key.replace('./', '').split('.')[0];
-        let keyName=imageName.replace("GeneralAppliance/","" );
-        keyName=keyName.replace("kitchenAppliencess/","" );
-        // console.log(imageName.split('/')[1])
-        images[imageName.split('/')[1]] = requireContext(key); // Associate image with the name
-        // images[keyName] = requireContext(key); // Associate image with the name
-      });
-    return images;
-  };
-  
-  // Use require.context to import images from the desired folder
-  const SmallApplianceImage = importImages(
-    require.context('./assets/Inventory/Household/SmallAppliances', true, /\.(png|jpe?g|svg)$/) // Adjust path as needed
-  );
-
-  const LargeApplianceImage = importImages(
-    require.context('./assets/Inventory/Household/LargeAppliances', true, /\.(png|jpe?g|svg)$/) // Adjust path as needed
-  );
-
-  const VehicleImage = importImages(
-    require.context('./assets/Inventory/Household/Vehicle', true, /\.(png|jpe?g|svg)$/) // Adjust path as needed
-  );
-//   console.log(VehicleImage)
-  const DecorationImage = importImages(
-    require.context('./assets/Inventory/Household/SmallDecorationItem', true, /\.(png|jpe?g|svg)$/) // Adjust path as needed
-  );
-  const Micellaneous = importImages(
-    require.context('./assets/Inventory/Household/Miscellaneous', true, /\.(png|jpe?g|svg)$/) // Adjust path as needed
-  );
->>>>>>> d5cb291 (Your commit message here)
 
   const importImages = (requireContext) => {
     const images = {};
@@ -60,7 +15,6 @@ const importImages = (requireContext) => {
     return images;
   };
 
-<<<<<<< HEAD
   const [PopupImageSrc, setPopupImageSrc] = useState(null);
 
   const openPopup = (image) => {
@@ -96,25 +50,12 @@ const importImages = (requireContext) => {
   );
 
   let inventoryItem=[
-=======
-
-
-
-
-
-
-
-//   console.log(Micellaneous)
-// console.log(VehicleImage)
-let inventoryItem=[
->>>>>>> d5cb291 (Your commit message here)
     {
         "mainItem": "Furniture",
         "subItem": [
             {
                 "Item": "Table",
                 "options": [
-<<<<<<< HEAD
                     { "name": "Centre Table", "quantity": 0, src:Furnitureimg["CentreTable813CFT"] },
                     { "name": "Folding Table", "quantity": 0, src:Furnitureimg["FoldingTable"] },
                     { "name": "Coffee Table Small", "quantity": 0, src:Furnitureimg["CoffeeTableSmall"] },
@@ -123,23 +64,12 @@ let inventoryItem=[
                     { "name": "Study/Computer Table", "quantity": 0, src:Furnitureimg["StudyComputerTable"] },
                     { "name": "Bed Side Table", "quantity": 0, src:Furnitureimg["BedSideTable"] },
                     { "name": "Dinner table 4", "quantity": 0, src:Furnitureimg["Dinnertable4"]}
-=======
-                    { "name": "Centre Table", "quantity": 0, src:table },
-                    { "name": "Folding Table", "quantity": 0, src:table },
-                    { "name": "Coffee Table Small", "quantity": 0, src:table },
-                    { "name": "Console Table", "quantity": 0, src:table },
-                    { "name": "Coffee Table Large", "quantity": 0, src:table },
-                    { "name": "Study/Computer Table", "quantity": 0, src:table },
-                    { "name": "Bed Side Table", "quantity": 0, src:table },
-                    { "name": "Dinner table 4", "quantity": 0, src:table }
->>>>>>> d5cb291 (Your commit message here)
                 ],
                 "open": false
             },
             {
                 "Item": "Bed",
                 "options": [
-<<<<<<< HEAD
                     { "name": "Baby Wooden Bed", "quantity": 0, src:Furnitureimg["Baby Wooden Bed"] },
                     { "name": "Single Bed Mattress-Foldable", "quantity": 0, src:Furnitureimg["Single Bed Mattress Foldable"] },
                     { "name": "Single Bed Mattress-Non Foldable", "quantity": 0, src:Furnitureimg["Single Bed Mattress Non Foldable"] },
@@ -160,35 +90,12 @@ let inventoryItem=[
                     { "name": "King Size Bed-With Storage", "quantity": 0, src:Furnitureimg["King Size Bed With Storage"] },
                     { "name": "Single Bed-With Storage", "quantity": 0, src:Furnitureimg["Single Bed With Storage"] },
                     { "name": "Single Bed-Without Storage", "quantity": 0, src:Furnitureimg["King Size Bed Without Storage"] }
-=======
-                    { "name": "Baby Wooden Bed", "quantity": 0, src:table },
-                    { "name": "Single Bed Mattress-Foldable", "quantity": 0, src:table },
-                    { "name": "Single Bed Mattress-Non Foldable", "quantity": 0, src:table },
-                    { "name": "Double Bed-Dismantlable", "quantity": 0, src:table },
-                    { "name": "Cradle-Dismantleable", "quantity": 0, src:table },
-                    { "name": "Bunk Bed-Dismantieable", "quantity": 0, src:table },
-                    { "name": "Single bed storage dismantiable", "quantity": 0, src:table },
-                    { "name": "Single bed non storage dismantiable", "quantity": 0, src:table },
-                    { "name": "Single Bed Mattress-Thick", "quantity": 0, src:table },
-                    { "name": "Single Bed Mattress", "quantity": 0, src:table },
-                    { "name": "Double Bed Mattress-Foldable", "quantity": 0, src:table },
-                    { "name": "Double Bed Mattress Non Foldable", "quantity": 0, src:table },
-                    { "name": "Diwan cum Bed", "quantity": 0, src:table },
-                    { "name": "Queen Size Bed-Without Storage", "quantity": 0, src:table },
-                    { "name": "King Size Bed-Without Storage", "quantity": 0, src:table },
-                    { "name": "Queen Size Bed With Storage", "quantity": 0, src:table },
-                    { "name": "Single Bed-Foldable", "quantity": 0, src:table },
-                    { "name": "King Size Bed-With Storage", "quantity": 0, src:table },
-                    { "name": "Single Bed-With Storage", "quantity": 0, src:table },
-                    { "name": "Single Bed Without Storage", "quantity": 0, src:table }
->>>>>>> d5cb291 (Your commit message here)
                 ],
                 "open": false
             },
             {
                 "Item": "Chair",
                 "options": [
-<<<<<<< HEAD
                     { "name": "Wooden Chair", "quantity": 0, src:Furnitureimg["woodenchair"]},
                     { "name": "Plastic Chair", "quantity": 0, src:Furnitureimg["PLASTIC CHAIR"] },
                     { "name": "High Chair", "quantity": 0, src:Furnitureimg["HIGH CHAIR"] },
@@ -201,27 +108,12 @@ let inventoryItem=[
                     { "name": "Folding Chair", "quantity": 0, src:Furnitureimg["FOLDING CHAIR"] },
                     { "name": "Arm Chair", "quantity": 0, src:Furnitureimg["ARM CHAIR"] },
                     { "name": "Office Chair", "quantity": 0, src:Furnitureimg["OFFICEE CHAIR"] }
-=======
-                    { "name": "Wooden Chair", "quantity": 0, src:table },
-                    { "name": "Plastic Chair", "quantity": 0, src:table },
-                    { "name": "High Chair", "quantity": 0, src:table },
-                    { "name": "Bean Bag/Pouffe", "quantity": 0, src:table },
-                    { "name": "Study Chair", "quantity": 0, src:table },
-                    { "name": "Bench", "quantity": 0, src:table },
-                    { "name": "Rocking Chair", "quantity": 0, src:table },
-                    { "name": "Stool", "quantity": 0, src:table },
-                    { "name": "Settee", "quantity": 0, src:table },
-                    { "name": "Folding Chair", "quantity": 0, src:table },
-                    { "name": "Arm Chair", "quantity": 0, src:table },
-                    { "name": "Office Chair", "quantity": 0, src:table }
->>>>>>> d5cb291 (Your commit message here)
                 ],
                 "open": false
             },
             {
                 "Item": "Cabinet & Storage",
                 "options": [
-<<<<<<< HEAD
                     { "name": "Chest of Drawers Medium", "quantity": 0, src:Furnitureimg["chest drawer"] }, 
                     { "name": "Prayer Unit/Mandir", "quantity": 0, src:Furnitureimg["mandir"] },
                     { "name": "Display Cabinet Large", "quantity": 0, src:Furnitureimg["display cabinet large"] },
@@ -254,62 +146,21 @@ let inventoryItem=[
                     { "name": "Triple Door Wardrobe", "quantity": 0, src:Furnitureimg["triple_door_wardrobe-removebg-preview"] },
                     { "name": "Double Door Wardrobe", "quantity": 0, src:Furnitureimg["double_door_wardrobe-removebg-preview"] },
                     { "name": "Single Door Wardrobe", "quantity": 0, src:Furnitureimg["singledoorwardrobe11"] }
-=======
-                    { "name": "Chest of Drawers Medium", "quantity": 0, src:table },
-                    { "name": "Prayer Unit/Mandir", "quantity": 0, src:table },
-                    { "name": "Display Cabinet Large", "quantity": 0, src:table },
-                    { "name": "Chest of Drawers Small", "quantity": 0, src:table },
-                    { "name": "Book Shelf Large", "quantity": 0, src:table },
-                    { "name": "Steel Almirah Medium", "quantity": 0, src:table },
-                    { "name": "Book Shelf Small", "quantity": 0, src:table },
-                    { "name": "Trunk", "quantity": 0, src:table },
-                    { "name": "Chest of Drawers Large", "quantity": 0, src:table },
-                    { "name": "Wall Shelf", "quantity": 0, src:table },
-                    { "name": "Shoe Rack", "quantity": 0, src:table },
-                    { "name": "Wardrobe Large Dismantlable", "quantity": 0, src:table },
-                    { "name": "Wardrobe Large Non dismantlable", "quantity": 0, src:table },
-                    { "name": "Wardrobe Medium Dismantlable", "quantity": 0, src:table },
-                    { "name": "Wardrobe Medium Non dismantlable", "quantity": 0, src:table },
-                    { "name": "Safe Small", "quantity": 0, src:table },
-                    { "name": "Entertainment/TV Unit", "quantity": 0, src:table },
-                    { "name": "Single door wardrobe", "quantity": 0, src:table },
-                    { "name": "Dressing Table", "quantity": 0, src:table },
-                    { "name": "Iron Locker Small", "quantity": 0, src:table },
-                    { "name": "Display Cabinet Small", "quantity": 0, src:table },
-                    { "name": "Book Shelf Medium", "quantity": 0, src:table },
-                    { "name": "TV Table", "quantity": 0, src:table },
-                    { "name": "Plastic Cupboard", "quantity": 0, src:table },
-                    { "name": "Sliding Door Wardrobe", "quantity": 0, src:table },
-                    { "name": "Shoe Rack Wooden", "quantity": 0, src:table },
-                    { "name": "Shoe Rack Metal", "quantity": 0, src:table },
-                    { "name": "Five Door Wardrobe", "quantity": 0, src:table },
-                    { "name": "Four Door Wardrobe", "quantity": 0, src:table },
-                    { "name": "Triple Door Wardrobe", "quantity": 0, src:table },
-                    { "name": "Double Door Wardrobe", "quantity": 0, src:table },
-                    { "name": "Single Door Wardrobe", "quantity": 0, src:table }
->>>>>>> d5cb291 (Your commit message here)
                 ],
                 "open": false
             },
             {
                 "Item": "Kitchen Furniture",
                 "options": [
-<<<<<<< HEAD
                     { "name": "Side Table", "quantity": 0, src:Furnitureimg["Side Table"] },
                     { "name": "Serving Trolley", "quantity": 0, src:Furnitureimg["Serving Trolley"] },
                     { "name": "Kitchen Rack", "quantity": 0, src:Furnitureimg["Kitchen Rack"] }
-=======
-                    { "name": "Side Table", "quantity": 0, src:table },
-                    { "name": "Serving Trolley", "quantity": 0, src:table },
-                    { "name": "Kitchen Rack", "quantity": 0, src:table }
->>>>>>> d5cb291 (Your commit message here)
                 ],
                 "open": false
             },
             {
                 "Item": "Dining",
                 "options": [
-<<<<<<< HEAD
                     { "name": "Marble Top Dining Table Only - 8 Seater", "quantity": 0, src:Furnitureimg["Marble Top Dining Table Only - 8 Seater"] },
                     { "name": "Marble Top Dining Table Only - 6 Seater", "quantity": 0, src:Furnitureimg["Marble Top Dining Table Only  6 Seater"]},
                     { "name": "Marble Top Dining Table Only - 4 Seater", "quantity": 0, src:Furnitureimg["Marble Top Dining Table Only  4 Seater"]},
@@ -320,25 +171,12 @@ let inventoryItem=[
                     { "name": "Glass Top Dining Table Only - 8 Seater", "quantity": 0, src:Furnitureimg["Glass Top Dining Table Only  8 Seater"] },
                     { "name": "Dining Table Only - 6 Seater", "quantity": 0, src:Furnitureimg["Dining Table Only - 6 Seater"] },
                     { "name": "Dining Table Only - 4 Seater", "quantity": 0, src:Furnitureimg["Dining Table Only - 4 Seater"] }
-=======
-                    { "name": "Marble Top Dining Table Only - 8 Seater", "quantity": 0, src:table },
-                    { "name": "Marble Top Dining Table Only - 6 Seater", "quantity": 0, src:table },
-                    { "name": "Marble Top Dining Table Only - 4 Seater", "quantity": 0, src:table },
-                    { "name": "Dining Chair", "quantity": 0, src:table },
-                    { "name": "Dining Table Only - 8 Seater", "quantity": 0, src:table },
-                    { "name": "Glass Top Dining Table Only - 6 Seater", "quantity": 0, src:table },
-                    { "name": "Glass Top Dining Table Only - 4 Seater", "quantity": 0, src:table },
-                    { "name": "Glass Top Dining Table Only - 8 Seater", "quantity": 0, src:table },
-                    { "name": "Dining Table Only - 6 Seater", "quantity": 0, src:table },
-                    { "name": "Dining Table Only - 4 Seater", "quantity": 0, src:table }
->>>>>>> d5cb291 (Your commit message here)
                 ],
                 "open": false
             },
             {
                 "Item": "Sofa",
                 "options": [
-<<<<<<< HEAD
                     { "name": "3 Seater Sofa - L Shape", "quantity": 0, src: Furnitureimg["3SeaterSofaLShape"] },
                     { "name": "4 Seater Sofa", "quantity": 0, src: Furnitureimg["4 Seater Sofa"] },
                     { "name": "3 Seater Sofa", "quantity": 0, src: Furnitureimg["3 SeaterSofa"] },
@@ -353,43 +191,18 @@ let inventoryItem=[
                     { "name": "3 Seater Sofa - Leather", "quantity": 0, src:Furnitureimg["3 Seater Sofa - Leather"]  },
                     { "name": "2 Seater Sofa - Leather", "quantity": 0,  src:Furnitureimg["2 Seater Sofa - Leather"] },
                     { "name": "Sofa cum Bed", "quantity": 0, src:Furnitureimg["Sofa cum Bed"] }
-=======
-                    { "name": "3 Seater Sofa - L Shape", "quantity": 0, src:table },
-                    { "name": "4 Seater Sofa", "quantity": 0, src:table },
-                    { "name": "3 Seater Sofa", "quantity": 0, src:table },
-                    { "name": "2 Seater Sofa", "quantity": 0, src:table },
-                    { "name": "1 Seater Sofa", "quantity": 0, src:table },
-                    { "name": "Recliner Sofa 1-seater", "quantity": 0, src:table },
-                    { "name": "Recliner Sofa 2-seater", "quantity": 0, src:table },
-                    { "name": "Recliner Sofa 3-seater", "quantity": 0, src:table },
-                    { "name": "5 Seater Sofa - L Shape", "quantity": 0, src:table },
-                    { "name": "1 Seater Sofa - Leather", "quantity": 0, src:table },
-                    { "name": "7 Seater Sofa - L Shape", "quantity": 0, src:table },
-                    { "name": "3 Seater Sofa - Leather", "quantity": 0, src:table },
-                    { "name": "2 Seater Sofa - Leather", "quantity": 0, src:table },
-                    { "name": "Sofa cum Bed", "quantity": 0, src:table }
->>>>>>> d5cb291 (Your commit message here)
                 ],
                 "open": false
             },
             {
                 "Item": "Bar Furniture",
                 "options": [
-<<<<<<< HEAD
                     { "name": "Bar Cabinet Large", "quantity": 0, src:Furnitureimg["Bar Cabinet Large"] },
                     { "name": "Bar Cabinet", "quantity": 0, src:Furnitureimg["BarCabinet"] },
                     { "name": "Bar Unit", "quantity": 0, src:Furnitureimg["Bar Unit"] },
                     { "name": "Bar Trolley", "quantity": 0, src:Furnitureimg["Bar Trolley"] },
                     { "name": "Bar Chair / Stool", "quantity": 0, src:Furnitureimg["Bar Chair  Stool"] },
                     { "name": "Wine Rack", "quantity": 0, src:Furnitureimg["Wine Rack"] }
-=======
-                    { "name": "Bar Cabinet Large", "quantity": 0, src:table },
-                    { "name": "Bar Cabinet", "quantity": 0, src:table },
-                    { "name": "Bar Unit", "quantity": 0, src:table },
-                    { "name": "Bar Trolley", "quantity": 0, src:table },
-                    { "name": "Bar Chair / Stool", "quantity": 0, src:table },
-                    { "name": "Wine Rack", "quantity": 0, src:table }
->>>>>>> d5cb291 (Your commit message here)
                 ],
                 "open": false
             }
@@ -425,11 +238,7 @@ let inventoryItem=[
             "options": [
               { "name": "Garment Steamer", "quantity": 0, "src": SmallApplianceImage["Garment steamer"] || null },
               { "name": "Speaker", "quantity": 0, "src": SmallApplianceImage["speaker"] || null },
-<<<<<<< HEAD
-              { "name": "Vacuum Cleaner", "quantity": 0, "src": SmallApplianceImage["Vaccum Cleaner 1"] || null },
-=======
-              { "name": "Vacuum Cleaner", "quantity": 0, "src": SmallApplianceImage["Vacuum cleaner"] || null },
->>>>>>> d5cb291 (Your commit message here)
+              { "name": "Vacuum Cleaner", "quantity": 0, "src": SmallApplianceImage["Vaccum cleaner"] || null },
               { "name": "Instant Geyser", "quantity": 0, "src": SmallApplianceImage["Instant Geyser"] || null },
               { "name": "Music/Video System", "quantity": 0, "src": SmallApplianceImage["music video system"] || null },
               { "name": "Sewing Machine", "quantity": 0, "src": SmallApplianceImage["sewing machine"] || null },
@@ -660,12 +469,8 @@ let inventoryItem=[
             {
                 "Item": "Fire Extinguisher",
                 "options": [
-<<<<<<< HEAD
-                    { "name": "Fire Extinguisher Small", "quantity": 0, src:Micellaneous["Fire Extinguisher Small"]}
-=======
-                    { "name": "Fire Extinguisher Small", "quantity": 0, src:Micellaneous["Fire Extinguisher Small"] }
->>>>>>> d5cb291 (Your commit message here)
-                ],
+                    { "name": "Fire Extinguisher Small", "quantity": 0, src:Micellaneous["FireExtinguisherSmall"] },
+                ],          
                 "open": false
             },
             {
@@ -729,9 +534,8 @@ let inventoryItem=[
   let [customerInventoryDisplay, setcustomerInventoryDisplay] = useState(false);
 
   return (
-<<<<<<< HEAD
     <ListContext.Provider value={[customerList, setCustomerList, customerInventoryDisplay, setcustomerInventoryDisplay]}>
-      <div style={{ backgroundImage: `url(${shifting})` }} className='h-screen w-full flex justify-center items-center bg-center bg-cover '>
+      <div style={{ backgroundImage: `url(${shifting})` }} className='h-screen w-screen flex justify-center items-center bg-center bg-cover bg-fixed '>
       <Inventory inventoryItem={inventoryItem} context={ListContext}  onClick={openPopup}/>
       </div>
 
@@ -740,26 +544,5 @@ let inventoryItem=[
       )}
     </ListContext.Provider>
   );
-=======
-    <ListContext.Provider value={[customerList,setCustomerList,customerInventoryDisplay,setcustomerInventoryDisplay]}>
-        <div
-        style={{
-        backgroundColor: '#7f57b4',
-        height: '70vh', // Set height to approximately 35% of the viewport height
-        }}
-        className='w-full flex justify-center items-center bg-center bg-cover'
-    >
-        <Inventory inventoryItem={inventoryItem} context={ListContext} />
-    </div>
-    </ListContext.Provider>
-
-    // <div style={{backgroundImage:`url(${shifting})`}} className='h-screen w-full flex justify-center items-center bg-center bg-cover  '>
-    // {/* <div className='h-screen w-full bg-gradient-to-b from-blue-100 to-primary flex justify-center items-center '> */}
-    //   <ListContext.Provider value={[customerList,setCustomerList,customerInventoryDisplay,setcustomerInventoryDisplay]}>
-    //     <Inventory inventoryItem={inventoryItem} context={ListContext}/>
-    //   </ListContext.Provider>
-    // </div>
-    
-  )
->>>>>>> d5cb291 (Your commit message here)
 }
+

@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+body {
+  /* font-family: Arial, sans-serif; */
+}
 
 .App-logo {
   height: 40vmin;
@@ -46,7 +49,3 @@
 }
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d5cb291 (Your commit message here)

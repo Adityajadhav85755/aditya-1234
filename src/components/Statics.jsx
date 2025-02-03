@@ -37,16 +37,16 @@ const StatisticCard = ({ icon, color, number, label }) => {
 // Main Statistics Component
 const Statistics = () => {
   const statsData = [
-    { icon: "bi-emoji-smile", color: "text-green-500", number: 232, label: "Happy Clients" },
-    { icon: "bi-journal-richtext", color: "text-green-500", number: 521, label: "Projects" },
-    { icon: "bi-headset", color: "text-green-500", number: 1463, label: "Hours of Support" },
-    { icon: "bi-people", color: "text-green-500", number: 15, label: "Hard Workers" },
+    { icon: "bi-emoji-smile", color: "text-green-500", number: 149, label: "Happy Clients" },
+    { icon: "bi-journal-richtext", color: "text-green-500", number: 321, label: "Projects" },
+    // { icon: "bi-headset", color: "text-green-500", number: 1463, label: "Hours of Support" },
+    { icon: "bi-people", color: "text-green-500", number: 80, label: "Hard Workers" },
   ];
 
   return (
     <div className="bg-gray-1000 py-4">
       <div className="container mx-auto">
-        <div className="flex flex-wrap justify-center gap-2">
+        <div className="flex flex-wrap items-center justify-center gap-2">
           {statsData.map((stat, index) => (
             <StatisticCard
               key={index}

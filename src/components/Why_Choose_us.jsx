@@ -3,12 +3,11 @@ import React from 'react'
 
 export default function AboutContent(){
   return (
-
 <div>
 <section class="flex flex-col items-center bg-blue-100 text-black w-full px-4 py-4 ">
   <div class="w-full max-w-[1000px] m-auto">
-    <h2 class="text-center font-bold text-other2 text-2xl mb-4"><strong>Why Choose Us</strong></h2>
-    <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 list-disc list-inside">
+    <h2 class="text-center font-title font-bold text-2xl mb-4"><strong>Why Choose Us</strong></h2>
+    <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 list-disc list-inside font-body  ">
     {/* grid grid-cols-2 md:grid-cols-4 sm:grid-cols-3 gap-4 list-disc list-inside */}
       <li>Corporate Shifting</li>
       <li>Safe Shifting</li>

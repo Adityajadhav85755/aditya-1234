@@ -21,27 +21,60 @@ import offer from './assets/images/offer.jpg'
 import WhatOffer from './components/WhatOffer';
 import WareHouse from './components/WareHouse';
 import OtherServices from './components/OtherServices';
+import AcSummerNeeds from './components/AcsummaryNeed';
 import Steps from './components/Steps';
-<<<<<<< HEAD
-=======
 import { Swiper, SwiperSlide } from "swiper/react";
+import ServiceScroll from './components/servicescroll';
 import { Link } from 'react-router-dom';
+import ComparisonTable from './components/ComparisionTable';
+import FAQSection from './components/FAQ';
+import { useNavigate } from 'react-router-dom';
+
+
+// import React, { useEffect, useRef } from "react";
 // import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules"; // Removed Pagination module import
->>>>>>> d5cb291 (Your commit message here)
+import Keywords from './components/keywords';
+import DiscountScroller from './components/Discountcoupon';
 // import Contact from "./components/Contact";
 
 let LoginContext = React.createContext();
 let FormContext = React.createContext();
+
 // let LoginStatusContext = React.createContext();
-function App() {
+const App = () => {
+  // State for the selected location
   const [selectedLocation, setSelectedLocation] = useState("Mumbai");
 
-  const handleLocationClick = (location) => {
-    setSelectedLocation(location); // Update the location
+  // Combined handleLocationClick function
+  const handleLocationClick = (locationOrAriaLabel) => {
+    let updatedLocation = locationOrAriaLabel;
+
+    // If the input is an ariaLabel, we format it accordingly
+    if (locationOrAriaLabel.includes('-')) {
+      updatedLocation = locationOrAriaLabel
+        .replace(/-/g, ' ') // Replace hyphens with spaces
+        .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize each word
+    }
+
+    setSelectedLocation(updatedLocation); // Update the location
   };
-  
-  let [loginStatus,setLoginStatus,showLoginForm,setShowLoginForm,showRegisterForm,setShowRegisterForm,userData,setUserData]=useContext(LoginStatusContext)
+
+  // comparisonData.js
+  const comparisonPoints = [
+    { service: "Cost", localCompany: "High", sky: "Affordable" },
+    { service: "Service Speed", localCompany: "Slow", sky: "Fast" },
+    { service: "Customer Support", localCompany: "Average", sky: "24/7 Support" },
+    { service: "Reliability", localCompany: "Inconsistent", sky: "Highly Reliable" },
+    { service: "Warranty", localCompany: "6 months", sky: "1 year" },
+    { service: "Technology Used", localCompany: "Outdated", sky: "Latest Tech" },
+    { service: "Transparency", localCompany: "Low", sky: "High" },
+    { service: "Coverage", localCompany: "Limited", sky: "Wide Coverage" },
+    { service: "Expertise", localCompany: "Moderate", sky: "Highly Skilled" },
+    { service: "Value for Money", localCompany: "Average", sky: "Excellent" },
+  ];
+
+  let [loginStatus, setLoginStatus, showLoginForm, setShowLoginForm, showRegisterForm, setShowRegisterForm, userData, setUserData] = useContext(LoginStatusContext)
   // console.log(loginStatus)
   let [change, setChange] = useState(false)
 
@@ -52,7 +85,7 @@ function App() {
     slidesToShow: 3,
     slidesToScroll: 1,
   };
-  let [form, setForm] = useState({ location: "", phone: "", type: "", service: "", detail: "" })
+  let [form, setForm] = useState({ location: "", phone: "", type: "", serviceType: "", detail: "" })
   // let [showLoginForm, setShowLoginForm] = useState(false)
   // let [showRegisterForm, setShowRegisterForm] = useState(false)
   let [showPlan, setShowPlan] = useState(false)
@@ -67,55 +100,21 @@ function App() {
 
   let corousel = useRef(null)
   // let [withinForm, setWithingForm] = useState({ city: "", sourceLocality: "", destinationLocality: "", choice: "movers", date: "",service:"" })
-  let [withinForm, setWithingForm] = useState({ sourceLocality: "", destinationLocality: "", choice: "movers", date: "", service: "", plan: "",time:"" })
-  let [betweenForm, setBetweenForm] = useState({ city: "", destinationCity: "", choice: "movers", date: "" })
+  let [withinForm, setWithingForm] = useState({ sourceLocality: "", destinationLocality: "", date: "", service: "", plan: "", time: "" })
+  let [betweenForm, setBetweenForm] = useState({ city: "", destinationCity: "", date: "" })
   // let [ctaForm, setCtaForm] = useState({ name: "", email: "", phone: "", moveFrom: "", moveTo: "" })
 
   let withinButton = useRef(null)
   let formForWithin = useRef(null)
   let betweenButton = useRef(null)
   let formForBetween = useRef(null)
-  // let services = [
-  //   {
-  //     name: "House Shifting",
-  //     redirect: "household"
-  //   },
-
-  //   {
-  //     name: "Office Shifting",
-  //     redirect: "office"
-  //   },
-
-  //   {
-  //     name: "Shop Shifting",
-  //     redirect: "shop"
-
-  //   },
-
-  //   {
-  //     name: "Vehicle Shifting",
-  //     redirect: "vehicle"
-  //   },
-
-  //   {
-  //     name: "AC Service",
-  //     redirect: "acservice"
-  //   },
-
-  // ]
-
-
-  // function App() {
-  //   return (
-  //     <div>
-  //       <ContactForm />
-  //     </div>
-  //   );
-  // }
   function handleInput(e) {
     let { name, value } = e.target;
     setWithingForm({ ...withinForm, [name]: value })
   }
+
+
+
 
   function handleBetweenFormInput(e) {
     let { name, value } = e.target;
@@ -137,6 +136,7 @@ function App() {
     setShowPlan(true)
 
   }
+
   function showBetweenForm() {
     formForWithin.current.style.display = "none";
     formForBetween.current.style.display = "flex";
@@ -152,6 +152,114 @@ function App() {
     withinButton.current.classList.add("activeForm")
     betweenButton.current.classList.add("unActiveForm")
   }
+  const navigate = useNavigate();
+
+  // Handle form submission
+  const handleSubmit = async (e, formType) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
+    // Determine which form data to use based on formType
+    let formData = {};
+    if (formType === "within") {
+      formData = withinForm;
+    } else if (formType === "between") {
+      formData = betweenForm; // Assuming betweenForm is defined elsewhere
+    } else {
+      formData = {}; // Default case (if needed)
+    }
+
+    // Ensure serviceType is included in the formData
+    if (!formData.serviceType) {
+      alert("Please select a service type before submitting.");
+      return;
+    }
+
+    console.log("Form Data to be sent:", formData); // Display form data in the console
+
+    try {
+      // Send formData directly to the backend
+      const response = await fetch('http://localhost/json.php/Quotation.php', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData), // Send the entire formData object
+      });
+
+      // Parse the response
+      const result = await response.json();
+      console.log("Response from backend:", result);
+
+      // Handle the response based on the status
+      if (response.ok) {
+        // Redirect to the selected service's inventory page
+        switch (formData.serviceType) {
+          case 'household-shifting':
+            navigate('/household');
+            break;
+          case 'office-shifting':
+            navigate('/office');
+            break;
+          case 'shop-shifting':
+            navigate('/shop');
+            break;
+          case 'vehicle-shifting':
+            navigate('/vehicle');
+            break;
+          case 'warehouse-storage':
+            navigate('/warehouse');
+            break;
+          default:
+            navigate('/contact');
+            break;
+        }
+      } else {
+        alert("Error submitting quote: " + (result.message || "Unknown error"));
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Failed to submit quote. Please try again.");
+    }
+  };
+
+  const socket = new WebSocket('ws://localhost:3000');
+
+
+  socket.onopen = () => {
+    console.log('WebSocket connected');
+    socket.send('Hello from client');
+  };
+
+  socket.onmessage = (event) => {
+    console.log('Message from server:', event.data);
+  };
+
+  socket.onerror = (error) => {
+    console.error('WebSocket error:', error);
+  };
+
+  socket.onclose = () => {
+    console.log('WebSocket disconnected');
+  };
+
+
+
+
+
+
+
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    // Set the video to autoplay after 3 seconds (3000 ms)
+    const timer = setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.play();
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
 
   const scrollerRef = useRef(null);
 
@@ -162,7 +270,7 @@ function App() {
     const autoScroll = () => {
       if (scroller) {
         scroller.scrollLeft += 1; // Increase to scroll faster
-        if (scroller.scrollLeft >= scroller.scrollWidth - scroller.clientWidth) {
+        if (scroller.scrollLeft >= scroller.scrollWidth / 3) {
           scroller.scrollLeft = 0; // Reset when it reaches the end
         }
       }
@@ -179,378 +287,397 @@ function App() {
       setShowLoginForm(true)
     }, 3000)
   }, [])
+
   return (
 
     <>
       <header id="header" className='scroll-smooth'>
-        <LoginStatusContext.Provider value={[loginStatus,setLoginStatus,userData,setUserData,setShowLoginForm]}>
-        <Navbar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm}/>
-        <Sidebar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm}/>
-        </LoginStatusContext.Provider>
+        {/* <LoginStatusContext.Provider value={[loginStatus, setLoginStatus, userData, setUserData, setShowLoginForm]}> */}
+        <Navbar LoginStatusContext={LoginStatusContext} />
+        <Sidebar LoginStatusContext={LoginStatusContext} />
+        {/* </LoginStatusContext.Provider> */}
       </header>
       <main>
-<<<<<<< HEAD
-        <section className='flex flex-col md:flex-row justify-around bg-other'>
-          <div className='text-white  font-bold p-4 max-w-[600px] w-full'>
-          <h2 className="location text-4xl leading-[4rem]">
-          Best Packers And Movers In {selectedLocation}
-          </h2>
-          <h2 className="text-2xl text-other2 font-bold tracking-wider leading-10">
-          "Budget Me Best Service"
-          </h2>
-
-            <div className='flex gap-5 max-w  -[600px] overflow-x-scroll my-8'>
-            <img src={offer} alt="" className='w-80 h-28 rounded-md' />
-            <img src={offer} alt="" className='w-80 h-28 rounded-md' />
-            <img src={offer} alt="" className='w-80 h-28 rounded-md' />
-            <img src={offer} alt="" className='w-80 h-28 rounded-md' />
-            </div>
-          </div>
-          <div className='max-w-[500px] m-auto bg-terniary p-4 my-8 rounded-md mx-8 max-[472px]:mx-0'>
-=======
-        <section className='flex flex-col md:flex-row justify-start bg-gradient-to-b from-PeriwinklePurpleLight to-PeriwinklePurpleDark w-full mx-auto'>
-          <div className='text-white font-bold p-4 max-w-[600px] w-full md:w-[50%] md:ml-[15%] md:mt-8'>
-            <h2 className='location text-4xl leading-[4rem]'>
-            Best Packers And Movers In Mumbai
-            </h2>
-            <h2 className='text-2xl text-white font-bold tracking-wider leading-10'>
-            "Budget Me Best Service"
-            </h2>
-
-
-            
- 
-            <div className="relative overflow-hidden my-8">
-      <div
-        ref={scrollerRef}
-        className="flex gap-5 max-w-[600px] overflow-x-scroll"
-      >
-        <img src={offer} alt="Service 1" className="w-12 h-20 rounded-md rounded-full object-cover" />
-        <img src={offer} alt="Service 2" className="w-80 h-20 rounded-md rounded-full object-cover" />
-        <img src={offer} alt="Service 3" className="w-80 h-20 rounded-md rounded-full object-cover" />
-        <img src={offer} alt="Service 4" className="w-80 h-20 rounded-md rounded-full object-cover" />
-        <img src={offer} alt="Service 5" className="w-80 h-20 rounded-md rounded-full object-cover" />
-        {/* Duplicate images for seamless scroll effect */}
-        <img src={offer} alt="Service 6" className="w-80 h-20 rounded-md " />
-        <img src={offer} alt="Service 7" className="w-80 h-20 rounded-md" />
-      </div>
-    </div>
-
-    <div className="flex gap-5 max-w-[600px] overflow-x-scroll my-8 hidden lg:flex">
-  {/* Icon 1 with Link */}
-  <div className="flex flex-col items-center">
-    <Link to="/household">  {/* Update the path as needed */}
-      <img src={offer} alt="Service 1" className="w-20 h-20 rounded-full object-cover" />
-      <span className="text-sm mt-2 text-center">Household</span>
-    </Link>
-  </div>
-
-  {/* Icon 2 with Link */}
-  <div className="flex flex-col items-center">
-    <Link to="/office">  {/* Update the path as needed */}
-      <img src={offer} alt="Service 2" className="w-20 h-20 rounded-full object-cover" />
-      <span className="text-sm mt-2 text-center">Office</span>
-    </Link>
-  </div>
-
-  {/* Icon 3 with Link */}
-  <div className="flex flex-col items-center">
-    <Link to="/vechile">  {/* Update the path as needed */}
-      <img src={offer} alt="Service 3" className="w-20 h-20 rounded-full object-cover" />
-      <span className="text-sm mt-2 text-center">Vechile</span>
-    </Link>
-  </div>
-
-  {/* Icon 4 with Link */}
-  <div className="flex flex-col items-center">
-    <Link to="/shop">  {/* Update the path as needed */}
-      <img src={offer} alt="Service 4" className="w-20 h-20 rounded-full object-cover" />
-      <span className="text-sm mt-2 text-center">Shop</span>
-    </Link>
-  </div>
-
-  {/* Icon 5 with Link */}
-  <div className="flex flex-col items-center">
-    <Link to="/acservices">  {/* Update the path as needed */}
-      <img src={offer} alt="Service 4" className="w-20 h-20 rounded-full object-cover" />
-      <span className="text-sm mt-2 text-center">Ac Service</span>
-    </Link>
-  </div>
-
-  {/* Icon 6 with Link */}
-  <div className="flex flex-col items-center">
-    <Link to="/warehouse">  {/* Update the path as needed */}
-      <img src={offer} alt="Service 4" className="w-20 h-20 rounded-full object-cover" />
-      <span className="text-sm mt-2 text-center">Warehouse</span>
-    </Link>
-  </div>
-</div>
-{/* Video Section */}
-<div className="bg-PeriwinklePurpleDark py-8 flex flex-col md:flex-row justify-around w-full md:w-[110%] h-[80px] md:h-[300px] mx-auto md:ml-[4%] ml-[80px] hidden md:block">
-        <video 
-            className="w-full rounded-md h-full"
-            controls
-            // poster="path/to/thumbnail.jpg" /* Add a video poster image */
+        <section className=" fusion-fullwidth fullwidth-box"
+          style={{
+            backgroundImage: "url('/img/frontend222.jpg')", // Replace with your image path
+            backgroundSize: "cover",  // Ensures the image covers the full section like a wallpaper
+            backgroundPosition: "center",  // Centers the background image
+            minheight: "100vh",  // Ensures the section takes full height of the viewport
+            backgroundColor: "rgba(0, 0, 0, 0.6)",  // Semi-transparent black overlay
+          }}
         >
-            <source src="/4277721-uhd_3840_2160_25fps.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-        </video>
-    </div>
+          <div className='text-white font-bold p-4 max-w-[600px] w-full lg:w-[50%] md:ml-[15%] md:mt-8'>
+            <h2 className='font-title font-light lg:mt-0 sm:mt-28 location text-4xl leading-[3rem] text-Roboto'>
 
 
-         
+              Best Packers And Movers In {selectedLocation}
+            </h2>
+
+            <h2 className='text-2xl font-title text-white font-bold tracking-wider leading-8 '>
+              "Budget Me Best Service"
+            </h2>
+            <DiscountScroller />
+            {/* <div className="relative overflow-hidden my-8">
+              <div
+                ref={scrollerRef}
+                className="flex gap-5 max-w-[600px] overflow-x-scroll "
+              >
+                <img src={offer} alt="Service 1" className="w-12 h-20 rounded-md rounded-full object-cover" />
+                <img src={offer} alt="Service 2" className="w-80 h-20 rounded-md rounded-full object-cover" />
+                <img src={offer} alt="Service 3" className="w-80 h-20 rounded-md rounded-full object-cover" />
+                <img src={offer} alt="Service 4" className="w-80 h-20 rounded-md rounded-full object-cover" />
+                <img src={offer} alt="Service 5" className="w-80 h-20 rounded-md rounded-full object-cover" />
+                <img src={offer} alt="Service 6" className="w-80 h-20 rounded-md rounded-full object-cover" />
+                <img src={offer} alt="Service 7" className="w-80 h-20 rounded-md rounded-full object-cover" />
+              </div>
+            </div> */}
+
+            <div className="flex gap-5 max-w-[600px] overflow-x-scroll my-8 hidden lg:flex ml-4">
+              {/* Icon 1 with Link */}
+              <div className="flex flex-col items-center ml-2" style={{ zIndex: 10 }}>
+                <Link to="/household-custom-inventory" className="flex flex-col items-center">
+                  <div
+                    className="h-16 w-16 rounded-full bg-cover bg-gray-300 border-2 border-red-500 shadow-md"
+                    style={{
+                      backgroundImage: `url(/img/House.png)`, // Replace with your desired image path
+                      backgroundPosition: 'center',
+                    }}
+                  ></div>
+                  <span className="text-xs mt-2 font-title text-center">Household</span>
+                </Link>
+              </div>
+
+
+              <div className="flex flex-col items-center ml-2" style={{ zIndex: 10 }}>
+                <Link to="/office-custom-inventory" className="flex flex-col items-center">
+                  <div
+                    className="h-16 w-16 rounded-full bg-cover bg-gray-300 border-2 border-red-500 shadow-md"
+                    style={{
+                      backgroundImage: `url(/img/office.png)`,
+                      backgroundPosition: 'center',
+                    }}
+                  ></div>
+                  <span className="text-xs mt-2  font-titletext-center">Office</span>
+                </Link>
+              </div>
+
+              {/* Icon 3 with Link */}
+              <div className="flex flex-col items-center ml-2" style={{ zIndex: 10 }}>
+                <Link to="/vehicle-custom-inventory" className="flex flex-col items-center">
+                  <div
+                    className="h-16 w-16 rounded-full bg-cover bg-gray-300 border-2 border-red-500 shadow-md"
+                    style={{
+                      backgroundImage: `url(/img/newcar.png)`, // Replace with your desired image path
+                      backgroundPosition: 'center',
+                    }}
+                  ></div>
+                  <span className="text-xs mt-2 font-title text-center">Vehicle</span>
+                </Link>
+              </div>
+
+              {/* Icon 4 with Link */}
+              <div className="flex flex-col items-center ml-2" style={{ zIndex: 10 }}>
+                <Link to="/shop-custom-inventory" className="flex flex-col items-center">
+                  <div
+                    className="h-16 w-16 rounded-full bg-cover bg-gray-300 border-2 border-red-500 shadow-md"
+                    style={{
+                      backgroundImage: `url(/img/shop.png)`, // Replace with your desired image path
+                      backgroundPosition: 'center',
+                    }}
+                  ></div>
+                  <span className="text-xs mt-2 font-title text-center">Shop</span>
+                </Link>
+              </div>
+
+              {/* Icon 5 with Link */}
+              <div className="flex flex-col items-center ml-2 cursor-pointer" style={{ zIndex: 10 }}>
+                <Link to="/ac-service" className="flex flex-col items-center">
+                  <div
+                    className="h-16 w-16 rounded-full bg-cover bg-gray-300 border-2 border-red-500 shadow-md cursor-pointer"
+                    style={{
+                      backgroundImage: `url(/img/ac_install.png)`, // Replace with your desired image path
+                      backgroundPosition: 'center',
+                    }}
+                  ></div>
+                  <span className="text-xs mt-2 font-title text-center">AC Services</span>
+                </Link>
+              </div>
+
+              {/* Icon 6 with Link */}
+              <div className="flex flex-col items-center ml-2" style={{ zIndex: 10 }}>
+                <Link to="/warehouse" className="flex flex-col items-center">
+                  <div
+                    className="h-16 w-16 rounded-full bg-cover bg-gray-300 border-2 border-red-500 shadow-md"
+                    style={{
+                      backgroundImage: `url(/img/newwarehouse.png)`, // Replace with your desired image path
+                      backgroundPosition: 'center',
+                    }}
+                  ></div>
+                  <span className="text-xs mt-2 font-title text-center">Warehouse</span>
+                </Link>
+              </div>
+
+
+            </div>
+            {/* Video Section */}
+            <div className=" border-2 flex flex-col md:flex-row justify-around w-full md:w-[100%] h-[100px] md:h-[220px] mx-auto md:ml-[0%] ml-[80px] hidden md:block">
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-b "></div>
+
+              {/* Video Element */}
+              <video
+                ref={videoRef}
+                className=" bg-opacity-80 w-full  h-full"
+                controls
+                loop
+                muted // Add muted attribute to allow autoplay
+              >
+                <source src="/4277721-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+
+
           </div>
+
 
 
           {/*   Form start */}
-          <div className='max-w-[500px] m-auto bg-terniary p-4 my-8 rounded-md mx-8 max-[472px]:mx-0 lg:fixed lg:top-28 lg:right-[4cm] border border-gray-600 shadow-lg md:relative lg:w-[600px] lg:h-[525px]'>
->>>>>>> d5cb291 (Your commit message here)
-            <div className='flex justify-evenly bg-white text-white py-2 rounded-md gap-x-10 mb-4 max-[472px]:grid grid-cols-2 w-full max-[472px]:px-4 '>
-              <div className='text-center m-4 my-0 w-full max-[472px]:m-0'>
-                <button className='bg-PeriwinklePurpleDark p-2 px-8 font-semibold tracking-wide w-full rounded-md max-[472px]:px-0 max-[472px]:m-0'  ref={withinButton} onClick={showWithinForm}>Within City</button>
+          <div
+            className="max-w-[450px] m-auto bg-terniary p-4 lg:my-8 md:my-8 my-0  rounded-md mx-8 max-[472px]:mx-0 
+                      border border-gray-600 shadow-lg 
+                      md:w-[500px] md:h-[400px] md:relative 
+                      lg:fixed lg:top-28 lg:right-[10%] md:mx-auto 
+                      lg:w-[400px] lg:h-[450px] font-title
+                      md:top-auto md:right-auto md:bottom-4"
+          >
+
+            {/* Buttons to toggle between "Within City" and "Between Cities" */}
+            <div className='flex justify-evenly bg-white font-body text-white py-2 rounded-md gap-x-10 mb-4 max-[472px]:grid grid-cols-2 w-full max-[472px]:px-4'>
+              <div className='text-center m-4 my-0 w-full max-[472px]:m-0 '>
+                <button
+                  className='bg-PeriwinklePurpleDark p-2 px-8 font-semibold tracking-wide w-full rounded-md max-[472px]:px-0 max-[472px]:m-0'
+                  ref={withinButton}
+                  onClick={showWithinForm}
+                >
+                  Within City
+                </button>
               </div>
               <div className='text-center m-4 my-0 w-full max-[472px]:m-0'>
-                <button className=' text-PeriwinklePurpleDark  p-2 px-8 font-semibold tracking-tight  w-full rounded-md max-[472px]:px-0 max-[472px]:tracking-tighter ' ref={betweenButton} onClick={showBetweenForm}>Between Cities</button>
+                <button
+                  className='bg-PeriwinklePurpleDark p-2 px-8 font-semibold tracking-tight w-full rounded-md max-[472px]:px-0 max-[472px]:tracking-tighter'
+                  ref={betweenButton}
+                  onClick={showBetweenForm}
+                >
+                  Between Cities
+                </button>
               </div>
-              {/* scrool image**/ }
             </div>
-<<<<<<< HEAD
-            <form action="" className='flex flex-col px-4 py-4 gap-y-2 text-primary ' onSubmit={handleWithinForm} ref={formForWithin}>
-=======
-            
 
-
-
-            <form action="" className='flex flex-col px-4 py-4 gap-y-2 text-PeriwinklePurpleDark ' onSubmit={handleWithinForm} ref={formForWithin}>
->>>>>>> d5cb291 (Your commit message here)
-
-              <div className='relative '>
-                <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
-                <input required type="text" name='sourceLocality' placeholder='Enter Your Locality' value={withinForm.sourceLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10 rounded-full border-PeriwinklePurpleDark border' />
-              </div>
+            {/* Form: Within City */}
+            <form
+              className="flex flex-col px-4 py-4 gap-y-4 text-PeriwinklePurpleDark"
+              onSubmit={(e) => handleSubmit(e, 'within')}
+              ref={formForWithin}
+            >
+              {/* Source Locality */}
               <div className='relative'>
                 <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
-
-                <input required type="text" name='destinationLocality' placeholder='Enter Your Destination Locality' value={withinForm.destinationLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10  rounded-full border-PeriwinklePurpleDark border' />
+                <input
+                  required
+                  type="text"
+                  name="sourceLocality"
+                  placeholder="Enter Your Locality"
+                  value={withinForm.sourceLocality}
+                  onChange={handleInput}
+                  className='w-full py-2 px-4 pl-10 rounded-full border-PeriwinklePurpleDark border'
+                />
               </div>
-              
-              {/* <div className='relative'>
-                <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select required name="choice"  className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.choice} onChange={handleInput}>
-                  <option value="movers">Only Movers</option>
-                  <option value="Movers & Tempo">Movers & Tempo</option>
-                  <option value="Movers & Truck">Movers & Truck</option>
-                  <option value="Movers & Vehicle">Movers & Vehicle</option>
-                </select>
-              </div> */}
 
-
-
+              {/* Destination Locality */}
               <div className='relative'>
-              {/* <i class="fa-solid fa-suitcase"></i> */}
+                <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
+                <input
+                  required
+                  type="text"
+                  name="destinationLocality"
+                  placeholder="Enter Your Destination Locality"
+                  value={withinForm.destinationLocality}
+                  onChange={handleInput}
+                  className='w-full py-2 px-4 pl-10 rounded-full border-PeriwinklePurpleDark border'
+                />
+              </div>
+
+              {/* Select Service Type */}
+              <div className='relative'>
                 <i className="fa-solid fa-suitcase absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select required name="service"  className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border' value={withinForm.service} onChange={(e) => { displayPlan(); handleInput(e); }}>
-                  <option value="">-- Select Sercvice --</option>
-                  <option value="housefold shifting">Household Shifting</option>
-                  <option value="office shifting">Office Shifting</option>
-                  <option value="shop shifting">Shop Shifting</option>
-                  <option value="vehicle shifting">Vehicle Shifting</option>
-                  <option value="warehouse storage">Warehouse Storage</option>
+                <select
+                  required
+                  name="serviceType"
+                  value={withinForm.serviceType}
+                  onChange={handleInput}
+                  className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border'
+
+                >
+                  <option value="">-- Select Service Type --</option>
+                  <option value="household-shifting">Household Shifting</option>
+                  <option value="office-shifting">Office Shifting</option>
+                  <option value="shop-shifting">Shop Shifting</option>
+                  <option value="vehicle-shifting">Vehicle Shifting</option>
+                  <option value="warehouse-storage">Warehouse Storage</option>
                 </select>
               </div>
 
+              {/* Inventory Related to Service Type */}
+              {/* {withinForm.serviceType && (
+          <div className="relative">
+            <i className="fa-solid fa-boxes absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+            <input
+              required
+              type="text"
+              name="inventory"
+              placeholder={`Enter inventory for ${withinForm.serviceType}`}
+              value={withinForm.inventory}
+              onChange={handleInput}
+              className='w-full py-2 px-4 pl-10 rounded-full border-PeriwinklePurpleDark border'
+            />
+          </div>
+        )} */}
+
+              {/* Select Shifting Date */}
               <div className='relative'>
-                <i className="fa-solid fa-box-open absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select required name="plan"  className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border' value={withinForm.plan} onChange={handleInput}>
-                  <option value="">-- Select Plan --</option>
-                  <option value="basic">Base Plan</option>
-                  <option value="premium">Premium Plan</option>
-                </select>
-              </div>
-              
-            <div className="relative">
-              <i className="fa-solid fa-clock absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-              <select
-                name="time"
-                
-                className="w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border"
-                onChange={handleInput}
-                value={withinForm.time}
-              >
-                <option value="">-- Select Time --</option>
-                <option value="9 AM to 10 AM">9 AM to 10 AM</option>
-                <option value="10 AM to 11 AM">10 AM to 11 AM</option>
-                <option value="11 AM to 12 PM">11 AM to 12 PM</option>
-                <option value="12 PM to 1 PM">12 PM to 1 PM</option>
-                <option value="1 PM to 2 PM">1 PM to 2 PM</option>
-                <option value="2 PM to 3 PM">2 PM to 3 PM</option>
-                <option value="3 PM to 4 PM">3 PM to 4 PM</option>
-                <option value="4 PM to 5 PM">4 PM to 5 PM</option>
-                <option value="5 PM to 6 PM">5 PM to 6 PM</option>
-                <option value="6 PM to 7 PM">6 PM to 7 PM</option>
-              </select>
-            </div>
-
-            
-            <div className='relative'>
                 <i className="fa-solid fa-calendar-days absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <input required type="date" name='date' className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border' value={withinForm.date} onChange={handleInput} />
+                <input
+                  required
+                  type="date"
+                  name="date"
+                  className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border'
+                  value={withinForm.date}
+                  onChange={handleInput}
+                  onClick={(e) => e.target.showPicker()}  // This will trigger the calendar to open
+                  min={new Date().toISOString().split('T')[0]}
+                />
               </div>
 
+              {/* Submit Button */}
               <div className=''>
-                <button className='bg-PeriwinklePurpleDark p-2 px-4 font-bold tracking-wide w-full rounded-md text-white '>Get Quote</button>
+                <button
+                  type="submit"
+                  className='bg-PeriwinklePurpleDark p-2 px-4 font-bold tracking-wide w-full rounded-md font-body text-white'
+                >
+                  Get Quote
+                </button>
               </div>
             </form>
 
-
-
-
-            <form action="" className='flex-col px-4 py-4 gap-y-4 text-PeriwinklePurpleDark hidden ' onSubmit={handleBetweenForm} ref={formForBetween}>
-
+            {/* Form: Between Cities (Hidden by Default) */}
+            <form
+              className="flex-col px-4 py-4 gap-y-4 text-PeriwinklePurpleDark hidden"
+              onSubmit={handleBetweenForm}
+              ref={formForBetween}
+            >
+              {/* Search Locality */}
               <div className='relative '>
                 <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
-                <input required type="text" name='sourceLocality' placeholder='Enter Your Locality' value={withinForm.sourceLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10 rounded-full border-PeriwinklePurpleDark border' />
+                <input
+                  required
+                  type="text"
+                  name="sourceLocality"
+                  placeholder="Enter Your Locality"
+                  value={withinForm.sourceLocality}
+                  onChange={handleInput}
+                  className='w-full py-2 px-4 pl-10 rounded-full border-PeriwinklePurpleDark border'
+                />
               </div>
+
+              {/* Destination Locality */}
               <div className='relative'>
                 <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
-
-                <input required type="text" name='destinationLocality' placeholder='Enter Your Destination Locality' value={withinForm.destinationLocality} onChange={handleInput} className='w-full py-2 px-4 pl-10  rounded-full border-PeriwinklePurpleDark border' />
+                <input
+                  required
+                  type="text"
+                  name="destinationLocality"
+                  placeholder="Enter Your Destination Locality"
+                  value={withinForm.destinationLocality}
+                  onChange={handleInput}
+                  className='w-full py-2 px-4 pl-10 rounded-full border-PeriwinklePurpleDark border'
+                />
               </div>
-              {/* <div className='relative'>
-                <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select required name="choice"  className='w-full py-2 px-4 rounded-full pl-10 border-primary border' value={withinForm.choice} onChange={handleInput}>
-                  <option value="movers">Only Movers</option>
-                  <option value="Movers & Tempo">Movers & Tempo</option>
-                  <option value="Movers & Truck">Movers & Truck</option>
-                  <option value="Movers & Vehicle">Movers & Vehicle</option>
-                </select>
-              </div> */}
 
-
-
+              {/* Select Service Type */}
               <div className='relative'>
-                <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select required name="service"  className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border' value={withinForm.service} onChange={(e) => { displayPlan(); handleInput(e); }}>
-                  <option value="">-- Select Sercvice --</option>
-                  <option value="housefold shifting">Household Shifting</option>
-                  <option value="office shifting">Office Shifting</option>
-                  <option value="shop shifting">Shop Shifting</option>
-                  <option value="vehicle shifting">Vehicle Shifting</option>
-                  <option value="WareHouse">Where House</option>
+                <i className="fa-solid fa-suitcase absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
+                <select
+                  required
+                  name="serviceType"
+                  value={withinForm.serviceType}
+                  onChange={handleInput}
+                  className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border'
+                >
+                  <option value="">-- Select Service Type --</option>
+                  <option value="household-shifting">Household Shifting</option>
+                  <option value="office-shifting">Office Shifting</option>
+                  <option value="shop-shifting">Shop Shifting</option>
+                  <option value="vehicle-shifting">Vehicle Shifting</option>
+                  <option value="warehouse-storage">Warehouse Storage</option>
                 </select>
               </div>
 
+
+              {/* Select Shifting Date */}
               <div className='relative'>
-                <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select required name="plan"  className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border' value={withinForm.plan} onChange={handleInput}>
-                  <option value="">-- Select Plan --</option>
-                  <option value="base">Base Plan</option>
-                  <option value="premium">Premium Plan</option>
-                </select>
-              </div>
-
-
-              <div className="relative">
-              <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-              <select
-                name="time"
-                
-                className="w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border"
-                onChange={handleInput}
-                value={withinForm.time}
-                required
-              >
-                <option value="">-- Select Time --</option>
-                <option value="07:30 AM to 08:30 AM">07:30 AM to 08:30 AM</option>
-                <option value="09:30 AM to 10:30 AM">09:30 AM to 10:30 AM</option>
-                <option value="12:30 AM to 01:30 PM">12:30 AM to 01:30 PM</option>
-                <option value="03:30 PM to 04:30 PM">03:30 PM to 04:30 PM</option>
-                <option value="05:30 PM to 07:30 PM">05:30 PM to 07:30 PM</option>
-              </select>
-            </div>
-
-            <div className='relative'>
                 <i className="fa-solid fa-calendar-days absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <input required type="date" name='date' className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border' value={withinForm.date} onChange={handleInput} />
+                <input
+                  required
+                  type="date"
+                  name="date"
+                  className='w-full py-2 px-4 rounded-full pl-10 border-PeriwinklePurpleDark border'
+                  value={withinForm.date}
+                  onChange={handleInput}
+                  onClick={(e) => e.target.showPicker()}
+                />
               </div>
 
+              {/* Submit Button */}
               <div className=''>
-                <button className='bg-PeriwinklePurpleDark p-2 px-4 font-bold tracking-wide w-full rounded-md text-white '>Get Quote</button>
+                <button
+                  type="submit"
+                  className='bg-PeriwinklePurpleDark p-2 px-4 font-bold tracking-wide w-full rounded-md font-body text-white'
+                >
+                  Get Quote
+                </button>
               </div>
             </form>
-
-
-            {/* <form action="" className='flex flex-col px-4 py-4 gap-y-4 text-primary hidden' onSubmit={handleBetweenForm} ref={formForBetween}>
-              <div className='relative'>
-                <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
-
-                <select name="city" className='w-full py-2 px-4 rounded-full pl-10' value={betweenForm.city} onChange={handleBetweenFormInput}>
-                  <option value="">-- Select Source City --</option>
-                  <option value="mumbai">Mumbai</option>
-                  <option value="pune">Pune</option>
-                  <option value="thane">Thane</option>
-                  <option value="nashik">Nashik</option>
-                </select>
-              </div>
-
-              <div className='relative'>
-                <i className="fa-sharp fa-solid fa-location-dot absolute top-1/2 -translate-y-1/2 text-xl left-3"></i>
-
-                <select name="destinationCity" className='w-full py-2 px-4 rounded-full pl-10' value={betweenForm.destinationCity} onChange={handleBetweenFormInput}>
-                  <option value="">-- Select Destination City --</option>
-                  <option value="mumbai">Mumbai</option>
-                  <option value="pune">Pune</option>
-                  <option value="thane">Thane</option>
-                  <option value="nashik">Nashik</option>
-                </select>
-              </div>
-
-              <div className='relative'>
-                <i className="fa-solid fa-truck-fast absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <select name="choice"  className='w-full py-2 px-4 rounded-full pl-10' value={betweenForm.choice} onChange={handleBetweenFormInput}>
-                  <option value="movers">Only Movers</option>
-                  <option value="Movers & Tempo">Movers & Tempo</option>
-                  <option value="Movers & Truck">Movers & Truck</option>
-                  <option value="Movers & Vehicle">Movers & Vehicle</option>
-                </select>
-              </div>
-
-
-              <div className='relative'>
-                <i className="fa-solid fa-calendar-days absolute top-1/2 -translate-y-1/2 text-lg left-3"></i>
-                <input type="date" name='date' className='w-full py-2 px-4 rounded-full pl-10' value={betweenForm.date} onChange={handleBetweenFormInput} />
-              </div>
-
-              <div className=''>
-                <button className='bg-primary p-2 px-4 font-bold tracking-wide w-full rounded-md text-white '>Get Quote</button>
-              </div>
-            </form> */}
-
-            <FormContext.Provider value={[withinForm, setWithingForm, showPlan, setShowPlan]}>
-              {showPlan && <PopUpPlan FormContext={FormContext} />}
-            </FormContext.Provider>
           </div>
+
         </section>
+        {/* <ServiceScroll/> */}
+        <AcSummerNeeds />
         <Service />
-        <Steps/>
-        <WhatOffer/>
-        
+        <Steps />
+        <WhatOffer />
         {/* <AboutContent /> */}
         {/* <Gallery heading={"Our Work"} /> */}
-        <LoginStatusContext.Provider value={[userData,setUserData,loginStatus,setLoginStatus]}>
-        <LoginContext.Provider value={[showLoginForm, setShowLoginForm, showRegisterForm, setShowRegisterForm]}>
-          {showLoginForm && <Login LoginContext={LoginContext} />}
-          {showRegisterForm && <Register LoginContext={LoginContext} />}
-        </LoginContext.Provider>
+        {/* <LoginStatusContext.Provider value={[userData, setUserData, loginStatus, setLoginStatus]}>
+          <LoginContext.Provider value={[showLoginForm, setShowLoginForm, showRegisterForm, setShowRegisterForm]}>
+            {showLoginForm && <Login LoginContext={LoginContext} />}
+            {showRegisterForm && <Register LoginContext={LoginContext} />}
+          </LoginContext.Provider> */}
 
-        </LoginStatusContext.Provider>
-<<<<<<< HEAD
-      {/* Location Section */}
-      <Location onLocationClick={handleLocationClick} />
-=======
-      <Location/>
->>>>>>> d5cb291 (Your commit message here)
-      <OtherServices/>
+        {/* </LoginStatusContext.Provider> */}
+        <Location onLocationClick={handleLocationClick} />   {/* location section*/}
+        <OtherServices />
+
+        <div className="App">
+          <ComparisonTable comparisonPoints={comparisonPoints} />
+        </div>
+
+        <FAQSection />
+        {/* Pass selectedLocation and onLocationClick to Keywords */}
+        <Keywords selectedLocation={selectedLocation} onLocationClick={handleLocationClick} />
+
       </main>
       {/* <Footer /> */}
       <QuickContact />

@@ -19,7 +19,7 @@ export default function Register({ LoginContext }) {
 
   const onSubmit = async (data) => {
     console.log(data);
-    let response = await fetch("http://localhost/SNS/sns_backend/form_signup.php", {
+    let response = await fetch("http://localhost/json.php/form_signup.php", {
 
       method: "POST",
       headers: {
@@ -51,9 +51,9 @@ export default function Register({ LoginContext }) {
       <div className="fixed top-0 left-0 bg-gray-500 h-screen w-screen opacity-50 z-30"></div>
       <div className="flex justify-center items-center transition-all bg-center bg-cover bg-no-repeat z-40 fixed top-0 left-0 w-full h-screen">
         <div className="w-full loadComponent mx-8">
-          <div className="w-full flex flex-col max-w-[500px] h-full bg-white rounded-lg overflow-hidden relative border border-primary m-auto shadow-lg shadow-gray">
+          <div className="w-full flex flex-col max-w-[500px] h-full bg-white rounded-lg overflow-hidden relative border border-PeriwinklePurpleDark m-auto shadow-lg shadow-gray">
             <div className="flex-2 shrink-0">
-              <div className="text-center font-semibold text-white bg-primary py-4 flex gap-x-5 items-center relative">
+              <div className="text-center font-semibold text-white bg-PeriwinklePurpleDark py-4 flex gap-x-5 items-center relative">
                 <Link
                   to={""}
                   onClick={() => {
@@ -73,7 +73,7 @@ export default function Register({ LoginContext }) {
                   <input
                     type="text"
                     {...register("username", { required: "Username is required" })}
-                    className="px-4 py-2 outline-none rounded-full border-primary border focus:border-green-500 w-full"
+                    className="px-4 py-2 outline-none rounded-full border-PeriwinklePurpleDark border focus:border-green-500 w-full"
                     placeholder="Username"
                   />
                   {errors.username && <p className="text-red-500 text-sm">{errors.username.message}</p>}
@@ -86,7 +86,7 @@ export default function Register({ LoginContext }) {
                       required: "Phone number is required",
                       maxLength: { value: 10, message: "Phone number must be 10 digits" },
                     })}
-                    className="px-4 py-2 outline-none rounded-full border-primary border focus:border-green-500 w-full"
+                    className="px-4 py-2 outline-none rounded-full border-PeriwinklePurpleDark border focus:border-green-500 w-full"
                     placeholder="Phone Number"
                   />
                   {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
@@ -103,7 +103,7 @@ export default function Register({ LoginContext }) {
                           "Password must be at least 8 characters, include one uppercase letter, one number, and one special character",
                       },
                     })}
-                    className="px-4 py-2 outline-none rounded-full border-primary border focus:border-green-500 w-full"
+                    className="px-4 py-2 outline-none rounded-full border-PeriwinklePurpleDark border focus:border-green-500 w-full"
                     placeholder="Password"
                   />
                   <i
@@ -122,7 +122,7 @@ export default function Register({ LoginContext }) {
                       required: "Confirm Password is required",
                       validate: (value) => value === password || "Passwords do not match",
                     })}
-                    className="px-4 py-2 outline-none rounded-full border-primary border focus:border-green-500 w-full"
+                    className="px-4 py-2 outline-none rounded-full border-PeriwinklePurpleDark border focus:border-green-500 w-full"
                     placeholder="Confirm Password"
                   />
                   <i
@@ -135,9 +135,9 @@ export default function Register({ LoginContext }) {
                   {errors.cpassword && <p className="text-red-500 text-sm">{errors.cpassword.message}</p>}
 
                   <div>
-                    Already Have An Account ? <span className="text-primary text-base font-semibold cursor-pointer hover:underline" onClick={signIn}>Login</span>
+                    Already Have An Account ? <span className="text-PeriwinklePurpleDark text-base font-semibold cursor-pointer hover:underline" onClick={signIn}>Login</span>
                 </div>
-                <div className="flex justify-center w-full bg-primary rounded-full py-2">
+                <div className="flex justify-center w-full bg-PeriwinklePurpleDark rounded-full py-2">
                   <input
                     type="submit"
                     className="text-white font-bold bg-green-500 px-4 py-2 rounded-full"

@@ -260,24 +260,39 @@ export default function Login({ LoginContext }) {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
-    let response = await fetch("http://localhost/SNS/sns_backend/form_signin.php", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    setShowLoginForm(false);
-    if (response.ok) {
-      let responseData = await response.json();
-      console.log(responseData.data);
-      setLoginStatus(true);
-      setUserData(responseData.data);
-    } else {
-      console.log("Error");
+    try {
+      console.log("Sign-in data:", data);
+  
+      let response = await fetch("http://localhost/json.php/form_signin.php", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (response.ok) {
+        let responseData = await response.json();
+        
+        if (responseData.success) {
+          console.log("Sign-in successful:", responseData.data);
+          setLoginStatus(true);
+          setUserData(responseData.data); // Set user data received from the server
+          setShowLoginForm(false);       // Close the login form
+        } else {
+          console.error("Sign-in failed:", responseData.message);
+          alert(responseData.message); // Display the error message from the server
+        }
+      } else {
+        console.error("Error during sign-in process.");
+        alert("An error occurred while trying to log in. Please try again.");
+      }
+    } catch (error) {
+      console.error("Fetch error:", error);
+      alert("Unable to connect to the server. Please check your network.");
     }
   };
+  
 
   function signUp() {
     setShowLoginForm(false);
@@ -291,11 +306,7 @@ export default function Login({ LoginContext }) {
         <div className="w-full loadComponent mx-8">
           <div className="w-full flex flex-col max-w-[500px] h-full bg-white rounded-lg overflow-hidden relative border border-PeriwinklePurpleDark m-auto shadow-lg shadow-gray">
             <div className="flex-2 shrink-0">
-<<<<<<< HEAD
-              <div className="text-center font-semibold text-white bg-primary py-4 max-[400px]:py-2 flex gap-x-5 items-center relative">
-=======
               <div className="text-center font-semibold text-white bg-PeriwinklePurpleDark py-4 max-[400px]:py-2 flex gap-x-5 items-center relative">
->>>>>>> d5cb291 (Your commit message here)
                 <Link
                   to={""}
                   onClick={() => {
@@ -382,11 +393,7 @@ export default function Login({ LoginContext }) {
                   </span>
                 </div>
 
-<<<<<<< HEAD
-                <div className="flex justify-center w-full bg-primary rounded-full py-2">
-=======
                 <div className="flex justify-center w-full bg-PeriwinklePurpleDark rounded-full py-2">
->>>>>>> d5cb291 (Your commit message here)
                   <input
                     type="submit"
                     className="text-white font-bold bg-green-500 px-4 py-2 rounded-full max-[400px]:py-0"
@@ -401,26 +408,25 @@ export default function Login({ LoginContext }) {
 
       {/* Modal for Terms and Conditions */}
       {showTermsModal && (
-        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-6 rounded-lg max-w-[400px] shadow-lg">
-            <h2 className="text-lg font-bold mb-4">Terms and Conditions</h2>
-            <p className="text-sm text-gray-700 mb-4">
-              Your terms and conditions content goes here. Add any policies or guidelines you want the user to agree
-              to.
-            </p>
-            <button
-<<<<<<< HEAD
-              className="bg-primary text-white px-4 py-2 rounded-full"
-=======
-              className="bg-PeriwinklePurpleDark text-white px-4 py-2 rounded-full"
->>>>>>> d5cb291 (Your commit message here)
-              onClick={() => setShowTermsModal(false)}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+  <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
+    <div className="bg-white p-6 rounded-lg max-w-[400px] shadow-lg">
+      <h2 className="text-lg font-bold mb-4">Terms and Conditions</h2>
+      <a
+        href="/terms"
+       className="text-blue-500 hover:underline text-sm mb-4 block"
+      >
+       Terms and Conditions
+      </a>
+      <button
+        className="bg-PeriwinklePurpleDark text-white px-4 py-2 rounded-full"
+        onClick={() => setShowTermsModal(false)}
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
+
     </>
   );
 }

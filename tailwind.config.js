@@ -5,18 +5,16 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors:{
-        primary:"#0a2c5a",
-        secondary:"#fcb21d",
-        terniary:"#eff2f9",
-        shahid:"#7575CF",
+      colors: {
+        primary: "#070F2B",      
+        secondary: "#474E93",
+        terniary: "#eff2f9",
+        shahid: "#02091c",
         PeriwinklePurpleLight: "#7f57b4",  // Lighter version
         PeriwinklePurpleDark: "#492378",   // Darker version
-        // terniary:"#eff2f9",
-        other:"#36517c",
-        other2:"rgb(163 230 53 / var(--tw-text-opacity, 1))"
-        
-        
+        other: "#36517c",
+        button: "#7f57b4",  // Lighter version
+        other2: "rgb(163 230 53 / var(--tw-text-opacity, 1))"
       },
       clipPath: {
         'custom-shape': 'polygon(0 0, 100% 0, 80% 100%, 0 100%)',
@@ -24,11 +22,14 @@ module.exports = {
       utilities: {
         '.all-unset': {
           all: 'unset',
+        },
       },
-      
-      }
+      fontFamily: {
+        title: ['Roboto', 'sans-serif'], // For titles
+        body: ['Arial', 'sans-serif'],   // For other content
+        // Roboto: ['Roboto', 'sans-serif'],
+      },
     },
   },
   plugins: [],
 }
-

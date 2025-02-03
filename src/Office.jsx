@@ -1,13 +1,13 @@
 import React from 'react'
 import Inventory from './components/Inventory'
 import { useState } from 'react'
-import bg from "./assets/images/shifting.jpg"
+import shifting from './assets/images/shifting.jpg';
+// import bg from "./assets/images/shifting.jpg"
 
 
 export let ListContext = React.createContext()
 
 export default function Office() {
-<<<<<<< HEAD
   const [selectedImage, setSelectedImage] = useState(null); // New state for selected image
   const [withinForm, setWithinForm] = useState({});
   const [showPlan, setShowPlan] = useState(false);
@@ -16,8 +16,6 @@ export default function Office() {
     setSelectedImage(imageSrc);
     setShowPlan(true); // Show the popup when an image is clicked
   };
-=======
->>>>>>> d5cb291 (Your commit message here)
   const importImages = (requireContext) => {
     const images = {};
     requireContext.keys().forEach((key) => {
@@ -69,11 +67,7 @@ let offdecorationImage = importImages(
             { "name": "Office Desk", "quantity": 0, src:OfficeFuniture["Office Desk"] },
             { "name": "Conference Table", "quantity": 0, src:OfficeFuniture["Conference Table"] },
             { "name": "Executive Desk", "quantity": 0, src:OfficeFuniture["Executive Desk"] },
-<<<<<<< HEAD
-            { "name": "Adjustable Standing Desk", "quantity": 0, src:OfficeFuniture[""] },
-=======
             { "name": "Adjustable Standing Desk", "quantity": 0, src:OfficeFuniture["Adjustable Standing Desk"] },
->>>>>>> d5cb291 (Your commit message here)
             { "name": "Reception Desk", "quantity": 0,src:OfficeFuniture["Reception Desk"] },
             { "name": "Meeting Table", "quantity": 0, src:OfficeFuniture["Meeting Table"] }
           ],
@@ -151,19 +145,11 @@ let offdecorationImage = importImages(
         {
           "Item": "Printers & Scanners",
           "options": [
-<<<<<<< HEAD
             { "name": "Inkjet Printer", "quantity": 0, },
             { "name": "Laser Printer", "quantity": 0 },
             { "name": "All-in-One Printer", "quantity": 0 },
             { "name": "Scanner", "quantity": 0 },
             { "name": "3D Printer", "quantity": 0 }
-=======
-            { "name": "Inkjet Printer", "quantity": 0,src: OfficeTechImage["LaserPrinter"] },
-            { "name": "Laser Printer", "quantity": 0 ,src: OfficeTechImage["LaserPrinter"]},
-            { "name": "All-in-One Printer", "quantity": 0 ,src: OfficeTechImage["AllinOnePrinter"]},
-            { "name": "Scanner", "quantity": 0,src: OfficeTechImage["Scanner"] },
-            { "name": "3D Printer", "quantity": 0 ,src: OfficeTechImage["3D Printer"]}
->>>>>>> d5cb291 (Your commit message here)
           ],
           "open": false,
           "id": 2
@@ -171,10 +157,10 @@ let offdecorationImage = importImages(
         {
           "Item": "Networking",
           "options": [
-            { "name": "Wi-Fi Router", "quantity": 0,src: OfficeTechImage["wifi router"] },
-            { "name": "Switch", "quantity": 0,src: OfficeTechImage["switch"] },
-            { "name": "Modem", "quantity": 0 ,src: OfficeTechImage["Modem"]},
-            { "name": "Network Cable", "quantity": 0,src: OfficeTechImage["Network Cable"] }
+            { "name": "Wi-Fi Router", "quantity": 0 },
+            { "name": "Switch", "quantity": 0 },
+            { "name": "Modem", "quantity": 0 },
+            { "name": "Network Cable", "quantity": 0 }
           ],
           "open": false,
           "id": 3
@@ -182,10 +168,10 @@ let offdecorationImage = importImages(
         {
           "Item": "Projectors & Presentation Equipment",
           "options": [
-            { "name": "Projector", "quantity": 0 ,src : OfficeTechImage["Projector"]},
-            { "name": "Projector Screen", "quantity": 0 ,src : OfficeTechImage["Projector Screen"]},
-            { "name": "Conference Speakerphone", "quantity": 0 ,src : OfficeTechImage["Conference Speakerphone"]},
-            { "name": "Interactive Whiteboard", "quantity": 0,src : OfficeTechImage["Interactive Whiteboard"] }
+            { "name": "Projector", "quantity": 0 },
+            { "name": "Projector Screen", "quantity": 0 },
+            { "name": "Conference Speakerphone", "quantity": 0 },
+            { "name": "Interactive Whiteboard", "quantity": 0 }
           ],
           "open": false,
           "id": 4
@@ -193,10 +179,10 @@ let offdecorationImage = importImages(
         {
           "Item": "Telecommunication",
           "options": [
-            { "name": "Office Telephone", "quantity": 0, src: OfficeTechImage["officetelephone"] },
-            { "name": "VoIP Phone", "quantity": 0, src: OfficeTechImage["voip telephone"] },
-            { "name": "Headsets", "quantity": 0, src: OfficeTechImage["Headsets"] },
-            { "name": "Video Conferencing System", "quantity": 0, src: OfficeTechImage["Video Conferencing System"] }
+            { "name": "Office Telephone", "quantity": 0 },
+            { "name": "VoIP Phone", "quantity": 0 },
+            { "name": "Headsets", "quantity": 0 },
+            { "name": "Video Conferencing System", "quantity": 0 }
           ],
           "open": false,
           "id": 5
@@ -204,9 +190,9 @@ let offdecorationImage = importImages(
         {
           "Item": "Audio & Visual",
           "options": [
-            { "name": "Microphone", "quantity": 0, src: OfficeTechImage["Microphone"] },
-            { "name": "Speaker System", "quantity": 0 , src: OfficeTechImage["Speaker System"]},
-            { "name": "Conference Audio System", "quantity": 0, src: OfficeTechImage["Conference Audio System"] }
+            { "name": "Microphone", "quantity": 0 },
+            { "name": "Speaker System", "quantity": 0 },
+            { "name": "Conference Audio System", "quantity": 0 }
           ],
           "open": false,
           "id": 6
@@ -233,11 +219,7 @@ let offdecorationImage = importImages(
           "Item": "Kitchen & Breakroom Appliances",
           "options": [
             { "name": "Coffee Machine", "quantity": 0,src : OffAplicationImage["Coffee Machine"] },
-<<<<<<< HEAD
-            { "name": "Microwave Oven", "quantity": 0,src : OffAplicationImage["Coffee Machine"] },
-=======
-            { "name": "Microwave Oven", "quantity": 0,src : OffAplicationImage["micro oven"] },
->>>>>>> d5cb291 (Your commit message here)
+            { "name": "Microwave Oven", "quantity": 0,src : OffAplicationImage["Microwave"] },
             { "name": "Water Cooler", "quantity": 0,src : OffAplicationImage["Water Cooler"] },
             { "name": "Fridge", "quantity": 0,src : OffAplicationImage["Fridge"] },
             { "name": "Electric Kettle", "quantity": 0,src : OffAplicationImage["Electric Kettle"] },
@@ -267,13 +249,8 @@ let offdecorationImage = importImages(
         {
           "Item": "Stationery",
           "options": [
-<<<<<<< HEAD
             { "name": "Notebooks", "quantity": 0,src :offstationeryImage["Notebooks"] },
             { "name": "Paper", "quantity": 0,src :offstationeryImage["Paper"] },
-=======
-            { "name": "Notebooks", "quantity": 0,src :offstationeryImage ["Notebooks"] },
-            { "name": "Paper", "quantity": 0,src :offstationeryImage ["Paper"] },
->>>>>>> d5cb291 (Your commit message here)
             { "name": "Pens", "quantity": 0,src : offstationeryImage["Pens"] },
             { "name": "Pencils", "quantity": 0,src : offstationeryImage["Pencils"] },
             { "name": "Paper Clips", "quantity": 0,src : offstationeryImage["Paper Clips"] },
@@ -291,11 +268,7 @@ let offdecorationImage = importImages(
             { "name": "Tape Dispenser", "quantity": 0,src :offstationeryImage["Tape Dispenser"] },
             { "name": "Rulers", "quantity": 0 ,src :offstationeryImage["Rulers"]},
             { "name": "Highlighters", "quantity": 0 ,src :offstationeryImage["Highlighters"]},
-<<<<<<< HEAD
             { "name": "Whiteboard Markers", "quantity": 0 ,src :offstationeryImage[""]},
-=======
-            { "name": "Whiteboard Markers", "quantity": 0 ,src :offstationeryImage["whiteboard markers"]},
->>>>>>> d5cb291 (Your commit message here)
             { "name": "Puncher", "quantity": 0 ,src :offstationeryImage["Puncher"]},
             { "name": "Binding Machine", "quantity": 0 ,src :offstationeryImage["Binding Machine"]}
           ],
@@ -314,11 +287,7 @@ let offdecorationImage = importImages(
           "options": [
             { "name": "Wall Clocks", "quantity": 0, src :offdecorationImage["Wall Clocks"] },
             { "name": "Paintings", "quantity": 0, src :offdecorationImage["Painting"]  },
-<<<<<<< HEAD
             { "name": "Photos", "quantity": 0 , src :offdecorationImage[""] },
-=======
-            { "name": "Photos", "quantity": 0 , src :offdecorationImage["photos"] },
->>>>>>> d5cb291 (Your commit message here)
             { "name": "Mirrors", "quantity": 0 , src :offdecorationImage["Mirrors"] },
             { "name": "Wall Frames", "quantity": 0, src :offdecorationImage["Wall Frames"]  },
             { "name": "Bulletin Boards", "quantity": 0 , src :offdecorationImage["Bulletin Boards"] }
@@ -329,11 +298,7 @@ let offdecorationImage = importImages(
         {
           "Item": "Indoor Plants & Pots",
           "options": [
-<<<<<<< HEAD
             { "name": "Office Flower Pots", "quantity": 0, src :offdecorationImage["Office Flower Pots"]},
-=======
-            { "name": "Office Flower Pots", "quantity": 0, src :offdecorationImage ["Office Flower Pots"]},
->>>>>>> d5cb291 (Your commit message here)
             { "name": "Indoor Plant Stand", "quantity": 0, src :offdecorationImage["Indoor Plant Stand"] }
           ],
           "open": false,
@@ -365,10 +330,7 @@ let offdecorationImage = importImages(
       ],
       "active": false
     },
-<<<<<<< HEAD
     
-=======
->>>>>>> d5cb291 (Your commit message here)
     {
       "mainItem": "Office Organization",
       "subItem": [
@@ -461,19 +423,18 @@ let offdecorationImage = importImages(
 
 
   ];
-
-
-
   let [customerList, setCustomerList] = useState([]);
   let [customerInventoryDisplay, setcustomerInventoryDisplay] = useState(false);
   return (
 
-    <div className='h-screen w-full bg-gradient-to-b from-blue-100 to-primary flex justify-center items-center bg-center bg-cover bg-no-repeat ' style={{backgroundImage:`url(${bg})`}}>
+    // <div className='h-screen w-full bg-gradient-to-b from-blue-100 to-PeriwinklePurpleDark flex justify-center items-center bg-center bg-cover bg-no-repeat ' style={{backgroundImage:`url(${bg})`}}>
       <ListContext.Provider value={[customerList, setCustomerList, customerInventoryDisplay, setcustomerInventoryDisplay]}>
-        <Inventory inventoryItem={inventoryItem} context={ListContext} />
+        <div style={{ backgroundImage: `url(${shifting})` }} className='h-screen w-full flex justify-center items-center bg-center bg-cover  '>
+                            <Inventory inventoryItem={inventoryItem} context={ListContext}/>
+        </div>
         {/* <Inventory inventoryItem={inventoryItem}/> */}
         {/* {customerInventoryDisplay && <CustomerInventory />} */}
       </ListContext.Provider>
-    </div>
+    // </div>
   )
 }

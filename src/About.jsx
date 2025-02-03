@@ -15,6 +15,7 @@ import Statics from './components/Statics'
 import { Swiper } from 'swiper/react'
 import AboutSwiper from './components/AboutSwiper'
 import AboutServiceDetails from './components/AboutServiceDetails'
+import Sidebar from './components/Sidebar'
 // import AllServices from './components/AllServices'
 // import Service from './components/Service'
 
@@ -33,6 +34,7 @@ export default function About() {
         {/* <Navbar/> */}
         <LoginStatusContext.Provider value={[loginStatus,setLoginStatus,userData,setUserData]}>
         <Navbar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm}/>
+        <Sidebar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm} />
         </LoginStatusContext.Provider>
     </header>
 
@@ -73,10 +75,10 @@ export default function About() {
         <AboutSwiper/>
         <Why_Choose_us/>
 
-        <LoginContext.Provider value={[showLoginForm, setShowLoginForm, showRegisterForm, setShowRegisterForm]}>
+        {/* <LoginContext.Provider value={[showLoginForm, setShowLoginForm, showRegisterForm, setShowRegisterForm]}>
           {showLoginForm && <Login LoginContext={LoginContext} />}
           {showRegisterForm && <Register LoginContext={LoginContext} />}
-        </LoginContext.Provider>
+        </LoginContext.Provider> */}
     </main>
     
     <Footer/>

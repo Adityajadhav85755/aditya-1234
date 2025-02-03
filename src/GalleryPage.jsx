@@ -11,6 +11,7 @@ import { LoginStatusContext } from './index'
 import { useContext } from 'react'
 import Login from './components/Login'
 import Register from './components/Register'
+import Sidebar from './components/Sidebar'
 
 
 let LoginContext = React.createContext();
@@ -87,20 +88,19 @@ export default function GalleryPage() {
       <header>
       <LoginStatusContext.Provider value={[loginStatus,setLoginStatus,userData,setUserData]}>
         <Navbar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm}/>
+        <Sidebar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm} />
         </LoginStatusContext.Provider>
       </header>
       <main>
       <Gallery  data={data} cols={4} heading={`" Budget Me Best Servce "`}/>
+      <Service/> 
     <QuickContact/>
-    <Service/>
-
-
     <LoginContext.Provider value={[showLoginForm, setShowLoginForm, showRegisterForm, setShowRegisterForm]}>
           {showLoginForm && <Login LoginContext={LoginContext} />}
           {showRegisterForm && <Register LoginContext={LoginContext} />}
         </LoginContext.Provider>
       </main>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   )
 }

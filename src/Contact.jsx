@@ -8,6 +8,7 @@ import Register from './components/Register';
 import ContactForm from './components/ContactForm'; // Import the ContactForm component
 // import ThankYou from './components/ThankYou';
 import ContactInfo from './components/ContactInfo'
+import Sidebar from './components/Sidebar';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 let LoginContext = React.createContext();
@@ -29,6 +30,7 @@ export default function Contact() {
       <header>
         <LoginStatusContext.Provider value={[loginStatus, setLoginStatus, userData, setUserData]}>
           <Navbar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm} />
+          <Sidebar LoginStatusContext={LoginStatusContext} setShowLoginForm={setShowLoginForm} />
         </LoginStatusContext.Provider>
       </header>
 

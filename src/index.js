@@ -56,10 +56,15 @@ import Shop from './Shop';
 import AcService from './AcService';
 import AboutServiceDetails from './components/AboutServiceDetails';
 import Gallerydata from './components/AboutServiceDetailNewPage';
-<<<<<<< HEAD
-=======
 import WareHouse from './components/WareHouse';
->>>>>>> d5cb291 (Your commit message here)
+import Privacy from './Privacy.jsx'
+import Terms from './Terms.jsx';
+import History from './History.jsx';
+import KeywordsList from './components/KeywordsList.jsx';
+
+
+
+
 
 // Create context
 export const LoginStatusContext = React.createContext();
@@ -70,29 +75,27 @@ const RootApp = () => {
   const [loginStatus, setLoginStatus] = useState(false); // Global state for login
   let [showLoginForm, setShowLoginForm] = useState(false)
   let [showRegisterForm, setShowRegisterForm] = useState(false)
-  let [userData,setUserData]=useState({})
+  let [userData, setUserData] = useState({})
   return (
     <React.StrictMode>
-      <LoginStatusContext.Provider value={[loginStatus, setLoginStatus,showLoginForm,setShowLoginForm,showRegisterForm,setShowRegisterForm,userData,setUserData]}>
+      <LoginStatusContext.Provider value={[loginStatus, setLoginStatus, showLoginForm, setShowLoginForm, showRegisterForm, setShowRegisterForm, userData, setUserData]}>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<App />} />
             <Route path='/gallery' element={<GalleryPage />} />
             <Route path='/about' element={<About />} />
             <Route path='/contact' element={<Contact />} />
-            <Route path='/household' element={<Household />} />
-            <Route path='/office' element={<Office />} />
-            <Route path='/vehicle' element={<Vehicle />} />
-            <Route path='/shop' element={<Shop />} />
-            {/* <Route path='/a' element={<AboutServiceDetails />} /> */}
-            <Route path='/data' element={<Gallerydata/>} />
-<<<<<<< HEAD
-=======
-            <Route path='/warehouse' element={<WareHouse/>} />
-            
->>>>>>> d5cb291 (Your commit message here)
-
-            <Route path='/acservice' element={<AcService />} />
+            <Route path='/household-custom-inventory' element={<Household />} />
+            <Route path='/office-custom-inventory' element={<Office />} />
+            <Route path='/vehicle-custom-inventory' element={<Vehicle />} />
+            <Route path='/shop-custom-inventory' element={<Shop />} />
+            <Route path='/data' element={<Gallerydata />} />
+            <Route path='/warehouse' element={<WareHouse />} />
+            <Route path='/ac-service' element={<AcService />} />
+            <Route path='/privacy' element={<Privacy />} />
+            <Route path='/terms' element={<Terms />} />
+            <Route path='/history' element={<History />} />
+            <Route path='/key' element={<KeywordsList />} />
           </Routes>
         </BrowserRouter>
       </LoginStatusContext.Provider>

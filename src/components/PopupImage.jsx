@@ -11,7 +11,7 @@ export default function PopupImage({ src, onClose }) {
         onClick={(e) => e.stopPropagation()}
       >
         <button
-          className="absolute top-2 right-2 text-red-700 hover:text-red-500 text-3xl font-bold focus:outline-none"
+          className="absolute top-2 right-1 text-red-700 hover:text-red-500 text-3xl font-bold focus:outline-none"
           onClick={onClose}
         >
           ×
